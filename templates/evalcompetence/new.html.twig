@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Evalcompetence{% endblock %}
+
+{% block body %}
+    <h1>Create new Evalcompetence</h1>
+
+    {{ include('evalcompetence/_form.html.twig') }}
+
+    <a href="{{ path('evalcompetence_index') }}">back to list</a>
+{% endblock %}

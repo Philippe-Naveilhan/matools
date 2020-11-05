@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Evalbloc{% endblock %}
+
+{% block body %}
+    <h1>Create new Evalbloc</h1>
+
+    {{ include('evalbloc/_form.html.twig') }}
+
+    <a href="{{ path('evalbloc_index') }}">back to list</a>
+{% endblock %}

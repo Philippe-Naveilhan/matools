@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Evalcategory{% endblock %}
+
+{% block body %}
+    <h1>Edit Evalcategory</h1>
+
+    {{ include('evalcategory/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('evalcategory_index') }}">back to list</a>
+
+    {{ include('evalcategory/_delete_form.html.twig') }}
+{% endblock %}

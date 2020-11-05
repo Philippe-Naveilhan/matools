@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Charte graphique{% endblock %}
+
+{% block body %}
+
+<section id="graphic" class="mb-5 w-75 mx-auto text-center text-dark">
+    <h1 class="mb-5 pb-5">Charte graphique</h1>
+    <div class="w-100 text-left tuile">
+        <h2 class="text-center">Texte</h2>
+        <h1 class="">Titre H1</h1>
+        <h2 class="">Titre H2</h2>
+        <h3 class="">Titre H3</h3>
+        <div class="navigation">Police de navigation</div>
+        <div class="title">Police de titre</div>
+        <div class="description">Police de description</div>
+        <div class="fantaisy">Police fantaisie</div>
+    </div>
+    <div class="w-100">
+        <h2 class="text-center my-5">Couleurs & alliances</h2>
+        <table class="mx-auto">
+            <thead class="font-weight-bold text-dark">
+                <td></td>
+                <td>Primaire</td>
+                <td>Secondaire</td>
+                <td>Light</td>
+                <td>Dark</td>
+                <td>Dynamique</td>
+                <td>Alerte</td>
+            </thead>
+            <tbody>
+            <tr>
+                <td></td>
+                <td class="bg-primary-light">#4195CA</td>
+                <td class="bg-secondary-light">#C5DF5E</td>
+                <td></td>
+                <td></td>
+                <td class="bg-dyna-light">#F48056</td>
+                <td class="bg-alert-light">#F46C77</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="bg-primary">#0460D9</td>
+                <td class="bg-secondary">#1CBF03</td>
+                <td class="bg-light">#567FAE</td>
+                <td class="bg-dark">#021827</td>
+                <td class="bg-dyna">#F2B604</td>
+                <td class="bg-alert">#F252AA</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td class="bg-primary-dark">#012840</td>
+                <td class="bg-secondary-dark">#4A590B</td>
+                <td class=""></td>
+                <td class=""></td>
+                <td class="bg-dyna-dark">#732306</td>
+                <td class="bg-alert-dark">#731018</td>
+            </tr>
+            </tbody>
+
+        </table>
+    </div>
+    <div class="w-100">
+        <h2 class="text-center my-5">Graphismes</h2>
+        <div class="w-75 mx-auto d-flex justify-content-around">
+            <div>
+                <a href="#" class="button button-primary">Mes classes</a>
+            </div>
+            <div>
+                <a href="#" class="button button-secondary">Mes classes</a>
+            </div>
+            <div>
+                <a href="#" class="button button-dyna">Mes classes</a>
+            </div>
+            <div>
+                <a href="#" class="button button-danger">Mes classes</a>
+            </div>
+        </div>
+        <div class="my-5"></div>
+    </div>
+    <div class="d-flex justify-content-around">
+        <div>
+            <a class="text-primary" href="{{ path('classroom_new') }}">
+                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                </svg>
+            </a>
+        </div>
+        <div>
+            <a class="text-primary" href="{{ path('classroom_new') }}">
+                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                </svg>
+            </a>
+        </div>
+        <div>
+            <a class="text-primary" href="{{ path('classroom_new') }}">
+                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

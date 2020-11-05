@@ -1,0 +1,13 @@
+@import "base";
+@import "board";
+@import "form";
+@import "graphic";
+@import "~bootstrap/scss/bootstrap";
+
+*{
+    font-family: 'Cabin', sans-serif;
+}
+body {
+    background-color: $primary-light;
+    color: $dark;
+}

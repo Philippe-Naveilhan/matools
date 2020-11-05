@@ -1,0 +1,14 @@
+.board {
+    .tuile {
+        text-align: center;
+        width: 350px;
+        min-height: 250px;
+        border: solid 3px $primary;
+        border-radius: 4px;
+        color: $dark;
+        background-color: $light;
+        margin-bottom: 15px;
+    }
+}
+
+

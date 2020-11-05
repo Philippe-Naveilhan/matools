@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Evaltheme{% endblock %}
+
+{% block body %}
+    <h1>Edit Evaltheme</h1>
+
+    {{ include('evaltheme/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('evaltheme_index') }}">back to list</a>
+
+    {{ include('evaltheme/_delete_form.html.twig') }}
+{% endblock %}

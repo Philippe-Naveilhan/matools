@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Academy{% endblock %}
+
+{% block body %}
+    <h1>Academy</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ academy.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ academy.name }}</td>
+            </tr>
+            <tr>
+                <th>Adress</th>
+                <td>{{ academy.adress }}</td>
+            </tr>
+            <tr>
+                <th>Zipcode</th>
+                <td>{{ academy.zipcode }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ academy.city }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('academy_index') }}">back to list</a>
+
+    <a href="{{ path('academy_edit', {'id': academy.id}) }}">edit</a>
+
+    {{ include('academy/_delete_form.html.twig') }}
+{% endblock %}

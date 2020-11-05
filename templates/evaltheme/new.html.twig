@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Evaltheme{% endblock %}
+
+{% block body %}
+    <h1>Create new Evaltheme</h1>
+
+    {{ include('evaltheme/_form.html.twig') }}
+
+    <a href="{{ path('evaltheme_index') }}">back to list</a>
+{% endblock %}

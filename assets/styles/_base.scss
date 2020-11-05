@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=Righteous&display=swap');
+
+.font-title, h1, h2{
+  font-family: 'Righteous', cursive;
+}
+.font-text {
+  font-family: 'Cabin', sans-serif;
+}
+$primary-light: #4195CA;
+$secondary-light: #C5DF5E;
+$orange-light: #F48056;
+$red-light: #F46C77;
+
+$primary: #0460D9;
+$secondary: #B4D91A;
+$light: #dad6d4;
+$dark: #021827;
+$orange: #F2490C;
+$red: #F22233;
+
+$primary-dark: #012840;
+$secondary-dark: #4A590B;
+$orange-dark: #732306;
+$red-dark: #731018;
+
+.bg-primary{
+  background-color: $primary;
+  color: $light;
+}
+.bg-secondary{
+  background-color: $secondary;
+}
+.bg-dyna{
+  background-color: $orange;
+}
+.bg-alert{
+   background-color: $red;
+ }
+.bg-light{
+  background-color: $light;
+}
+.bg-dark{
+  background-color: $dark;
+  color: $light;
+}
+
+.bg-primary-light{
+  background-color: $primary-light;
+}
+.bg-secondary-light{
+  background-color: $secondary-light;
+}
+.bg-dyna-light{
+  background-color: $orange-light;
+}
+.bg-alert-light{
+  background-color: $red-light;
+}
+
+.bg-primary-dark{
+  background-color: $primary-dark;
+}
+.bg-secondary-dark{
+  background-color: $secondary-dark;
+}
+.bg-dyna-dark{
+  background-color: $orange-dark;
+}
+.bg-alert-dark{
+  background-color: $red-dark;
+}
+.text-dyna{
+  color: $orange;
+}
+.text-danger{
+  color: $red;
+}
+.button {
+  margin: 8px;
+  padding: 8px;
+  border-radius: 16px;
+  font-weight: bold;
+  border: none;
+}
+.button:hover{
+  border: none;
+  text-decoration: none;
+}
+.button-primary{
+  background-color: $primary;
+  color: $light;
+}
+.button-primary:hover{
+  background-color: $light;
+  color: $primary;
+}
+.button-secondary{
+  background-color: $secondary;
+  color: $primary;
+}
+.button-secondary:hover{
+  background-color: $primary;
+  color: $secondary;
+}
+
+.button-dyna{
+  background-color: $orange;
+  color: $light;
+}
+.button-dyna:hover{
+  background-color: $light;
+  color: $orange;
+}
+
+.button-danger{
+  background-color: $red;
+  color: $light;
+}
+.button-danger:hover{
+  background-color: $light;
+  color: $red;
+}

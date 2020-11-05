@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Evalbloc{% endblock %}
+
+{% block body %}
+    <h1>Edit Evalbloc</h1>
+
+    {{ include('evalbloc/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('evalbloc_index') }}">back to list</a>
+
+    {{ include('evalbloc/_delete_form.html.twig') }}
+{% endblock %}

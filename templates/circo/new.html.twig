@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Circo{% endblock %}
+
+{% block body %}
+    <h1>Create new Circo</h1>
+
+    {{ include('circo/_form.html.twig') }}
+
+    <a href="{{ path('circo_index') }}">back to list</a>
+{% endblock %}

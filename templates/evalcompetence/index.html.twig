@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evalcompetence index{% endblock %}
+
+{% block body %}
+    <h1>Evalcompetence index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evalcompetence in evalcompetences %}
+            <tr>
+                <td>{{ evalcompetence.id }}</td>
+                <td>{{ evalcompetence.name }}</td>
+                <td>
+                    <a href="{{ path('evalcompetence_show', {'id': evalcompetence.id}) }}">show</a>
+                    <a href="{{ path('evalcompetence_edit', {'id': evalcompetence.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('evalcompetence_new') }}">Create new</a>
+{% endblock %}
