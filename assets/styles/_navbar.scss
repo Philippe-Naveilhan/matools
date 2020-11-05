@@ -1,0 +1,17 @@
+#navbar{
+  border-bottom: solid 8px $light;
+  .name-site{
+    font-size: 48px;
+    font-family: 'Righteous', cursive;
+    transition-duration: 1s;
+  }
+}
+
+@media screen and (max-width: 600px){
+  #navbar{
+    .name-site{
+      font-size: 32px;
+      transition-duration: 1s;
+    }
+  }
+}
