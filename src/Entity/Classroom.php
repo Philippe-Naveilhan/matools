@@ -31,9 +31,15 @@ class Classroom
     private $teacher;
 
     /**
-     * @ORM\OneToMany(targetEntity=Student::class, mappedBy="classroom")
+     * @ORM\OneToMany(targetEntity=Student::class, mappedBy="classroom", cascade={"persist", "remove"})
+//     * @ORM\OrderBy ({"level" = "ASC", "Firstname" = "ASC", "Lastname" = "ASC"})
      */
     private $students;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $active;
 
     public function __construct()
     {
@@ -95,6 +101,18 @@ class Classroom
                 $student->setClassroom(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
 
         return $this;
     }

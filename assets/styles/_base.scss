@@ -69,6 +69,21 @@ $red-dark: #731018;
 .bg-alert-dark{
   background-color: $red-dark;
 }
+.text-primary-light{
+  color: $primary-light;
+}
+.text-primary-dark{
+  color: $primary-dark;
+}
+.text-secondary-light{
+  color: $secondary-light;
+}
+.text-secondary{
+  color: $secondary;
+}
+.text-secondary-dark{
+  color: $secondary-dark;
+}
 .text-dyna{
   color: $orange;
 }
@@ -78,8 +93,14 @@ $red-dark: #731018;
 .text-dyna-light{
   color: $orange-light;
 }
+.text-danger-light{
+  color: $red-light;
+}
 .text-danger{
   color: $red;
+}
+.text-danger-dark{
+  color: $red-dark;
 }
 .button {
   margin: 8px;
@@ -125,4 +146,14 @@ $red-dark: #731018;
 .button-danger:hover{
   background-color: $light;
   color: $red;
+}
+.no-button{
+  background-color: transparent;
+  border: none;
+}
+@for $i from 1 through 10 {
+  .dec-lt-#{$i} {
+    top: -5px*$i;
+    left: -5px*$i;
+  }
 }

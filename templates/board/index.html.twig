@@ -3,56 +3,106 @@
 {% block title %}Mat'Tools{% endblock %}
 
 {% block body %}
-
-<div class="row text-center">
-    <div class="w-100 mx-0 text-center">
-        <h1 class="my-3">Tableau de bord</h1>
-    </div>
-</div>
-    <div class="board d-flex flex-wrap justify-content-around">
-        <div class="tuile">
-            <h3>Mon profil</h3>
-            {{ app.user.firstname }} {{ app.user.lastname }} (dit {{ app.user.username }})<br>
-            Rôle : {% if app.user.roles[0] == 'ROLE_ADMIN' %} Administrateur(trice).{% else %}Enseignant(e){% endif %}<br><br>
-            {{ app.user.school.name }}<br>
-            {{ app.user.school.circo.name }}<br>
-            {{ app.user.school.circo.district.inspection.name }}<br>
-        </div>
-        <div class="tuile"><h3>Mes classes</h3>
-
-            <a class="text-dyna" href="{{ path('classroom_new') }}">
-                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                </svg>
-            </a><br>
-            <div class="row w-75 border-0 mx-auto text-left">
+    <div class="board py-5">
+        <div id="classrooms">
             {% for classroom in classrooms %}
-                <div class="mx-0 px-0 border-0 col-6">{{ loop.index }}. {{ classroom.name }} </div>
-                <div class="mx-0 px-0 border-0 col-3">{{ include('classroom/_delete_form.html.twig') }}</div>
-                <div class="mx-0 px-0 border-0 col-3">
-                    <a href="{{ path('classroom_edit', {'id': classroom.id }) }}">
-                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-gear" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 0 1 4.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 0 1-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 0 1 1.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 0 1 2.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 0 1 2.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 0 1 1.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 0 1-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 0 1 8.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 0 0 1.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 0 0 .52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 0 0-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 0 0-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 0 0-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 0 0-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 0 0 .52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 0 0 1.255-.52l.094-.319z"/>
-                            <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 1 0 0 4.492 2.246 2.246 0 0 0 0-4.492zM4.754 8a3.246 3.246 0 1 1 6.492 0 3.246 3.246 0 0 1-6.492 0z"/>
+                <div class="classroom m-5 {{ classroom.active==true ? 'bg-primary' : 'bg-primary-light' }} position-relative d-flex flex-wrap justify-content-around">
+                    <div class="classname row bg-primary-light position-absolute dec-lt-4 text-secondary p-2 border border-primary">
+                        <div>
+                            <h2>{{ classroom.name }}</h2>
+                        </div>
+                        <div class="menu text-right">
+                            <div>
+                                <a href="#">
+                                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="text-secondary justify-content-end row w-100 mx-0">
+                                {% include('classroom/_delete_form.html.twig') %}
+                            </div>
+                            <div class="text-right">
+                            {% if classroom.active == true %}
+                                <a href="{{ path('classroom_active', {'id': classroom.id}) }}" title="Mettre en veille cette classe pour pouvoir la réactiver plus tard, ou pour garder en souvenir.">
+                                    Archiver<svg width="20px" height="20px" viewBox="0 0 16 16" class="ml-1 bi bi-slash-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.646-2.646a.5.5 0 0 0-.708-.708l-6 6a.5.5 0 0 0 .708.708l6-6z"/>
+                                    </svg>
+                                </a>
+                            {% else %}
+                                <a href="{{ path('classroom_active', {'id': classroom.id}) }}" title="Réactiver cette classe.">
+                                    Réactiver <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-hand-index-thumb" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M6.75 1a.75.75 0 0 0-.75.75V9.5a.5.5 0 0 1-.854.354l-2.41-2.411a.517.517 0 0 0-.809.631l2.512 4.185 1.232 2.465a.5.5 0 0 0 .447.276h6.302a.5.5 0 0 0 .434-.252l1.395-2.442a2.5 2.5 0 0 0 .317-.991l.272-2.715a1 1 0 0 0-.995-1.1H13.5v1a.5.5 0 1 1-1 0V7.154a4.208 4.208 0 0 0-.2-.26c-.187-.222-.368-.383-.486-.43-.124-.05-.392-.063-.708-.039a4.844 4.844 0 0 0-.106.01V8a.5.5 0 1 1-1 0V5.986c0-.167-.073-.272-.15-.314a1.657 1.657 0 0 0-.448-.182c-.179-.035-.5-.04-.816-.027l-.086.004V8a.5.5 0 1 1-1 0V1.75A.75.75 0 0 0 6.75 1zM8.5 4.466V1.75a1.75 1.75 0 1 0-3.5 0v6.543L3.443 6.736A1.517 1.517 0 0 0 1.07 8.588l2.491 4.153 1.215 2.43A1.5 1.5 0 0 0 6.118 16h6.302a1.5 1.5 0 0 0 1.302-.756l1.395-2.441a3.5 3.5 0 0 0 .444-1.389l.272-2.715a2 2 0 0 0-1.99-2.199h-.582a5.114 5.114 0 0 0-.195-.248c-.191-.229-.51-.568-.88-.716-.364-.146-.846-.132-1.158-.108l-.132.012a1.26 1.26 0 0 0-.56-.642 2.634 2.634 0 0 0-.738-.288c-.31-.062-.739-.058-1.05-.046l-.048.002zm2.094 2.025z"/>
+                                    </svg>
+                                </a>
+                            {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% if classroom.active == true %}
+                        {% for student in classroom.students %}
+                        <a href="">
+                            <div class="position-relative mx-3 p-4 border-primary pt-4 bg-dyna-light student">
+                                <div class="delete position-absolute">
+                                    {{ include('student/_delete_form.html.twig') }}
+                                </div>
+                                <div class="d-flex justify-items-center font-title {% if student.level.name == 'PS' %}text-primary-dark{% elseif student.level.name == 'MS' %}text-secondary-dark{% else %} text-danger-dark{% endif %}">
+                                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-file-earmark-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0zm2 5.755S12 12 8 12s-5 1.755-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-.245z"/>
+                                    </svg><span class="font-title level">{{ student.level.name|upper }}</span>
+                                </div>
+                                <div>
+                                    {{ student.firstname ~ ' ' ~ student.lastname|upper }}
+                                </div>
+                            </div>
+                        </a>
+                        {% endfor %}
+                    <div class="position-relative mx-3 p-4 border-primary pt-4 bg-primary student">
+                        <div class="text-dyna text-center">
+                            <a href="{{ path('student_new', {'id': classroom.id}) }}" class="">
+                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person-plus-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M1 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm7.5-3a.5.5 0 0 1 .5.5V7h1.5a.5.5 0 0 1 0 1H14v1.5a.5.5 0 0 1-1 0V8h-1.5a.5.5 0 0 1 0-1H13V5.5a.5.5 0 0 1 .5-.5z"/>
+                                </svg>
+                            </a><br>AJOUTER UN ÉLÈVE
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <div class="classroom m-5 bg-primary position-relative d-flex flex-wrap justify-content-around py-2">
+                <div class="position-relative mx-3 p-1 border-primary bg-primary student my-0">
+                    <div class="text-secondary text-center">
+                        <a href="{{ path('classroom_new') }}" class=""><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                            </svg>
+                        </a><br>AJOUTER UNE CLASSE
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="evaluation" class="position-relative pt-5 m-5 d-flex flex-wrap justify-content-around bg-primary-light text-secondary p-2 border border-primary">
+            <div class="classname row bg-secondary-light position-absolute dec-lt-4 text-primary p-2 border border-secondary-light">
+                    <h2>EVALUATIONS</h2>
+            </div>
+            {% for evaluation in evaluations %}
+                <div class="col-3 font-title bg-primary-dark text-secondary-light border border-secondary m-2">
+                    <a href="{{ path('evaluation_edit', {'id': evaluation.id}) }}">
+                        <svg version="1" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="-175 -166 594 580" fill="#231F20">
+                            <g fill="#F91D0A"><path d="M83.5 87.5A30.9 30.9 0 0 0 68.4 68v-.2l4.2-9.9L79 42.1C57.6-39.6 44.7-105.2 56.2-147.7c3.1-11 16-17.8 29.6-17.8l8.4.2h1.5c18.7-.3 27.6 23.5 28.6 32.8 1.6 15.5-5.5 41.6-5.5 41.6 0-10.6.4-27.6-6.3-42.3-7.7-17-15.1-27.2-21.8-28.9-3.3 2.3-6.6 7-7.7 15.9-2.3 12.5-3 28.3-3 36.4C80-81 85.7-43.1 96.8-4c2-6 4-11.8 5.4-17.3L119-86.9S115.3-11 110.2 12c-1 4.9-2.3 9.7-3.5 14.6a359 359 0 0 0 16.8 39.4l-.1.2c-2.6-.8-5.5-1.3-8.7-1.3-9.5 0-18.4 5-21.5 8a80.7 80.7 0 0 0-9.7 14.7zM121.8 121.3h21.5v-15l-.1-5.7v-.2a303.5 303.5 0 0 0 46.7 56 260 260 0 0 0 48 33.1c36.4-5.2 69.8-7.6 97.7-7.3 37 .5 64.1 6 75.1 16.8a28.6 28.6 0 0 1 8.3 18.7c.1 2.8-1.2 9.3-1.6 11 .4-2 .4-11.8-29.3-21.3-23.4-7.4-67.2-7.2-119.7-1.6 60.7 29.7 120 44.5 138.7 35.6 4.6-2.2 10.2-9.8 10.2-9.8s-3.4 15-5.7 18.8c-3 4-9 8.5-14.6 10-29.7 7.8-106.8-10.4-174-48.9C147.9 222.6 65.4 243-.7 264.7c-65 114-113.9 166.2-153.6 146.3l-14.6-7.3c-6-3.4-6.9-11.7-5.5-18.4 4.6-22.7 33-56.8 90.2-91 6.1-3.7 33.5-18.1 33.5-18.1s-20.3 19.6-25 23.4C-121.3 337-155 384-154.1 402.2l.2 1.6c38.7-5.6 96.8-84.3 171.4-230.4l5.9-11.5h29.9L41 185.5a2781 2781 0 0 1-35.9 65.3c62.3-26.1 129.2-42.8 193-54.7a310.5 310.5 0 0 1-76.3-75v.1z"/>
+                            </g>
                         </svg>
+                        <span class="ml-2">{{ evaluation.name }}</span>
                     </a>
                 </div>
             {% endfor %}
-            </div>
-
-        </div>
-        <div class="tuile">
-            <h3>Mes évaluations</h3>
-            <a class="text-primary" href="{{ path('evaluation_new') }}">
-                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                </svg>
-            </a><br>
-            <ul class="text-left">
-            {% for evaluation in evaluations %}
-                <li>{{ evaluation.name }}</li>
-            {% endfor %}
-            </ul>
+                <div class="col-3 text-primary-dark border border-secondary m-2 text-center">
+                    <a href="{{ path('evaluation_new') }}">
+                    Créer une nouvelle évaluation<br>
+                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"></path>
+                    </svg>
+                    </a>
+                </div>
         </div>
     </div>
 {% endblock %}

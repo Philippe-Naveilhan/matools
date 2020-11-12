@@ -10,7 +10,7 @@ use App\Entity\User;
 class BoardController extends AbstractController
 {
     /**
-     * @Route("/board", name="board")
+     * @Route("/app/board", name="board")
      */
     public function index(): Response
     {

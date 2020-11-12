@@ -102,7 +102,7 @@ class Student
         return $this->classroom;
     }
 
-    public function setClassroom(?Classroom $classroom): self
+    public function setClassroom(?Classroom $classroom): ?self
     {
         $this->classroom = $classroom;
 

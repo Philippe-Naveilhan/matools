@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Classroom;
 use App\Entity\Student;
 use App\Form\StudentType;
 use App\Repository\StudentRepository;
@@ -11,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/student")
+ * @Route("/app/student")
  */
 class StudentController extends AbstractController
 {
@@ -26,9 +27,9 @@ class StudentController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="student_new", methods={"GET","POST"})
+     * @Route("/new/{id}", name="student_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Classroom $classroom): Response
     {
         $student = new Student();
         $form = $this->createForm(StudentType::class, $student);
@@ -36,14 +37,16 @@ class StudentController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $student->setClassroom($classroom);
             $entityManager->persist($student);
             $entityManager->flush();
 
-            return $this->redirectToRoute('student_index');
+            return $this->redirectToRoute('board');
         }
 
         return $this->render('student/new.html.twig', [
             'student' => $student,
+            'classroom' => $classroom,
             'form' => $form->createView(),
         ]);
     }
@@ -89,6 +92,6 @@ class StudentController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('student_index');
+        return $this->redirectToRoute('board');
     }
 }

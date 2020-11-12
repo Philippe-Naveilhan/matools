@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/classroom")
+ * @Route("/app/classroom")
  */
 class ClassroomController extends AbstractController
 {
@@ -37,6 +37,7 @@ class ClassroomController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $classroom->setTeacher($this->getUser());
+            $classroom->setActive(true);
             $entityManager->persist($classroom);
             $entityManager->flush();
 
@@ -89,6 +90,21 @@ class ClassroomController extends AbstractController
             $entityManager->remove($classroom);
             $entityManager->flush();
         }
+
+        return $this->redirectToRoute('board');
+    }
+
+    /**
+     * @Route("/{id}/active", name="classroom_active", methods={"GET"})
+     */
+    public function active(Request $request, Classroom $classroom): Response
+    {
+        if ($classroom->getActive() == true) {
+            $classroom->setActive(false);
+        } else {
+            $classroom->setActive(true);
+        }
+        $this->getDoctrine()->getManager()->flush();
 
         return $this->redirectToRoute('board');
     }

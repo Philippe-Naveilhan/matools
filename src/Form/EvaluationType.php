@@ -2,8 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Evalcompetence;
 use App\Entity\Evaluation;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,10 +16,13 @@ class EvaluationType extends AbstractType
     {
         $builder
             ->add('name')
-//            ->add('teacher', null, [
-//                'choice_label' => 'username'])
-            ->add('competence', null, [
-                'choice_label' => 'name'])
+            ->add('competence', EntityType::class, [
+                'class' => Evalcompetence::class,
+                'multiple' => true,
+                'expanded' => true,
+                'choice_label' => 'name',
+                'by_reference' => false,
+        ])
         ;
     }
 

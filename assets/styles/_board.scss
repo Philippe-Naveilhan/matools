@@ -9,6 +9,53 @@
         background-color: $light;
         margin-bottom: 15px;
     }
+    .classroom{
+        padding-top: 50px;
+        padding-bottom: 25px;
+        .classname{
+            z-index: 2;
+        }
+        .menu{
+            width: 100px;
+            height: 30px;
+            overflow: hidden;
+            transition-duration: 1s;
+            button{
+                padding: 0;
+            }
+        }
+        .menu:hover{
+            height:100px;
+            transition-duration: 1s;
+        }
+        .student{
+            width: 250px;
+            margin-top: 25px;
+            .level{
+                font-size: 24px;
+            }
+            .delete{
+                color: $red;
+                top:-16px;
+                left:222px;
+            }
+        }
+        .student:hover{
+            top:5px;
+            left:10px;
+        }
+        a{
+            color: currentColor;
+        }
+        a:hover{
+        color: currentColor;
+        opacity: 0.8;
+        text-decoration: none;
+        }
+    }
+    #evaluation{
+        background-color: $secondary-light;
+    }
 }
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\ClassroomRepository;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -58,6 +59,7 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToMany(targetEntity=Classroom::class, mappedBy="teacher")
+     * @ORM\OrderBy({"id" = "DESC"})
      */
     private $classrooms;
 
