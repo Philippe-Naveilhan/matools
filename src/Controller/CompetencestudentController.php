@@ -105,21 +105,26 @@ class CompetencestudentController extends AbstractController
     {
         $evaluation = $evalcompetence->getEvaluation();
         $evalstudents = $evalstudentRepository->findBy(['evaluation'=>$evaluation]);
-        $competencestudent = new Competencestudent();
-        $form = $this->createForm(CompetencestudentType::class, $competencestudent);
-        $form->handleRequest($request);
+        if(isset($_POST['evaluation'])){
+            foreach($_POST['evaluation'] as $key=>$value)
+            {
+                $competencestudent = new Competencestudent();
+                $entityManager = $this->getDoctrine()->getManager();
+                $competencestudent->setComment($value['comment']);
+                $competencestudent->setNote($value['note']);
+                $competencestudent->setEvalstudent($evalstudentRepository->findOneBy(['id'=>$key]));
+                $competencestudent->setCompetence($evalcompetence);
+                $entityManager->persist($competencestudent);
+            }
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($competencestudent);
             $entityManager->flush();
 
-            return $this->redirectToRoute('competencestudent_index');
+            return $this->redirectToRoute('evaluation_show', ['id'=>$evaluation->getId()]);
         }
 
-        return $this->render('competencestudent/new.html.twig', [
-            'competencestudent' => $competencestudent,
-            'form' => $form->createView(),
+        return $this->render('competencestudent/index.html.twig', [
+            'competence' => $evalcompetence,
+            'students' => $evalstudents,
         ]);
     }
 }
