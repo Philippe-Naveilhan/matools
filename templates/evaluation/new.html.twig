@@ -3,9 +3,9 @@
 {% block title %}Nouvelle évaluation{% endblock %}
 
 {% block body %}
-    <h1>Créer une nouvelle évaluation</h1>
+    <h1 class="text-center my-5">Créer une nouvelle évaluation</h1>
 
     {{ include('evaluation/_form.html.twig') }}
 
-    <a href="{{ path('evaluation_index') }}">back to list</a>
+    <a href="{{ path('evaluation_index', {'id': classroom.id}) }}">back to list</a>
 {% endblock %}

@@ -1,35 +1,31 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Evaluation index{% endblock %}
+{% block title %}Gestion des évaluations{% endblock %}
 
 {% block body %}
-    <h1>Evaluation index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for evaluation in evaluations %}
-            <tr>
-                <td>{{ evaluation.id }}</td>
-                <td>{{ evaluation.name }}</td>
-                <td>
-                    <a href="{{ path('evaluation_show', {'id': evaluation.id}) }}">show</a>
-                    <a href="{{ path('evaluation_edit', {'id': evaluation.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        <h1 class="text-center my-5">EVALUATIONS de la classe : <br>{{ classroom.name }}</h1>
+<a class="button button-dyna" href="{{ path('board') }}">Retour</a>
+            <div id="evaluation" class="position-relative pt-5 m-5 d-flex flex-wrap justify-content-around bg-primary-light text-secondary p-2 border border-primary">
 
-    <a href="{{ path('evaluation_new') }}">Create new</a>
+                {% for evaluation in classroom.evaluations %}
+                    <div class="col-3 font-title bg-primary-dark text-secondary-light border border-secondary m-2">
+                            <span class="ml-2 h2 text-light">{{ evaluation.name }}</span>
+                        <a class="button button-primary" href="{{ path('evaluation_show', {'id': evaluation.id}) }}">
+                            Compléter
+                        </a>
+                        {% include 'evaluation/_delete_form.html.twig' %}
+                    </div>
+
+                {% endfor %}
+                    <div class="col-3 text-primary-dark border border-secondary m-2 text-center">
+                        <a href="{{ path('evaluation_new', {'id': classroom.id}) }}">
+                        Créer une nouvelle évaluation<br>
+                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"></path>
+                        </svg>
+                        </a>
+                    </div>
+            </div>
+
 {% endblock %}

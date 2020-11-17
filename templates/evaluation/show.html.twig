@@ -3,24 +3,45 @@
 {% block title %}Evaluation{% endblock %}
 
 {% block body %}
-    <h1>Evaluation</h1>
+    <h1 class="text-center mt-5">Evaluation : {{ evaluation.name }}</h1>
+<a class="button button-dyna" href="{{ path('evaluation_index', {'id': evaluation.classroom.id}) }}">Retour</a>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ evaluation.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ evaluation.name }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('evaluation_index') }}">back to list</a>
+        <div>
+        <label class="required w-100 text-center font-title h2 mt-5">
+            Compétences
+        </label>
 
-    <a href="{{ path('evaluation_edit', {'id': evaluation.id}) }}">edit</a>
+        <div id="evaluation_competence row">
+            {% for theme in themes %}
+                <div class="h2 text-light col-12 bg-primary-dark m-0">{{ theme.name }}</div>
+                {% for category in theme.evalcategories %}
+                    <div class="col-10 offset-1">
+                        <div class="h3 text-dark bg-secondary-light">
+                        {{ category.name == 'unique' ? '' :  category.name }}
+                        </div>
+                        {% for bloc in category.evalblocs %}
+                            <div class="row">
+                                <div class="h4 col-3"><p>{{ bloc.name }}</p><p><a class="button button-primary" href="{{path('evalcompetence_new', {'bloc': bloc.id, 'eval': evaluation.id}) }}">Ajout compétence</a></p></div>
+                                <div class="col-8">
+                                    {% for competence in competences %}
+                                        {% if competence.bloc.id == bloc.id  %}
+                                    <div class="h4">
+                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-right-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                                        </svg>
+                                        {{ competence.name }}
+                                    </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            {% endfor %}
 
-    {{ include('evaluation/_delete_form.html.twig') }}
+        </div>
+        </div>
+
 {% endblock %}

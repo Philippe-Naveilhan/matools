@@ -13,8 +13,6 @@ class EvalcompetenceType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('bloc', null, [
-                'choice_label' => 'name'])
         ;
     }
 

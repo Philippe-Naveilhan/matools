@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/app/evalcategory")
+ * @Route("/admin/evalcategory")
  */
 class EvalcategoryController extends AbstractController
 {

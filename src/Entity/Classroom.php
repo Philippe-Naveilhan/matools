@@ -41,9 +41,15 @@ class Classroom
      */
     private $active;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Evaluation::class, mappedBy="classroom", orphanRemoval=true)
+     */
+    private $evaluations;
+
     public function __construct()
     {
         $this->students = new ArrayCollection();
+        $this->evaluations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -113,6 +119,36 @@ class Classroom
     public function setActive(bool $active): self
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Evaluation[]
+     */
+    public function getEvaluations(): Collection
+    {
+        return $this->evaluations;
+    }
+
+    public function addEvaluation(Evaluation $evaluation): self
+    {
+        if (!$this->evaluations->contains($evaluation)) {
+            $this->evaluations[] = $evaluation;
+            $evaluation->setClassroom($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvaluation(Evaluation $evaluation): self
+    {
+        if ($this->evaluations->removeElement($evaluation)) {
+            // set the owning side to null (unless already changed)
+            if ($evaluation->getClassroom() === $this) {
+                $evaluation->setClassroom(null);
+            }
+        }
 
         return $this;
     }

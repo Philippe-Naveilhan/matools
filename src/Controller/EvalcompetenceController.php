@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Evalbloc;
 use App\Entity\Evalcompetence;
+use App\Entity\Evaluation;
 use App\Form\EvalcompetenceType;
 use App\Repository\EvalcompetenceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,9 +28,11 @@ class EvalcompetenceController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="evalcompetence_new", methods={"GET","POST"})
+     * @Route("/new/{bloc}/{eval}", name="evalcompetence_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,
+                        Evalbloc $bloc,
+                        Evaluation $eval): Response
     {
         $evalcompetence = new Evalcompetence();
         $form = $this->createForm(EvalcompetenceType::class, $evalcompetence);
@@ -36,13 +40,16 @@ class EvalcompetenceController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $evalcompetence->setBloc($bloc);
+            $evalcompetence->setEvaluation($eval);
             $entityManager->persist($evalcompetence);
             $entityManager->flush();
 
-            return $this->redirectToRoute('evalcompetence_index');
+            return $this->redirectToRoute('evaluation_show', array('id'=>$eval->getId()));
         }
 
         return $this->render('evalcompetence/new.html.twig', [
+            'bloc' => $bloc,
             'evalcompetence' => $evalcompetence,
             'form' => $form->createView(),
         ]);

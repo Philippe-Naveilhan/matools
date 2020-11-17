@@ -27,6 +27,16 @@ class StudentController extends AbstractController
     }
 
     /**
+     * @Route("/{id}", name="student_by_classroom", methods={"GET"})
+     */
+    public function by_class(Classroom $classroom): Response
+    {
+        return $this->render('student/index.html.twig', [
+            'classroom' => $classroom,
+        ]);
+    }
+
+    /**
      * @Route("/new/{id}", name="student_new", methods={"GET","POST"})
      */
     public function new(Request $request, Classroom $classroom): Response
@@ -41,7 +51,7 @@ class StudentController extends AbstractController
             $entityManager->persist($student);
             $entityManager->flush();
 
-            return $this->redirectToRoute('board');
+            return $this->redirectToRoute('student_by_classroom', array('id'=>$classroom->getId()));
         }
 
         return $this->render('student/new.html.twig', [

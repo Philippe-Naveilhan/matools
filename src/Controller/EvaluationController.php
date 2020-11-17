@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Evalcompetence;
+use App\Entity\Classroom;
+use App\Entity\Evaltheme;
 use App\Entity\User;
 use App\Entity\Evaluation;
 use App\Form\EvaluationType;
+use App\Repository\EvalblocRepository;
 use App\Repository\EvalcompetenceRepository;
 use App\Repository\EvalthemeRepository;
 use App\Repository\EvaluationRepository;
@@ -20,73 +23,53 @@ use Symfony\Component\Routing\Annotation\Route;
 class EvaluationController extends AbstractController
 {
     /**
-     * @Route("/", name="evaluation_index", methods={"GET"})
+     * @Route("/{id}", name="evaluation_index", methods={"GET"})
      */
-    public function index(EvaluationRepository $evaluationRepository): Response
+    public function index(Classroom $classroom): Response
     {
         return $this->render('evaluation/index.html.twig', [
-            'evaluations' => $evaluationRepository->findAll(),
+            'classroom' => $classroom,
         ]);
     }
 
     /**
-     * @Route("/new", name="evaluation_new", methods={"GET","POST"})
+     * @Route("/new/{id}", name="evaluation_new", methods={"GET","POST"})
      */
     public function new(Request $request,
-                        EvalcompetenceRepository $evalcompetenceRepository,
-                        EvalthemeRepository $evalthemeRepository
+                        Classroom $classroom
     ): Response
     {
-        $competences = $evalcompetenceRepository->findAll();
-        $themes = $evalthemeRepository->findAll();
-        $listecompetences = [];
-        foreach($competences as $competence)
-        {
-            $listecompetences[$competence->getBloc()->getCategory()->getTheme()->getName()][$competence->getBloc()->getCategory()->getName()][$competence->getBloc()->getName()][$competence->getId()] = $competence->getName();
-        }
-//        $evaluation = new Evaluation();
-//        $form = $this->createForm(EvaluationType::class, $evaluation);
-//        $form->handleRequest($request);
-//        if ($form->isSubmitted() && $form->isValid()) {
-//            $entityManager = $this->getDoctrine()->getManager();
-//            $evaluation->setTeacher($this->getUser());
-//            $entityManager->persist($evaluation);
-//            $entityManager->flush();
-//
-//            return $this->redirectToRoute('evaluation_index');
-//        }
 
         if (isset($_POST['evaluation'])) {
             $evaluation = new Evaluation();
             $entityManager = $this->getDoctrine()->getManager();
-            $evaluation->setTeacher($this->getUser());
+            $evaluation->setClassroom($classroom);
             $evaluation->setName($_POST['evaluation']['name']);
-            $evaluation->getCompetence();
-            foreach ($_POST['evaluation']['competence'] as $competence){
-                $evaluation->addCompetence($evalcompetenceRepository->findOneBy(['id'=>$competence]));
-            }
-
             $entityManager->persist($evaluation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('board');
+            return $this->redirectToRoute('evaluation_index', array('id'=>$classroom->getId()));
         }
 
         return $this->render('evaluation/new.html.twig', [
-//            'themes' => $themes,
-            'themes' => $listecompetences,
-//            'evaluation' => $evaluation,
-//            'form' => $form->createView(),
+            'classroom' => $classroom,
         ]);
     }
 
     /**
-     * @Route("/{id}", name="evaluation_show", methods={"GET"})
+     * @Route("/show/{id}", name="evaluation_show", methods={"GET"})
      */
-    public function show(Evaluation $evaluation): Response
+    public function show(EvalcompetenceRepository $evalcompetenceRepository,
+                         Evaluation $evaluation,
+                         EvalthemeRepository $evalthemeRepository): Response
     {
+        $themes = $evalthemeRepository->findAll();
+        $competences = $evalcompetenceRepository->findByEvaluation($evaluation);
+
         return $this->render('evaluation/show.html.twig', [
             'evaluation' => $evaluation,
+            'competences' => $competences,
+            'themes' => $themes,
         ]);
     }
 
@@ -121,6 +104,7 @@ class EvaluationController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('evaluation_index');
+        return $this->redirectToRoute('evaluation_index', array('id'=>$evaluation->getClassroom()->getId()));
     }
+
 }

@@ -19,22 +19,25 @@ class EvalcompetenceRepository extends ServiceEntityRepository
         parent::__construct($registry, Evalcompetence::class);
     }
 
-    // /**
-    //  * @return Evalcompetence[] Returns an array of Evalcompetence objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Evalcompetence[] Returns an array of Evalcompetence objects
+      */
+
+    public function findByEvaluation($evaluation)
     {
-        return $this->createQueryBuilder('e')
-            ->andWhere('e.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('e.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $quest = $this->createQueryBuilder('evalcompetence')
+            ->innerJoin('evalcompetence.bloc', 'evalbloc')
+            ->innerJoin('evalbloc.category', 'evalcategory')
+            ->innerJoin('evalcategory.theme', 'evaltheme')
+            ->where('evalcompetence.evaluation = :eval')
+            ->setParameter('eval', $evaluation)
+            ->getQuery();
+
+        $result = $quest->execute();
+
+        return $result;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Evalcompetence

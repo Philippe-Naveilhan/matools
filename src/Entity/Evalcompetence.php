@@ -28,6 +28,12 @@ class Evalcompetence
      */
     private $bloc;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Evaluation::class, inversedBy="evalcompetences")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $evaluation;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -53,6 +59,18 @@ class Evalcompetence
     public function setBloc(?Evalbloc $bloc): self
     {
         $this->bloc = $bloc;
+
+        return $this;
+    }
+
+    public function getEvaluation(): ?Evaluation
+    {
+        return $this->evaluation;
+    }
+
+    public function setEvaluation(?Evaluation $evaluation): self
+    {
+        $this->evaluation = $evaluation;
 
         return $this;
     }

@@ -1,85 +1,19 @@
 {#{{ form_start(form) }}#}
 {#    {{ form_widget(form) }}#}
 
-{% if themes is defined %}
+{#{% if themes is defined %}#}
 
 <form name="evaluation" method="post">
     <div id="evaluation">
-        <div>
-            <label for="evaluation_name" class="required">
-                Name
-            </label>
-            <input type="text" id="evaluation_name" name="evaluation[name]" required="required" maxlength="255" />
+        <div class="text-center">
+            <input type="text" id="evaluation_name" name="evaluation[name]" required="required" maxlength="255" placeholder="Nom de l'évaluation"/>
         </div>
+        <div><input type="hidden" id="classroom_id" name="classroom_id" value="{{ classroom.id }}"> </div>
     </div>
 
-    <div>
-    <label class="required">
-        Competence
-    </label>
-    <div id="evaluation_competence">
-    <ul>
-{#    {% for theme, themlist in themes %}#}
-{#            <li>#}
-{#                {{ theme }}#}
-{#                <ul>#}
-{#                    {% for category, catlist in themlist %}#}
-{#                        <li>#}
-{#                            {{ category }}#}
-{#                            <ul>#}
-{#                                {% for bloc, bloclist in catlist %}#}
-{#                                    <li>#}
-{#                                        {{ bloc }}#}
-{#                                        <ul>#}
-{#                                            {% for competence, competencename in bloclist %}#}
-{#                                                <li class="">#}
-{#                                                    <label for="evaluation_competence_{{ competence }}">{{ competencename }}</label>#}
-{#                                                    <input type="checkbox" id="evaluation_competence_{{ competence }}" name="evaluation[competence][]" value="{{ competence }}" />#}
-{#                                                </li>#}
-{#                                            {% endfor %}#}
-{#                                        </ul>#}
-{#                                    </li>#}
-{#                                {% endfor %}#}
-{#                            </ul>#}
-{#                        </li>#}
-{#                    {% endfor %}#}
-{#                </ul>#}
-{#            </li>#}
-{#    {% endfor %}#}
-
-        {% for theme in themes %}
-            <li>
-                {{ theme.name }}
-                <ul>
-                    {% for category in theme.evalcategories %}
-                        <li>
-                            {{ category.name }}
-                            <ul>
-                                {% for bloc in category.evalblocs %}
-                                    <li>
-                                        {{ bloc.name }}
-                                        <ul>
-                                            {% for competence in bloc.evalcompetences %}
-                                                <li class="">
-                                                    <label for="evaluation_competence_{{ competence.id }}">{{ competence.name }}</label>
-                                                    <input type="checkbox" id="evaluation_competence_{{ competence.id }}" name="evaluation[competence][]" value="{{ competence.id }}" />
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                    </li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </li>
-        {% endfor %}
-    </ul>
-    </div>
-    </div>
-    <button class="btn">Save</button>
+    <button class="btn">Enregistrer</button>
 </form>
-{% endif %}
+{#{% endif %}#}
 
 {#    <button class="btn">{{ button_label|default('Save') }}</button>#}
 {#{{ form_end(form) }}#}

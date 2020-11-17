@@ -25,12 +25,6 @@ class Evaluation
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="evaluations")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $teacher;
-
-    /**
      * @ORM\OneToMany(targetEntity=Evalstudent::class, mappedBy="evaluation")
      */
     private $evalstudents;
@@ -40,10 +34,22 @@ class Evaluation
      */
     private $competence;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=classroom::class, inversedBy="evaluations")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $classroom;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Evalcompetence::class, mappedBy="evaluation", cascade={"persist", "remove"})
+     */
+    private $evalcompetences;
+
     public function __construct()
     {
         $this->evalstudents = new ArrayCollection();
         $this->competence = new ArrayCollection();
+        $this->evalcompetences = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -59,18 +65,6 @@ class Evaluation
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getTeacher(): ?User
-    {
-        return $this->teacher;
-    }
-
-    public function setTeacher(?User $teacher): self
-    {
-        $this->teacher = $teacher;
 
         return $this;
     }
@@ -125,6 +119,48 @@ class Evaluation
     public function removeCompetence(Evalcompetence $competence): self
     {
         $this->competence->removeElement($competence);
+
+        return $this;
+    }
+
+    public function getClassroom(): ?classroom
+    {
+        return $this->classroom;
+    }
+
+    public function setClassroom(?classroom $classroom): self
+    {
+        $this->classroom = $classroom;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Evalcompetence[]
+     */
+    public function getEvalcompetences(): Collection
+    {
+        return $this->evalcompetences;
+    }
+
+    public function addEvalcompetence(Evalcompetence $evalcompetence): self
+    {
+        if (!$this->evalcompetences->contains($evalcompetence)) {
+            $this->evalcompetences[] = $evalcompetence;
+            $evalcompetence->setEvaluation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvalcompetence(Evalcompetence $evalcompetence): self
+    {
+        if ($this->evalcompetences->removeElement($evalcompetence)) {
+            // set the owning side to null (unless already changed)
+            if ($evalcompetence->getEvaluation() === $this) {
+                $evalcompetence->setEvaluation(null);
+            }
+        }
 
         return $this;
     }
