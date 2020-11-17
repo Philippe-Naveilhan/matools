@@ -10,11 +10,18 @@
 
                 {% for evaluation in classroom.evaluations %}
                     <div class="col-3 font-title bg-primary-dark text-secondary-light border border-secondary m-2">
-                            <span class="ml-2 h2 text-light">{{ evaluation.name }}</span>
-                        <a class="button button-primary" href="{{ path('evaluation_show', {'id': evaluation.id}) }}">
-                            Compléter
-                        </a>
-                        {% include 'evaluation/_delete_form.html.twig' %}
+                       <div class="my-3">
+                           <span class="button button-primary">{{ evaluation.level.name }}</span> <span class="ml-2 h2 text-light">{{ evaluation.name }}</span>
+                        </div>
+                        <div class="my-3">
+                            <a class="button button-primary" href="{{ path('evaluation_show', {'id': evaluation.id}) }}">
+                                Compétences
+                            </a>
+                        </div>
+
+                        <div>
+                            {% include 'evaluation/_delete_form.html.twig' %}
+                        </div>
                     </div>
 
                 {% endfor %}

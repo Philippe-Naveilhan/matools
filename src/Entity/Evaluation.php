@@ -40,6 +40,12 @@ class Evaluation
      */
     private $evalcompetences;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Level::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $level;
+
     public function __construct()
     {
         $this->evalstudents = new ArrayCollection();
@@ -132,6 +138,18 @@ class Evaluation
                 $evalcompetence->setEvaluation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getLevel(): ?Level
+    {
+        return $this->level;
+    }
+
+    public function setLevel(?Level $level): self
+    {
+        $this->level = $level;
 
         return $this;
     }

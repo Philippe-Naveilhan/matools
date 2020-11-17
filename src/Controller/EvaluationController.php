@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Evalcompetence;
 use App\Entity\Classroom;
+use App\Entity\Evalstudent;
 use App\Entity\Evaltheme;
 use App\Entity\User;
 use App\Entity\Evaluation;
@@ -12,6 +13,7 @@ use App\Repository\EvalblocRepository;
 use App\Repository\EvalcompetenceRepository;
 use App\Repository\EvalthemeRepository;
 use App\Repository\EvaluationRepository;
+use App\Repository\LevelRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,7 +38,8 @@ class EvaluationController extends AbstractController
      * @Route("/new/{id}", name="evaluation_new", methods={"GET","POST"})
      */
     public function new(Request $request,
-                        Classroom $classroom
+                        Classroom $classroom,
+                        LevelRepository $levelRepository
     ): Response
     {
 
@@ -45,7 +48,22 @@ class EvaluationController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $evaluation->setClassroom($classroom);
             $evaluation->setName($_POST['evaluation']['name']);
+            $evaluation->setLevel($levelRepository->findOneBy(['id'=>$_POST['evaluation']['level']]));
             $entityManager->persist($evaluation);
+            $entityManager->flush();
+
+            // create evalstudent for each student
+            $students = $classroom->getStudents();
+            foreach($students as $student)
+            {
+                if($student->getLevel()->getId() === $evaluation->getLevel()->getId()){
+                    $evalStudent = new Evalstudent;
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $evalStudent->setStudent($student);
+                    $evalStudent->setEvaluation($evaluation);
+                    $entityManager->persist($evalStudent);
+                }
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('evaluation_index', array('id'=>$classroom->getId()));
@@ -64,7 +82,7 @@ class EvaluationController extends AbstractController
                          EvalthemeRepository $evalthemeRepository): Response
     {
         $themes = $evalthemeRepository->findAll();
-        $competences = $evalcompetenceRepository->findByEvaluation($evaluation);
+        $competences = $evalcompetenceRepository->findBy(['evaluation'=>$evaluation]);
 
         return $this->render('evaluation/show.html.twig', [
             'evaluation' => $evaluation,
@@ -106,5 +124,23 @@ class EvaluationController extends AbstractController
 
         return $this->redirectToRoute('evaluation_index', array('id'=>$evaluation->getClassroom()->getId()));
     }
+
+    /**
+     * @Route("/enr/{id}", name="evaluation_enr", methods={"GET"})
+     */
+    public function enr(EvalcompetenceRepository $evalcompetenceRepository,
+                         Evaluation $evaluation,
+                         EvalthemeRepository $evalthemeRepository): Response
+    {
+        $themes = $evalthemeRepository->findAll();
+        $competences = $evalcompetenceRepository->findBy(['evaluation'=>$evaluation]);
+
+        return $this->render('evaluation/show.html.twig', [
+            'evaluation' => $evaluation,
+            'competences' => $competences,
+            'themes' => $themes,
+        ]);
+    }
+
 
 }
