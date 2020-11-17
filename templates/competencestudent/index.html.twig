@@ -4,24 +4,24 @@
 
 {% block body %}
     <h1 class="text-center my-5">Enregistrement des évaluations</h1>
-<a class="button button-dyna" href="{{ path('evaluation_show', {'id':competence.evaluation.id}) }}">Retour</a>
+<a class="button button-dyna" href="{{ path('evaluation_show', {'id':evaluation.id}) }}">Retour</a>
 <div class="row w-50 mx-auto text-center">
     <div class="col-12 bg-secondary-light border border-primary h3 text-center">{{ competence.name }}</div>
     <form action="#" method="post">
-    {%  for student in students %}
+    {%  for competence in competences %}
         <div class="w-100 row border p-0 m-0">
             <div class="col-5 p-2 text-primary-dark font-weight-bolder h4">
-                {{ student.student.firstname ~ ' ' ~ student.student.lastname|upper}}
+                {{ competence.evalstudent.student.firstname ~ ' ' ~ competence.evalstudent.student.lastname|upper}}
             </div>
             <div class="col-6 p-0">
-                <div class="text-center" id="evaluation_note_{{ student.id }}">
-                        <input type="radio" id="evaluation_level_1" name="evaluation[{{ student.id }}][note]" value="1">
+                <div class="text-center" id="evaluation_note_{{ competence.evalstudent.id }}">
+                        <input type="radio" id="evaluation_level_1" name="evaluation[{{ competence.evalstudent.id }}][note]" value="1" {% if competence.note == 1 %} checked {% endif %}>
                         <label for="evaluation_level_1" class="required">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"></path>
                             </svg>
                         </label>
-                        <input type="radio" id="evaluation_level_2" name="evaluation[{{ student.id }}][note]" value="2">
+                        <input type="radio" id="evaluation_level_2" name="evaluation[{{ competence.evalstudent.id }}][note]" value="2" {% if competence.note == 2 %} checked {% endif %}>
                         <label for="evaluation_level_2" class="required">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"></path>
@@ -30,7 +30,7 @@
                                 <path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"></path>
                             </svg>
                         </label>
-                        <input type="radio" id="evaluation_level_3" name="evaluation[{{ student.id }}][note]" value="3">
+                        <input type="radio" id="evaluation_level_3" name="evaluation[{{ competence.evalstudent.id }}][note]" value="3" {% if competence.note == 3 %} checked {% endif %}>
                         <label for="evaluation_level_3" class="required">
                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"></path>
@@ -42,7 +42,7 @@
                                 <path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"></path>
                             </svg>
                         </label>
-                        <input type="text" name="evaluation[{{ student.id }}][comment]" id="" placeholder="note ou autre" value="{{ student. }}">
+                        <input type="text" name="evaluation[{{ competence.evalstudent.id }}][comment]" id="" placeholder="note ou autre" value="{{ competence.comment ? competence.comment : ''  }}">
                 </div>
             </div>
         </div>

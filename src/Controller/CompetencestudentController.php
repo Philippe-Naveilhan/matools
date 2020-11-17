@@ -100,21 +100,23 @@ class CompetencestudentController extends AbstractController
      */
     public function saveByCompetence(Request $request,
                                      Evalcompetence $evalcompetence,
-                                     EvalstudentRepository $evalstudentRepository
+                                     EvalstudentRepository $evalstudentRepository,
+                                     CompetencestudentRepository $competencestudentRepository
     ): Response
     {
+        $competenceByStudent = $competencestudentRepository->findBy(['competence'=>$evalcompetence]);
         $evaluation = $evalcompetence->getEvaluation();
-        $evalstudents = $evalstudentRepository->findBy(['evaluation'=>$evaluation]);
+
         if(isset($_POST['evaluation'])){
             foreach($_POST['evaluation'] as $key=>$value)
             {
-                $competencestudent = new Competencestudent();
-                $entityManager = $this->getDoctrine()->getManager();
-                $competencestudent->setComment($value['comment']);
-                $competencestudent->setNote($value['note']);
-                $competencestudent->setEvalstudent($evalstudentRepository->findOneBy(['id'=>$key]));
-                $competencestudent->setCompetence($evalcompetence);
-                $entityManager->persist($competencestudent);
+                $competencestudent = $competencestudentRepository->findOneBy(['evalstudent'=>$key, 'competence'=>$evalcompetence->getId()]);
+                if($competencestudent == true){
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $competencestudent->setNote($value['note']);
+                    $competencestudent->setComment($value['comment']);
+                    $entityManager->persist($competencestudent);
+                }
             }
 
             $entityManager->flush();
@@ -123,8 +125,9 @@ class CompetencestudentController extends AbstractController
         }
 
         return $this->render('competencestudent/index.html.twig', [
+            'competences' => $competenceByStudent,
+            'evaluation' => $evaluation,
             'competence' => $evalcompetence,
-            'students' => $evalstudents,
         ]);
     }
 }

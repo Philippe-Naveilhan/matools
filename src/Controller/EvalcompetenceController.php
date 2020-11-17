@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Competencestudent;
 use App\Entity\Evalbloc;
 use App\Entity\Evalcompetence;
 use App\Entity\Evaluation;
 use App\Form\EvalcompetenceType;
 use App\Repository\EvalcompetenceRepository;
+use App\Repository\EvalstudentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +34,9 @@ class EvalcompetenceController extends AbstractController
      */
     public function new(Request $request,
                         Evalbloc $bloc,
-                        Evaluation $eval): Response
+                        Evaluation $eval,
+                        EvalstudentRepository $evalstudentRepository
+): Response
     {
         $evalcompetence = new Evalcompetence();
         $form = $this->createForm(EvalcompetenceType::class, $evalcompetence);
@@ -43,6 +47,15 @@ class EvalcompetenceController extends AbstractController
             $evalcompetence->setBloc($bloc);
             $evalcompetence->setEvaluation($eval);
             $entityManager->persist($evalcompetence);
+            $entityManager->flush();
+
+            foreach($evalstudentRepository->findBy(['evaluation'=>$eval]) as $evalstudent){
+                $entityManager = $this->getDoctrine()->getManager();
+                $competencestudent = new Competencestudent();
+                $competencestudent->setEvalstudent($evalstudent);
+                $competencestudent->setCompetence($evalcompetence);
+                $entityManager->persist($competencestudent);
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('evaluation_show', array('id'=>$eval->getId()));
