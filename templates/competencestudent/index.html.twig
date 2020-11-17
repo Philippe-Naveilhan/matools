@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Competencestudent index{% endblock %}
+
+{% block body %}
+    <h1>Competencestudent index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Note</th>
+                <th>Comment</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for competencestudent in competencestudents %}
+            <tr>
+                <td>{{ competencestudent.id }}</td>
+                <td>{{ competencestudent.note }}</td>
+                <td>{{ competencestudent.comment }}</td>
+                <td>
+                    <a href="{{ path('competencestudent_show', {'id': competencestudent.id}) }}">show</a>
+                    <a href="{{ path('competencestudent_edit', {'id': competencestudent.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('competencestudent_new') }}">Create new</a>
+{% endblock %}

@@ -25,7 +25,7 @@ class Evaluation
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Evalstudent::class, mappedBy="evaluation")
+     * @ORM\OneToMany(targetEntity=Evalstudent::class, mappedBy="evaluation", cascade={"persist", "remove"})
      */
     private $evalstudents;
 
