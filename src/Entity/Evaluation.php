@@ -30,11 +30,6 @@ class Evaluation
     private $evalstudents;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Evalcompetence::class)
-     */
-    private $competence;
-
-    /**
      * @ORM\ManyToOne(targetEntity=classroom::class, inversedBy="evaluations")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -95,30 +90,6 @@ class Evaluation
                 $evalstudent->setEvaluation(null);
             }
         }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Evalcompetence[]
-     */
-    public function getCompetence(): Collection
-    {
-        return $this->competence;
-    }
-
-    public function addCompetence(Evalcompetence $competence): self
-    {
-        if (!$this->competence->contains($competence)) {
-            $this->competence[] = $competence;
-        }
-
-        return $this;
-    }
-
-    public function removeCompetence(Evalcompetence $competence): self
-    {
-        $this->competence->removeElement($competence);
 
         return $this;
     }
