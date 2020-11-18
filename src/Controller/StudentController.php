@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Classroom;
+use App\Entity\Competencestudent;
+use App\Entity\Evalstudent;
 use App\Entity\Student;
 use App\Form\StudentType;
 use App\Repository\StudentRepository;
@@ -51,6 +53,28 @@ class StudentController extends AbstractController
             $entityManager->persist($student);
             $entityManager->flush();
 
+//      Création des EvalStudents & CompetenceStudent à la création d'un élève
+//      si des évaluations sont déjà créées.
+
+            foreach($classroom->getEvaluations() as $evaluation){
+                if($evaluation->getLevel()->getId() == $student->getLevel()->getId()){
+                    $evalstudent = new Evalstudent();
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $evalstudent->setStudent($student);
+                    $evalstudent->setEvaluation($evaluation);
+                    $entityManager->persist($evalstudent);
+                    $entityManager->flush();
+                    foreach($evaluation->getEvalcompetences() as $competence){
+                        $competencestudent = new Competencestudent();
+                        $entityManager = $this->getDoctrine()->getManager();
+                        $competencestudent->setEvalstudent($evalstudent);
+                        $competencestudent->setCompetence($competence);
+                        $entityManager->persist($competencestudent);
+                        $entityManager->flush();
+                    }
+                }
+            }
+
             return $this->redirectToRoute('student_by_classroom', array('id'=>$classroom->getId()));
         }
 
@@ -92,7 +116,7 @@ class StudentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="student_delete", methods={"DELETE"})
+     * @Route("/{id}", name="student_delete", methods={"DELETE","GET","POST"})
      */
     public function delete(Request $request, Student $student): Response
     {
@@ -102,6 +126,6 @@ class StudentController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('board');
+        return $this->redirectToRoute('student_by_classroom', array('id'=>$student->getClassroom()->getId()));
     }
 }
