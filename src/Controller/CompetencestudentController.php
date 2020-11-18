@@ -104,7 +104,12 @@ class CompetencestudentController extends AbstractController
                                      CompetencestudentRepository $competencestudentRepository
     ): Response
     {
-        $competenceByStudent = $competencestudentRepository->findBy(['competence'=>$evalcompetence]);
+        $listCompetenceByStudent = $competencestudentRepository->findBy(['competence'=>$evalcompetence]);
+        $competenceByStudent=[];
+        foreach($listCompetenceByStudent as $comp){
+            $competenceByStudent[$comp->getEvalstudent()->getStudent()->getFirstname()]=$comp;
+        }
+        ksort($competenceByStudent);
         $evaluation = $evalcompetence->getEvaluation();
 
         if(isset($_POST['evaluation'])){

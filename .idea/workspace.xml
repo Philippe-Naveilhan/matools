@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="80652acf-bd8a-4c36-8ac1-8810217d5aa9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +172,7 @@
       <workItem from="1605436460176" duration="1199000" />
       <workItem from="1605517619846" duration="28771000" />
       <workItem from="1605595247107" duration="25218000" />
-      <workItem from="1605684705155" duration="4335000" />
+      <workItem from="1605684705155" duration="10260000" />
     </task>
     <servers />
   </component>
@@ -180,9 +180,10 @@
     <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="429" y="210" width="852" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1604308923108">
-      <screen x="0" y="30" width="1680" height="1050" />
+    <state x="429" y="203" width="852" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605699083069">
+      <screen x="0" y="28" width="1680" height="1022" />
     </state>
+    <state x="429" y="203" key="#com.intellij.execution.impl.EditConfigurationsDialog/1680.0.1920.1080/0.28.1680.1022@0.28.1680.1022" timestamp="1605699083069" />
     <state x="429" y="210" width="852" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog/1680.0.1920.1080/0.30.1680.1050@0.30.1680.1050" timestamp="1604308923108" />
     <state x="570" y="226" width="542" height="617" key="FileChooserDialogImpl" timestamp="1605185340747">
       <screen x="0" y="28" width="1680" height="1022" />
