@@ -33,6 +33,11 @@
                 <div>
                     {{ student.firstname ~ ' ' ~ student.lastname|upper }}
                 </div>
+                <div class="my-3">
+                    {% for eval in student.evalstudents %}
+                    <a class="button button-primary" href="{{ path('eval_by_studenteval', {'id': eval.id}) }}" target="_blank">{{ eval.evaluation.name }}</a>
+                    {% endfor %}
+                </div>
             </div>
         </a>
         {% endfor %}

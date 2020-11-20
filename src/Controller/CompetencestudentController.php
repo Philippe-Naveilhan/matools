@@ -118,7 +118,9 @@ class CompetencestudentController extends AbstractController
                 $competencestudent = $competencestudentRepository->findOneBy(['evalstudent'=>$key, 'competence'=>$evalcompetence->getId()]);
                 if($competencestudent == true){
                     $entityManager = $this->getDoctrine()->getManager();
-                    $competencestudent->setNote($value['note']);
+                    if(isset($value['note'])) {
+                        $competencestudent->setNote($value['note']);
+                    }
                     $competencestudent->setComment($value['comment']);
                     $entityManager->persist($competencestudent);
                 }

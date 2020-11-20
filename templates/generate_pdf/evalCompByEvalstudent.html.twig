@@ -1,0 +1,167 @@
+{% extends 'base_pdf.html.twig' %}
+
+{% block title %}Evaluation vierge par classe{% endblock %}
+
+{% block body %}
+<style>
+    @page{
+        margin: 1cm;
+    }
+    h1, h2{
+        text-align: center;
+    }
+    table tr td{
+        border: solid 1px black;
+    }
+    .top-left{
+        font-size: 14pt;
+        font-weight: bold;
+        border: none;
+    }
+    table{
+        width: 5.5cm;
+        page-break-after: always;
+        border-collapse: collapse;
+    }
+    thead tr td{
+        font-size: 8pt;
+        margin: 0;
+        padding: 0;
+    }
+    tbody td{
+        height: 0.9cm;
+    }
+    .firstname{
+        width: 4cm;
+    }
+    .bg-color{
+        background-color: #c2c2c2;
+    }
+    .head{
+        position: relative;
+        width: 20cm;
+    }
+    .school {
+        font-size: 10pt;
+        width: 6cm;
+        border: solid 1px black;
+    }
+    .school p{
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .student{
+        text-align: center;
+        position: absolute;
+        top: 0;
+        left: 13cm;
+        font-size: 14pt;
+        font-weight: bold;
+
+        width: 6cm;
+        border: solid 1px black;
+    }
+    img{
+        margin-top: 0.05cm;
+        width: 15px;
+        height: 15px;
+    }
+    .bloc_theme{
+        margin-bottom: 1cm;
+    }
+    .theme{
+        background-color: #732306;
+        border: solid 1px black;
+    }
+    .category{
+        background-color: #a03008;
+        border: solid 1px black;
+    }
+    .bloc{
+        background-color: #cc3e0b;
+        border: solid 1px black;
+        width: 6cm;
+    }
+    .competence{
+        position: relative;
+        border: solid 1px black;
+    }
+    .competence_name{
+        width: 15cm;
+        margin-left: 1cm;
+    }
+    .competence_note{
+        position: absolute;
+        text-align: right;
+        padding-right: 0.2cm;
+        left: 14cm;
+        top: 0;
+        width: 4cm;
+    }
+</style>
+
+    <section class="evalByStudent">
+        <div class="head">
+            <div class="school">
+                <p>Classe de {{ evalstudent.student.classroom.teacher.firstname ? evalstudent.student.classroom.teacher.firstname : '' }} {{ evalstudent.student.classroom.teacher.lastname ? evalstudent.student.classroom.teacher.lastname : ''}}</p>
+                <p>Ecole de {{ evalstudent.student.classroom.teacher.school.name ? evalstudent.student.classroom.teacher.school.name : '' }}</p>
+                <p>Circonscription de {{ evalstudent.student.classroom.teacher.school.name ? evalstudent.student.classroom.teacher.school.circo.name : '' }}</p>
+                <p>{{ evalstudent.student.classroom.teacher.school.name ? evalstudent.student.classroom.teacher.school.circo.district.inspection.name : '' }}</p>
+            </div>
+            <div class="student">
+                <p>{{ evalstudent.student.firstname }} {{ evalstudent.student.lastname }}</p>
+            </div>
+        </div>
+        <div>
+            <h3><u>Code d'appréciation</u></h3>
+            <p>
+                <img src="build/star.png"/>
+                Compétence fragile, à travailler.</p>
+            <p>
+                <img src="build/star.png"/>
+                <img src="build/star.png"/>
+                Compétence en cours d'acquisition</p>
+            <p>
+                <img src="build/star.png"/>
+                <img src="build/star.png"/>
+                <img src="build/star.png"/>
+                Compétence acquise</p>
+        </div>
+        {% for keytheme,theme in competencesByTheme %}
+            <div class="bloc_theme">
+        <div class="theme">{{ keytheme }}</div>
+            {% for keycategory, category in theme %}
+                {% if keycategory != 'unique' %}
+                <div class="category">{{ keycategory }}</div>
+                {% endif %}
+                {% for keybloc, bloc in category  %}
+                    <div class="bloc">{{ keybloc }}</div>
+                    {% for keycompetence,competence in bloc %}
+                        <div class="competence">
+                            <div class="competence_name">
+                                {{ keycompetence }}
+                            </div>
+                            <div class="competence_note">
+                                {% if competence.comment %}
+                                {{ competence.comment }}
+                                {% else %}
+                                    {% if competence.note %}
+                                        {% for i in 1..competence.note %}
+                                            <img src="build/star.png"/>
+                                        {% endfor %}
+                                    {% else %}
+                                    NE
+                                    {% endif %}
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+            </div>
+        {% endfor %}
+    </section>
+
+{% endblock %}

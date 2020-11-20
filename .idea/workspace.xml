@@ -2,8 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80652acf-bd8a-4c36-8ac1-8810217d5aa9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/images/image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/star.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/star.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/base_pdf.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/generate_pdf/evalCompByClassroom.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/generate_pdf/evalCompByEvalstudent.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/generate_pdf/evalViergeByClassroom.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/generate_pdf/image.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/matools.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/matools.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/graphic/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/graphic/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/student/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,6 +140,10 @@
       <path value="$PROJECT_DIR$/vendor/symfony/webpack-encore-bundle" />
       <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
       <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jj6BqUvDTddPs0osfZROj8zqfz" />
@@ -135,18 +155,21 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/evaluation" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/images" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/templates/evaluation" />
-      <recent name="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception" />
-      <recent name="$PROJECT_DIR$/templates" />
-      <recent name="$PROJECT_DIR$/assets/styles" />
+      <recent name="$PROJECT_DIR$/assets/images" />
+      <recent name="$PROJECT_DIR$/public/build" />
       <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/templates/generate_pdf" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -172,7 +195,9 @@
       <workItem from="1605436460176" duration="1199000" />
       <workItem from="1605517619846" duration="28771000" />
       <workItem from="1605595247107" duration="25218000" />
-      <workItem from="1605684705155" duration="10260000" />
+      <workItem from="1605684705155" duration="30070000" />
+      <workItem from="1605773797027" duration="18955000" />
+      <workItem from="1605860389525" duration="10338000" />
     </task>
     <servers />
   </component>

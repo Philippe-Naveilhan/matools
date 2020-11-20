@@ -9,7 +9,7 @@
             <div id="evaluation" class="position-relative pt-5 m-5 d-flex flex-wrap justify-content-around bg-primary-light text-secondary p-2 border border-primary">
 
                 {% for evaluation in classroom.evaluations %}
-                    <div class="col-3 font-title bg-primary-dark text-secondary-light border border-secondary m-2">
+                    <div class="col-3 font-title bg-primary-light text-secondary-light border border-secondary m-2">
                        <div class="my-3">
                            <span class="button button-primary">{{ evaluation.level.name }}</span> <span class="ml-2 h2 text-light">{{ evaluation.name }}</span>
                         </div>
@@ -18,9 +18,19 @@
                                 Compétences
                             </a>
                         </div>
-
                         <div>
                             {% include 'evaluation/_delete_form.html.twig' %}
+                        </div>
+
+                        <div class="my-3">
+                            <a class="button button-primary" href="{{ path('eval_vierge', {'id': evaluation.id}) }}" target="_blank">
+                                Liste vierge
+                            </a>
+                        </div>
+                        <div class="my-3">
+                            <a class="button button-primary" href="{{ path('eval_complete', {'id': evaluation.id}) }}" target="_blank">
+                                Liste complétée
+                            </a>
                         </div>
                     </div>
 
