@@ -135,6 +135,7 @@ class GeneratePDFController extends AbstractController
             "Attachment" => false
         ]);
     }
+
     /**
      * @Route("/eval_by_studenteval/{id}", name="eval_by_studenteval")
      */
@@ -162,7 +163,7 @@ class GeneratePDFController extends AbstractController
         $dompdf->setPaper('A4', 'portrait');
 
         // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('generate_pdf/evalCompByEvalstudent.html.twig', [
+        $html = $this->renderView('generate_pdf/evalByEvalstudent.html.twig', [
             'dompdf' => $dompdf->getOptions()->getDefaultFont(),
             'themes' => $themes,
             'evalstudent' => $evalstudent,
@@ -185,34 +186,40 @@ class GeneratePDFController extends AbstractController
 
 
     /**
-     * @Route("/evals_by_eval/{id}", name="evals_by_eval")
+     * @Route("/eval_by_eval/{id}", name="eval_by_eval")
      */
-    public function evals_by_eval(Evaluation $evaluation,
-                                  EvalthemeRepository $evalthemeRepository
+    public function eval_by_eval(Evaluation $evaluation,
+                                 EvalthemeRepository $evalthemeRepository
     ): Response
     {
         //gestion des données
-        $competences = [];
-        foreach($evaluation->getEvalcompetences() as $value){
-            $competences[$value->getBloc()->getCategory()->getTheme()->getId()][]=$value;
-        }
+//        $evalsByStudent = [];
+//        foreach($evaluation->getEvalstudents() as $evalstudent) {
+//            foreach($evalstudent->getCompetencestudents() as $value){
+//                $evalsByStudent[$evalstudent->getId()][$value->getCompetence()->getBloc()->getCategory()->getTheme()->getName()][$value->getCompetence()->getBloc()->getCategory()->getName()][$value->getCompetence()->getBloc()->getName()][$value->getCompetence()->getName()]=$value;
+//            }
+//        }
+
         $themes = $evalthemeRepository->findAll();
         // Configure Dompdf according to your needs
-        $pdfOptions = new Options();
-        $pdfOptions->set('defaultFont', 'Arial');
 
         // Instantiate Dompdf with our options
-        $dompdf = new Dompdf($pdfOptions);
+        $options = new Options();
+        $options->setDefaultFont('Helvetica');
+        $options->setIsRemoteEnabled(true);
+        $options->setChroot('');
+        $options->setIsHtml5ParserEnabled(true);
+        $dompdf = new Dompdf($options);
 
         // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
         $dompdf->setPaper('A4', 'portrait');
 
         // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('generate_pdf/evalCompByClassroom.html.twig', [
+        $html = $this->renderView('generate_pdf/evalByEvaluation.html.twig', [
+            'dompdf' => $dompdf->getOptions()->getDefaultFont(),
             'themes' => $themes,
-            'competencesByTheme' => $competences,
+//            'evalsByStudent' => $evalsByStudent,
             'evaluation' => $evaluation,
-            'controller_name' => "Feuille d'évaluation complète"
         ]);
 
         // Load HTML to Dompdf
@@ -222,10 +229,9 @@ class GeneratePDFController extends AbstractController
         $dompdf->render();
 
         // the file's name
-        $name = 'test'.rand(0,10).'.pdf';
+        $name = 'evaluation_' . $evaluation->getName() . '.pdf';
         // Output the generated PDF to Browser (inline view)
         $dompdf->stream($name, [
             "Attachment" => false
         ]);
-    }
-}
+    }}
