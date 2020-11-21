@@ -163,7 +163,7 @@ class GeneratePDFController extends AbstractController
         $dompdf->setPaper('A4', 'portrait');
 
         // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('generate_pdf/evalByEvalstudent.html.twig', [
+        $html = $this->renderView('generate_pdf/evalByEvalstudentDiv.html.twig', [
             'dompdf' => $dompdf->getOptions()->getDefaultFont(),
             'themes' => $themes,
             'evalstudent' => $evalstudent,

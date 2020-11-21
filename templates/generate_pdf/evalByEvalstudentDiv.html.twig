@@ -1,0 +1,181 @@
+{% extends 'base_pdf.html.twig' %}
+
+{% block title %}Evaluation vierge par classe{% endblock %}
+
+{% block body %}
+<style>
+    @page{
+        margin: 1cm;
+    }
+    h1, h2{
+        text-align: center;
+    }
+    .head{
+        position: relative;
+        width: 20cm;
+    }
+    .appreciation p{
+        font-size: 12px;
+        margin: 0;
+    }
+    .school {
+        font-size: 10pt;
+        width: 6cm;
+        border: solid 1px black;
+    }
+    .school p{
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    .student{
+        text-align: center;
+        position: absolute;
+        top: 0;
+        left: 13cm;
+        font-size: 14pt;
+        font-weight: bold;
+        width: 6cm;
+        border: solid 1px black;
+    }
+    img{
+        margin-top: 0.05cm;
+        width: 15px;
+        height: 15px;
+    }
+    .no-break{
+        background-color: #cfcfcf;
+        position: relative;
+        page-break-inside: avoid;
+        border: solid 0.2mm black;
+    }
+    .bloc-theme{
+        font-size: 14px;
+        width: 19cm;
+        border: solid 1px black;
+    }
+    .theme{
+        background-color: black;
+        color: white;
+        border: solid 0.1mm black;
+        width: 18.8cm;
+        padding-top: 0.2cm;
+        padding-left: 0.2cm;
+        height: 0.9cm;
+    }
+    .category{
+        background-color: #a1a1a1;
+        border: solid 0.1mm black;
+        width: 18.6cm;
+        padding-top: 0.2cm;
+        padding-left: 0.4cm;
+        height: 0.7cm;
+
+    }
+    table{
+        border-collapse: collapse;
+        width: 19cm;
+    }
+    .bloc{
+        padding: 0.3cm;
+        font-size: 12px;
+        width: 4cm;
+    }
+    .comp{
+        background-color: white;
+        border: solid 0.1mm black;
+        width: 14cm;
+    }
+    .relative{
+        background-color: white;
+        position: relative;
+    }
+    .item{
+        padding-left: 0.2cm;
+        margin: 0;
+        background-color: white;
+        width: 12cm;
+    }
+    .note{
+        position: absolute;
+        left: 12cm;
+        top: 0;
+        padding: 0;
+        margin: 0;
+        background-color: white;
+        text-align: center;
+        width: 2cm;
+
+    }
+</style>
+
+    <section class="evalByStudent">
+        <div class="head">
+            <div class="school">
+                <p>Classe de {{ evalstudent.student.classroom.teacher.firstname ? evalstudent.student.classroom.teacher.firstname : '' }} {{ evalstudent.student.classroom.teacher.lastname ? evalstudent.student.classroom.teacher.lastname : ''}}</p>
+                <p>Ecole de {{ evalstudent.student.classroom.teacher.school.name ? evalstudent.student.classroom.teacher.school.name : '' }}</p>
+                <p>Circonscription de {{ evalstudent.student.classroom.teacher.school.name ? evalstudent.student.classroom.teacher.school.circo.name : '' }}</p>
+                <p>{{ evalstudent.student.classroom.teacher.school.name ? evalstudent.student.classroom.teacher.school.circo.district.inspection.name : '' }}</p>
+            </div>
+            <div class="student">
+                <p>{{ evalstudent.student.firstname }} {{ evalstudent.student.lastname }}</p>
+            </div>
+        </div>
+        <div class="appreciation">
+            <h3><u>Code d'appréciation</u></h3>
+            <p>
+                <img src="build/star.png"/>
+                Compétence fragile, à travailler.</p>
+            <p>
+                <img src="build/star.png"/>
+                <img src="build/star.png"/>
+                Compétence en cours d'acquisition</p>
+            <p>
+                <img src="build/star.png"/>
+                <img src="build/star.png"/>
+                <img src="build/star.png"/>
+                Compétence acquise</p>
+        </div>
+        {% for keytheme,theme in competencesByTheme %}
+        <div class="bloc-theme">
+            <div class="theme">{{ keytheme }}</div>
+                {% for keycategory, category in theme %}
+                    {% if keycategory != 'unique' %}
+                    <div class="category">{{ keycategory }}</div>
+                    {% endif %}
+                    {% for keybloc, bloc in category  %}
+                    <div class="no-break">
+                        <table>
+                            <tr>
+                                <td class="bloc">{{ keybloc }}</td>
+                                <td class="comp">
+                                {% for keycompetence,competence in bloc %}
+                                    <div class="relative">
+                                        <div class="item">{{ '* ' ~ keycompetence}}</div>
+                                        <div class="note">
+                                             {% if competence.comment %}
+                                                 {{ competence.comment }}
+                                             {% else %}
+                                                 {% if competence.note %}
+                                                     {% for i in 1..competence.note %}
+                                                         <img src="build/star.png"/>
+                                                     {% endfor %}
+                                                 {% else %}
+                                                     NE
+                                                 {% endif %}
+                                             {% endif %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    {% endfor %}
+                {% endfor %}
+        </div>
+        {% endfor %}
+    </section>
+
+{% endblock %}

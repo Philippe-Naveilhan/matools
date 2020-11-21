@@ -19,8 +19,7 @@
         border: none;
     }
     table{
-        width: 5.5cm;
-        page-break-after: always;
+        width: 19cm;
         border-collapse: collapse;
     }
     thead tr td{
@@ -69,6 +68,7 @@
         height: 15px;
     }
     .bloc_theme{
+        page-break-before: auto;
         margin-bottom: 1cm;
     }
     .theme{
@@ -100,6 +100,13 @@
         top: 0;
         width: 4cm;
     }
+    .plate{
+        height: 0;
+        padding: 0;
+    }
+    .no-break{
+        page-break-inside: avoid;
+    }
 </style>
 
     <section class="evalByStudent">
@@ -130,37 +137,51 @@
                 Compétence acquise</p>
         </div>
         {% for keytheme,theme in competencesByTheme %}
-            <div class="bloc_theme">
-        <div class="theme">{{ keytheme }}</div>
-            {% for keycategory, category in theme %}
-                {% if keycategory != 'unique' %}
-                <div class="category">{{ keycategory }}</div>
-                {% endif %}
-                {% for keybloc, bloc in category  %}
-                    <div class="bloc">{{ keybloc }}</div>
-                    {% for keycompetence,competence in bloc %}
-                        <div class="competence">
-                            <div class="competence_name">
-                                {{ keycompetence }}
-                            </div>
-                            <div class="competence_note">
+        <div class="bloc_theme">
+            <table>
+                <tr>
+                    <td colspan="3" class="theme">
+                        {{ keytheme }}
+                    </td>
+                </tr>
+                {% for keycategory, category in theme %}
+                    {% if keycategory != 'unique' %}
+                    <tr class="category">
+                        <td colspan="3">
+                            {{ keycategory }}
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% for keybloc, bloc in category  %}
+                    <tr class="no-break">
+                        <td class="bloc" rowspan="{{ (bloc|length + 1) }}">
+                            {{ keybloc }}
+                        </td>
+                        {% for keycompetence,competence in bloc %}
+                            <td>
+                                {{ keycompetence}}
+                            </td>
+                            <td>
                                 {% if competence.comment %}
-                                {{ competence.comment }}
+                                    {{ competence.comment }}
                                 {% else %}
                                     {% if competence.note %}
                                         {% for i in 1..competence.note %}
                                             <img src="build/star.png"/>
                                         {% endfor %}
                                     {% else %}
-                                    NE
+                                        NE
                                     {% endif %}
                                 {% endif %}
-                            </div>
-                        </div>
+                            </td>
+                        </tr><tr>
+                        {% endfor %}
+                    <td colspan="2"></td>
+                        </tr>
                     {% endfor %}
                 {% endfor %}
-            {% endfor %}
-            </div>
+            </table>
+        </div>
         {% endfor %}
     </section>
 
