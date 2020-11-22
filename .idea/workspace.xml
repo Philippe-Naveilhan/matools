@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80652acf-bd8a-4c36-8ac1-8810217d5aa9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/generate_pdf/evalByEvalstudentDiv.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/styles/_evaluation.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GeneratePDFController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GeneratePDFController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/_board.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_board.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ClassroomController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClassroomController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EvaluationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvaluationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EvaluationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EvaluationType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/board/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/board/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/classroom/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/classroom/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/classroom/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/classroom/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/classroom/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/classroom/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalByEvalstudent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalByEvalstudent.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,21 +150,21 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/vendor/dompdf/dompdf/lib/fonts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/styles" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/styles" />
       <recent name="$PROJECT_DIR$/vendor/dompdf/dompdf/lib/fonts" />
       <recent name="$PROJECT_DIR$/templates/generate_pdf" />
       <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/public/build" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -188,7 +193,9 @@
       <workItem from="1605684705155" duration="30070000" />
       <workItem from="1605773797027" duration="18955000" />
       <workItem from="1605860389525" duration="18570000" />
-      <workItem from="1605953242182" duration="7916000" />
+      <workItem from="1605953242182" duration="8263000" />
+      <workItem from="1606000006825" duration="40000" />
+      <workItem from="1606038248461" duration="6045000" />
     </task>
     <servers />
   </component>

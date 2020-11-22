@@ -64,7 +64,7 @@
 </style>
 
 <div class="example-wrapper">
-    <h3>{{ evaluation.name }} - {{ evaluation.classroom.name }}</h3>
+    <h3>{{ evaluation.name }} - {{ evaluation.level.name }}</h3>
 {% for key,theme in competencesByTheme %}
   {% set  pages = ((theme|length - 1) // 10) %}
     {% for i in 0..pages %}
