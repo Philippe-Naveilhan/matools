@@ -1,0 +1,98 @@
+{% extends 'base_pdf.html.twig' %}
+
+{% block title %}Evaluation vierge par classe{% endblock %}
+
+{% block body %}
+<style>
+    @page{
+        margin: 0.5cm;
+    }
+    h1, h2{
+        text-align: center;
+    }
+    table tr td{
+        border: solid 1px black;
+    }
+    .top-left{
+        font-size: 14pt;
+        font-weight: bold;
+        border: none;
+    }
+    table{
+        width: 5.5cm;
+        page-break-after: always;
+        border-collapse: collapse;
+    }
+    thead tr td{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 8pt;
+        margin: 0;
+        padding: 0;
+    }
+    tbody td{
+        height: 0.9cm;
+    }
+    .firstname{
+        width: 4cm;
+    }
+    .bg-color{
+        background-color: #c2c2c2;
+    }
+    .rotate{
+        width: 1.5cm;
+        height: 6cm;
+    }
+    .rotate .container {
+        width: 1.5cm;
+        height: 6cm;
+        position: relative;
+        overflow: visible;
+    }
+    .rotate .content {
+        margin-right:-2.1cm;
+        margin-left: -2.1cm;
+        width: 5.7cm;
+        height: 1cm;
+        overflow: hidden;
+        /*content: "Overall Satisfaction";*/
+        transform: rotate(-90deg);
+        /*transform-origin: center center;*/
+        position: absolute;
+        left: 0;
+        top: 2.2cm;
+    }
+</style>
+
+<div class="example-wrapper">
+    <h3>{{ evaluation.name }} - {{ evaluation.level.name }}</h3>
+{% for theme in themes %}
+    <table>
+        <thead>
+            <tr>
+                <td class="top-left">
+                        {{ theme.name }}
+                </td>
+                {% for i in 0..9 %}
+                    <td class="rotate">
+                        <div class="container">
+                            <div class="content">
+                            </div>
+                        </div>
+                    </td>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+        {% for evalstudent in evaluation.evalstudents %}
+            <tr {% if loop.index is odd %}class="bg-color"{% endif %}>
+                <td class="firstname">{{ evalstudent.student.firstname ~ ' ' ~ evalstudent.student.lastname }}</td>
+                {% for i in 0..9 %}
+                <td></td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endfor %}
+</div>
+{% endblock %}

@@ -3,36 +3,100 @@
 {% block title %}Gestion des évaluations{% endblock %}
 
 {% block body %}
-
-        <h1 class="text-center my-5">EVALUATIONS de la classe : <br>{{ classroom.name }}</h1>
-<a class="button button-dyna" href="{{ path('board') }}">Retour</a>
-            <div id="evaluation" class="position-relative pt-5 m-5 d-flex flex-wrap justify-content-around bg-primary-light text-secondary p-2 border border-primary">
-
-                {% for evaluation in classroom.evaluations %}
-                    <div class="col-3 font-title bg-primary-dark text-secondary-light border border-secondary m-2">
-                       <div class="my-3">
-                           <span class="button button-primary">{{ evaluation.level.name }}</span> <span class="ml-2 h2 text-light">{{ evaluation.name }}</span>
-                        </div>
-                        <div class="my-3">
-                            <a class="button button-primary" href="{{ path('evaluation_show', {'id': evaluation.id}) }}">
-                                Compétences
-                            </a>
-                        </div>
-
-                        <div>
-                            {% include 'evaluation/_delete_form.html.twig' %}
-                        </div>
-                    </div>
-
-                {% endfor %}
-                    <div class="col-3 text-primary-dark border border-secondary m-2 text-center">
-                        <a href="{{ path('evaluation_new', {'id': classroom.id}) }}">
-                        Créer une nouvelle évaluation<br>
-                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"></path>
-                        </svg>
-                        </a>
-                    </div>
+<div class="my-5">
+    <a class="button button-dyna" href="{{ path('board') }}">Retour</a>
+</div>
+{% for evaluation in classroom.evaluations %}
+    <div class="evaluation m-5 bg-primary position-relative d-flex flex-wrap justify-content-around">
+        <div class="evalname row bg-primary-light position-absolute dec-lt-4 text-secondary pt-2 pl-2 pr-0 border border-primary">
+            <div class="py-1">
+                <h2><span class="button button-primary">{{ evaluation.level.name }}</span><b>EVALUATION : </b>{{ evaluation.name }}</h2>
             </div>
+            <div class="menu bg-primary-light text-right m-0 pt-1 pr-2 pb-2">
+                <div>
+                    <a href="#">
+                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="text-secondary justify-content-end row w-100 mx-0">
+                    {% include('evaluation/_delete_form.html.twig') %}
+                </div>
+                <div>
+                    <a class="text-dyna" href="{{ path('evaluation_edit', {'id': evaluation.id}) }}" title="Modifier le nom de l'évaluation'.">
+                        <span class="text-dyna">
+                            Modifier
+                            <svg width="20px" height="20px" viewBox="0 0 16 16" class="ml-1 bi bi-slash-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.646-2.646a.5.5 0 0 0-.708-.708l-6 6a.5.5 0 0 0 .708.708l6-6z"/>
+                        </svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div>
+            <a class="rubrique" href="{{ path('evaluation_show', {'id': evaluation.id}) }}">
+                <div class="text-center">
+                    <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-card-checklist" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                        <path fill-rule="evenodd" d="M7 5.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 1 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0zM7 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm-1.496-.854a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0l-.5-.5a.5.5 0 0 1 .708-.708l.146.147 1.146-1.147a.5.5 0 0 1 .708 0z"/>
+                    </svg>
+                </div>
+                <div class="h2 font-title text-center mt-2">
+                    Saisir les<br> compétences &<br>les résultats
+                </div>
+            </a>
+        </div>
+        <div>
+            <a class="rubrique" href="{{ path('eval_vierge', {'id': evaluation.id}) }}" target="_blank">
+                <div class="text-center">
+                    <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-file-ruled" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v4h10V2a1 1 0 0 0-1-1H4zm9 6H6v2h7V7zm0 3H6v2h7v-2zm0 3H6v2h6a1 1 0 0 0 1-1v-1zm-8 2v-2H3v1a1 1 0 0 0 1 1h1zm-2-3h2v-2H3v2zm0-3h2V7H3v2z"/>
+                    </svg>
+                </div>
+                <div class="h2 font-title text-center mt-2">
+                    Liste vierge
+                </div>
+            </a>
+        </div>
+        <div>
+            <a class="rubrique" href="{{ path('eval_complete', {'id': evaluation.id}) }}" target="_blank">
+                <div class="text-center">
+                    <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-file-ruled-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M12 0H4a2 2 0 0 0-2 2v4h12V2a2 2 0 0 0-2-2zm2 7H6v2h8V7zm0 3H6v2h8v-2zm0 3H6v3h6a2 2 0 0 0 2-2v-1zm-9 3v-3H2v1a2 2 0 0 0 2 2h1zm-3-4h3v-2H2v2zm0-3h3V7H2v2z"/>
+                    </svg>
+                </div>
+                <div class="h2 font-title text-center mt-2">
+                    Liste avec<br> items
+                </div>
+            </a>
+        </div>
+        <div>
+            <a class="rubrique" href="{{ path('eval_by_eval', {'id': evaluation.id}) }}" target="_blank">
+                <div class="text-center">
+                    <svg width="4em" height="4em" viewBox="0 0 16 16" class="bi bi-award" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M9.669.864L8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193l-1.51-.229L8 1.126l-1.355.702-1.51.229-.684 1.365-1.086 1.072L3.614 6l-.25 1.506 1.087 1.072.684 1.365 1.51.229L8 10.874l1.356-.702 1.509-.229.684-1.365 1.086-1.072L12.387 6l.248-1.506-1.086-1.072-.684-1.365z"/>
+                        <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z"/>
+                    </svg>
+                </div>
+                <div class="h2 font-title text-center mt-2">
+                    Edition<br/>Evaluations
+                </div>
+            </a>
+        </div>
+    </div>
+{% endfor %}
+    <div class="classroom m-5 bg-primary position-relative d-flex flex-wrap justify-content-around py-2">
+        <div class="position-relative mx-3 p-1 border-primary bg-primary student my-0">
+            <div class="text-secondary text-center">
+                <a href="{{ path('evaluation_new', {'id': classroom.id}) }}" class=""><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                    </svg>
+                </a><br>Créer une nouvelle évaluation
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

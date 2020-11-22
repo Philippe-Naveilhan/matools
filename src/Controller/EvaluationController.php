@@ -94,18 +94,24 @@ class EvaluationController extends AbstractController
     /**
      * @Route("/{id}/edit", name="evaluation_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Evaluation $evaluation): Response
+    public function edit(Request $request,
+                         Evaluation $evaluation,
+                         LevelRepository $levelRepository): Response
     {
         $form = $this->createForm(EvaluationType::class, $evaluation);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        if (isset($_POST['evaluation'])) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $evaluation->setName($_POST['evaluation']['name']);
+            $entityManager->persist($evaluation);
+            $entityManager->flush();
 
-            return $this->redirectToRoute('evaluation_index');
+            return $this->redirectToRoute('evaluation_index', array('id'=>$evaluation->getClassroom()->getId()));
         }
 
         return $this->render('evaluation/edit.html.twig', [
+            'classroom' => $evaluation->getClassroom(),
             'evaluation' => $evaluation,
             'form' => $form->createView(),
         ]);

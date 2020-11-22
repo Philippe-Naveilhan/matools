@@ -71,7 +71,7 @@ class ClassroomController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('classroom_index');
+            return $this->redirectToRoute('board');
         }
 
         return $this->render('classroom/edit.html.twig', [
