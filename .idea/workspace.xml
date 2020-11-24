@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="80652acf-bd8a-4c36-8ac1-8810217d5aa9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="80652acf-bd8a-4c36-8ac1-8810217d5aa9" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -140,21 +137,21 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Bureau" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/bdd" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/bdd" />
       <recent name="$PROJECT_DIR$/templates/evaluation" />
       <recent name="$PROJECT_DIR$/assets/styles" />
       <recent name="$PROJECT_DIR$/vendor/dompdf/dompdf/lib/fonts" />
       <recent name="$PROJECT_DIR$/templates/generate_pdf" />
-      <recent name="$PROJECT_DIR$/assets/images" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -187,7 +184,7 @@
       <workItem from="1606000006825" duration="40000" />
       <workItem from="1606038248461" duration="12029000" />
       <workItem from="1606117320013" duration="7216000" />
-      <workItem from="1606204137024" duration="2248000" />
+      <workItem from="1606204137024" duration="3093000" />
     </task>
     <servers />
   </component>
@@ -204,10 +201,10 @@
       <screen x="0" y="28" width="1680" height="1022" />
     </state>
     <state x="445" y="226" width="792" height="617" key="DUMP_DIALOG_DIMENSION_KEY/1680.0.1920.1080/0.28.1680.1022@0.28.1680.1022" timestamp="1606207778313" />
-    <state x="570" y="226" width="542" height="617" key="FileChooserDialogImpl" timestamp="1606207650825">
+    <state x="570" y="226" width="542" height="617" key="FileChooserDialogImpl" timestamp="1606210588676">
       <screen x="0" y="28" width="1680" height="1022" />
     </state>
-    <state x="570" y="226" width="542" height="617" key="FileChooserDialogImpl/1680.0.1920.1080/0.28.1680.1022@0.28.1680.1022" timestamp="1606207650825" />
+    <state x="570" y="226" width="542" height="617" key="FileChooserDialogImpl/1680.0.1920.1080/0.28.1680.1022@0.28.1680.1022" timestamp="1606210588676" />
     <state width="1868" height="262" key="GridCell.Tab.0.bottom" timestamp="1604339338165">
       <screen x="1680" y="0" width="1920" height="1080" />
     </state>
