@@ -8,6 +8,7 @@ ls
 /public/bundles/
 /var/
 /vendor/
+/migrations/
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
