@@ -6,6 +6,7 @@ use App\Repository\DistrictRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=DistrictRepository::class)
@@ -21,6 +22,7 @@ class District
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez indiquer le nom de l'inspection académique.")
      */
     private $name;
 
