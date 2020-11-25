@@ -20,7 +20,6 @@ class BoardController extends AbstractController
         return $this->render('board/index.html.twig', [
             'classrooms' => $classrooms,
             'evaluations' => $evaluations,
-
         ]);
     }
 }

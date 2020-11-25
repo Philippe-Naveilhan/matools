@@ -6,6 +6,7 @@ use App\Repository\SchoolRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SchoolRepository::class)
@@ -21,6 +22,9 @@ class School
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez indiquer le nom de l'école.")
+     * @Assert\Length(min=5, minMessage="Le nom de l'école doit faire au moins {{ limit }} caractères.")
+     * @Assert\Length(max=255, maxMessage="Le nom de l'école ne doit pas dépasser {{ limit }} caractères.")
      */
     private $name;
 

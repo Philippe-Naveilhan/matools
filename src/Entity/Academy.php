@@ -6,6 +6,7 @@ use App\Repository\AcademyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=AcademyRepository::class)
@@ -21,21 +22,27 @@ class Academy
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez indiquer le titre de l'académie")
+     * @Assert\Length(min=10, minMessage="Le nom de l'académie doit faire au moins {{ limit }} caractères.")
+     * @Assert\Length(max=255, maxMessage="Le nom de l'académie ne doit pas dépasser {{ limit }} caractères.")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez communiquer une adresse pour cette académie")
      */
     private $adress;
 
     /**
      * @ORM\Column(type="string", length=5)
+     * @Assert\NotBlank(message="Veuillez indiquer le code postal de cette académie.")
      */
     private $zipcode;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez indiquer la ville de l'académie.")
      */
     private $city;
 
