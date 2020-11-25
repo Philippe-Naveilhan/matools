@@ -33,6 +33,14 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $username = $_POST['registration_form']['username'];
+            $domain = explode('@', $username);
+            if($domain[1] != 'ac-orleans-tours.fr'){
+                $this->addFlash('danger', 'Votre adresse email doit être votre adresse professionelle !');
+                $this->addFlash('danger', 'Par exemple : prenom.nom@ac-orleans-tours.fr .');
+                $this->addFlash('danger', $username . ' n\'est pas valide !');
+                return $this->redirectToRoute('app_register');
+            }
             // encode the plain password
             $user->setPassword(
                 $passwordEncoder->encodePassword(
