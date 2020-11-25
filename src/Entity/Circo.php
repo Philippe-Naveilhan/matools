@@ -6,6 +6,7 @@ use App\Repository\CircoRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CircoRepository::class)
@@ -21,6 +22,7 @@ class Circo
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez indiquer le nom de la circonscription.")
      */
     private $name;
 

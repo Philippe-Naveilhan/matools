@@ -4,10 +4,10 @@
 {% block body %}
 
     <div class="my-5 text-center">
-        <div>Identifiant : {{ app.user.firstname ~ ' ' ~ app.user.lastname }}</div>
-        <div>{{ app.user.firstname ~ ' ' ~ app.user.lastname }}</div>
-        <div>{{ app.user.email }}</div>
-        <div>Ecole : {{ app.user.school.name }} ({{ app.user.school.circo.district.inspection.name }})</div>
+        <div>Identifiant : {{ app.user.firstname ??' ' }} {{ app.user.lastname ?? '' }}</div>
+        <div>{{ app.user.firstname ?? '' }} {{ app.user.lastname ?? '' }}</div>
+        <div>{{ app.user.username ?? '' }}</div>
+        <div>Ecole : {{ app.user.school.name ?? '' }} ({{ app.user.school.circo.district.inspection.name ?? '' }})</div>
     </div>
     <div class="text-center">
         <a href="{{ path('user_edit') }}" class="button button-primary">Modifier</a>

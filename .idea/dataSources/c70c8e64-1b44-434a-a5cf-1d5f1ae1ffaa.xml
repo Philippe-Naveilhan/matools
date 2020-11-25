@@ -1564,25 +1564,30 @@ SELECT|sys.sys_config:null
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
     </column>
-    <index id="431" parent="318" name="UNIQ_8D93D649F85E0677">
+    <column id="431" parent="318" name="is_verified">
+      <Position>9</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="432" parent="318" name="UNIQ_8D93D649F85E0677">
       <ColNames>username</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <index id="432" parent="318" name="IDX_8D93D649C32A47EE">
+    <index id="433" parent="318" name="IDX_8D93D649C32A47EE">
       <ColNames>school_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="433" parent="318" name="PRIMARY">
+    <key id="434" parent="318" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="434" parent="318" name="UNIQ_8D93D649F85E0677">
+    <key id="435" parent="318" name="UNIQ_8D93D649F85E0677">
       <ColNames>username</ColNames>
       <UnderlyingIndexName>UNIQ_8D93D649F85E0677</UnderlyingIndexName>
     </key>
-    <foreign-key id="435" parent="318" name="FK_8D93D649C32A47EE">
+    <foreign-key id="436" parent="318" name="FK_8D93D649C32A47EE">
       <ColNames>school_id</ColNames>
       <RefTableName>school</RefTableName>
       <RefColNames>id</RefColNames>

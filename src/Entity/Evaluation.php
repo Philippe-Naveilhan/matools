@@ -6,6 +6,7 @@ use App\Repository\EvaluationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EvaluationRepository::class)
@@ -21,6 +22,7 @@ class Evaluation
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez indiquer le nom que vous souhaitez donner à l'évaluation.")
      */
     private $name;
 

@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\EvalcompetenceRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=EvalcompetenceRepository::class)
@@ -19,6 +20,7 @@ class Evalcompetence
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Veuillez indiquer le nom de la compétence à enregistrer.")
      */
     private $name;
 
