@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Modification des données utilisateur</h1>
+
+    <div class="text-center">
+        {{ include('admin/user/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+    </div>
+
+    <a class="button button-primary" href="{{ path('admin_user_index') }}">Retour</a>
+
+{% endblock %}
