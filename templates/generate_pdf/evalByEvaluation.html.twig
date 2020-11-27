@@ -13,36 +13,13 @@
     h1, h2{
         text-align: center;
     }
-    table tr td{
-        border: solid 1px black;
-    }
-    .top-left{
-        font-size: 14pt;
-        font-weight: bold;
-        border: none;
-    }
-    table{
-        width: 5.5cm;
-        page-break-after: always;
-        border-collapse: collapse;
-    }
-    thead tr td{
-        font-size: 8pt;
-        margin: 0;
-        padding: 0;
-    }
-    tbody td{
-        height: 0.9cm;
-    }
-    .firstname{
-        width: 4cm;
-    }
-    .bg-color{
-        background-color: #c2c2c2;
-    }
     .head{
         position: relative;
         width: 20cm;
+    }
+    .appreciation p{
+        font-size: 12px;
+        margin: 0;
     }
     .school {
         font-size: 10pt;
@@ -62,7 +39,6 @@
         left: 13cm;
         font-size: 14pt;
         font-weight: bold;
-
         width: 6cm;
         border: solid 1px black;
     }
@@ -71,55 +47,85 @@
         width: 15px;
         height: 15px;
     }
+    .no-break{
+        background-color: #cfcfcf;
+        position: relative;
+        page-break-inside: avoid;
+        border: solid 0.2mm black;
+    }
     .bloc_theme{
-        margin-bottom: 1cm;
+        font-size: 14px;
+        width: 19cm;
+        border: solid 1px black;
     }
     .theme{
-        background-color: #732306;
-        border: solid 1px black;
+        background-color: black;
+        color: white;
+        border: solid 0.1mm black;
+        width: 18.8cm;
+        padding-top: 0.2cm;
+        padding-left: 0.2cm;
+        height: 0.9cm;
     }
     .category{
-        background-color: #a03008;
-        border: solid 1px black;
+        background-color: #a1a1a1;
+        border: solid 0.1mm black;
+        width: 18.6cm;
+        padding-top: 0.2cm;
+        padding-left: 0.4cm;
+        height: 0.7cm;
+    }
+    table{
+        border-collapse: collapse;
+        width: 19cm;
     }
     .bloc{
-        background-color: #cc3e0b;
-        border: solid 1px black;
-        width: 6cm;
-    }
-    .competence{
-        position: relative;
-        border: solid 1px black;
-    }
-    .competence_name{
-        width: 15cm;
-        margin-left: 1cm;
-    }
-    .competence_note{
-        position: absolute;
-        text-align: right;
-        padding-right: 0.2cm;
-        left: 14cm;
-        top: 0;
+        padding: 0.3cm;
+        font-size: 12px;
         width: 4cm;
+    }
+    .comp{
+        background-color: white;
+        border: solid 0.1mm black;
+        width: 14cm;
+    }
+    .relative{
+        background-color: white;
+        position: relative;
+    }
+    .item{
+        padding-left: 0.2cm;
+        margin: 0;
+        background-color: white;
+        width: 12cm;
+    }
+    .note{
+        position: absolute;
+        left: 12cm;
+        top: 0;
+        padding: 0;
+        margin: 0;
+        background-color: white;
+        text-align: center;
+        width: 2cm;
     }
 </style>
 
-{% for evalstudent in evaluation.evalstudents %}
+{% for evalstudent in evaluations %}
 
     <section class="evalByStudent">
         <div class="head">
             <div class="school">
-                <p>Classe de {{ evaluation.classroom.teacher.firstname ? evaluation.classroom.teacher.firstname : '' }} {{ evaluation.classroom.teacher.lastname ? evaluation.classroom.teacher.lastname : ''}}</p>
-                <p>Ecole de {{ evaluation.classroom.teacher.school.name ? evaluation.classroom.teacher.school.name : '' }}</p>
-                <p>Circonscription de {{ evaluation.classroom.teacher.school.name ? evaluation.classroom.teacher.school.circo.name : '' }}</p>
-                <p>{{ evaluation.classroom.teacher.school.name ? evaluation.classroom.teacher.school.circo.district.inspection.name : '' }}</p>
+                <p>Classe de {{ evalstudent.student.classroom.teacher.firstname ? evalstudent.student.classroom.teacher.firstname : '' }} {{ evalstudent.student.classroom.teacher.lastname ? evalstudent.student.classroom.teacher.lastname : ''}}</p>
+                <p>Ecole de {{ evalstudent.student.classroom.teacher.school.name ? evalstudent.student.classroom.teacher.school.name : '' }}</p>
+                <p>Circonscription de {{ evalstudent.student.classroom.teacher.school.name ? evalstudent.student.classroom.teacher.school.circo.name : '' }}</p>
+                <p>{{ evalstudent.student.classroom.teacher.school.name ? evalstudent.student.classroom.teacher.school.circo.district.inspection.name : '' }}</p>
             </div>
             <div class="student">
                 <p>{{ evalstudent.student.firstname }} {{ evalstudent.student.lastname }}</p>
             </div>
         </div>
-        <div>
+        <div class="appreciation">
             <h3><u>Code d'appréciation</u></h3>
             <p>
                 <img src="build/star.png"/>
@@ -134,43 +140,45 @@
                 <img src="build/star.png"/>
                 Compétence acquise</p>
         </div>
-        {% for theme in themes %}
-            <div class="bloc_theme">
-        <div class="theme">{{ theme.name }}</div>
-            {% for category in theme.evalcategories %}
-                {% if category.name != 'unique' %}
-                <div class="category">{{ category.name }}</div>
-                {% endif %}
-                {% for bloc in category.evalblocs  %}
-                    <div class="bloc">{{ bloc.name }}</div>
-                    {% for competence in evalstudent.competencestudents %}
-                        {% if bloc.id == competence.competence.bloc.id %}
-                        <div class="competence">
-                            <div class="competence_name">
-                                {{ competence.competence.name }}
-                            </div>
-                            <div class="competence_note">
-                                {% if competence.comment %}
-                                {{ competence.comment }}
-                                {% else %}
-                                    {% if competence.note %}
-                                        {% for i in 1..competence.note %}
-                                            <img src="build/star.png"/>
+        {% for keytheme,theme in evalstudent.competences %}
+            <div class="bloc-theme">
+                <div class="theme">{{ keytheme }}</div>
+                {% for keycategory, category in theme %}
+                    {% if keycategory != 'unique' %}
+                        <div class="category">{{ keycategory }}</div>
+                    {% endif %}
+                    {% for keybloc, bloc in category  %}
+                        <div class="no-break">
+                            <table>
+                                <tr>
+                                    <td class="bloc">{{ keybloc }}</td>
+                                    <td class="comp">
+                                        {% for keycompetence,competence in bloc %}
+                                            <div class="relative">
+                                                <div class="item">{{ '* ' ~ keycompetence}}</div>
+                                                <div class="note">
+                                                    {% if competence.comment %}
+                                                        {{ competence.comment }}
+                                                    {% else %}
+                                                        {% if competence.note %}
+                                                            {% for i in 1..competence.note %}
+                                                                <img src="build/star.png"/>
+                                                            {% endfor %}
+                                                        {% else %}
+                                                            NE
+                                                        {% endif %}
+                                                    {% endif %}
+                                                </div>
+                                            </div>
                                         {% endfor %}
-                                    {% else %}
-                                    NE
-                                    {% endif %}
-                                {% endif %}
-                            </div>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
-                        {% endif %}
                     {% endfor %}
                 {% endfor %}
-            {% endfor %}
             </div>
         {% endfor %}
     </section>
-
-    <h1>Mat'Tools</h1>
 {% endfor %}
 {% endblock %}

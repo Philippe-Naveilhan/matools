@@ -6,6 +6,6 @@
     <h1 class="text-center my-5">Créer une nouvelle évaluation</h1>
 
     {{ include('evaluation/_form.html.twig') }}
+    <a href="{{ path('evaluation_index', {'id': classroom.id}) }}" class="ml-5 button button-dyna">Retour</a>
 
-    <a href="{{ path('evaluation_index', {'id': classroom.id}) }}">back to list</a>
 {% endblock %}

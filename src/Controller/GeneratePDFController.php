@@ -192,6 +192,16 @@ class GeneratePDFController extends AbstractController
                                  EvalthemeRepository $evalthemeRepository
     ): Response
     {
+
+        $evaluations = [];
+        foreach($evaluation->getEvalstudents() as $evalstudent){
+            foreach($evalstudent->getCompetencestudents() as $competenceStudent){
+                $evaluations[$evalstudent->getStudent()->getId()]['student']=$evalstudent->getStudent();
+                $evaluations[$evalstudent->getStudent()->getId()]['competences'][$competenceStudent->getCompetence()->getBloc()->getCategory()->getTheme()->getName()][$competenceStudent->getCompetence()->getBloc()->getCategory()->getName()][$competenceStudent->getCompetence()->getBloc()->getName()][$competenceStudent->getCompetence()->getName()]=$competenceStudent;
+            }
+        }
+
+
         //gestion des données
 //        $evalsByStudent = [];
 //        foreach($evaluation->getEvalstudents() as $evalstudent) {
@@ -219,6 +229,7 @@ class GeneratePDFController extends AbstractController
             'dompdf' => $dompdf->getOptions()->getDefaultFont(),
             'themes' => $themes,
 //            'evalsByStudent' => $evalsByStudent,
+            'evaluations'=>$evaluations,
             'evaluation' => $evaluation,
         ]);
 

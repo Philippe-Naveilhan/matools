@@ -2,9 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80652acf-bd8a-4c36-8ac1-8810217d5aa9" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/templates/admin/index.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/security/mail-sended.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/matools.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/matools.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EvalcompetenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvalcompetenceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GeneratePDFController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GeneratePDFController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GraphicController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_navbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/classroom/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/classroom/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/classroom/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/classroom/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evalcompetence/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalcompetence/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evalcompetence/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalcompetence/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evalcompetence/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalcompetence/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalByEvalstudentDiv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalByEvalstudentDiv.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalByEvaluation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalByEvaluation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/image.jpg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,6 +150,7 @@
       <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
       <path value="$PROJECT_DIR$/vendor/symfonycasts/verify-email-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/apache-pack" />
+      <path value="$PROJECT_DIR$/vendor/symfony/google-mailer" />
     </include_path>
   </component>
   <component name="ProjectId" id="1jj6BqUvDTddPs0osfZROj8zqfz" />
@@ -143,18 +163,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/bdd" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/security" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/security" />
+      <recent name="$PROJECT_DIR$/templates/admin" />
+      <recent name="$PROJECT_DIR$/src/Controller" />
       <recent name="$PROJECT_DIR$/public/bdd" />
       <recent name="$PROJECT_DIR$/templates/evaluation" />
-      <recent name="$PROJECT_DIR$/assets/styles" />
-      <recent name="$PROJECT_DIR$/vendor/dompdf/dompdf/lib/fonts" />
-      <recent name="$PROJECT_DIR$/templates/generate_pdf" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
@@ -192,7 +212,8 @@
       <workItem from="1606117320013" duration="7216000" />
       <workItem from="1606204137024" duration="15127000" />
       <workItem from="1606298605054" duration="2620000" />
-      <workItem from="1606378642972" duration="2432000" />
+      <workItem from="1606378642972" duration="8509000" />
+      <workItem from="1606396744556" duration="14048000" />
     </task>
     <servers />
   </component>

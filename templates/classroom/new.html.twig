@@ -3,11 +3,11 @@
 {% block title %}New Classroom{% endblock %}
 
 {% block body %}
-    <div class="mt-5"><a class="button button-primary" href="{{ path('board') }}">Retour</a></div>
+    <div class="mt-5"><a class="button button-dyna" href="{{ path('board') }}">Retour</a></div>
     <div class="text-center">
     <h1>Créer une nouvelle classe</h1>
 
     {{ include('classroom/_form.html.twig') }}
     </div>
-    <a class="button button-primary" href="{{ path('board') }}">Retour</a>
+    <a class="button button-dyna" href="{{ path('board') }}">Retour</a>
 {% endblock %}

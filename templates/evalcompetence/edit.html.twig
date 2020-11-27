@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit Evalcompetence</h1>
 
-    {{ include('evalcompetence/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('evalcompetence/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a href="{{ path('evalcompetence_index') }}">back to list</a>
+    <a class="button button-dyna" href="{{ path('evaluation_index', {'id': evalcompetence.evaluation.id}) }}">Retour</a>
 
     {{ include('evalcompetence/_delete_form.html.twig') }}
 {% endblock %}

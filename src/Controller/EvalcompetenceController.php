@@ -89,7 +89,7 @@ class EvalcompetenceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('evalcompetence_index');
+            return $this->redirectToRoute('evaluation_show', array('id'=>$evalcompetence->getEvaluation()->getId()));
         }
 
         return $this->render('evalcompetence/edit.html.twig', [
@@ -109,6 +109,6 @@ class EvalcompetenceController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('evalcompetence_index');
+        return $this->redirectToRoute('evaluation_show', array('id'=>$evalcompetence->getEvaluation()->getId()));
     }
 }
