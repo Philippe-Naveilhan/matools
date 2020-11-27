@@ -146,7 +146,7 @@ class GeneratePDFController extends AbstractController
         //gestion des données
         $competences = [];
         foreach($evalstudent->getCompetencestudents() as $value){
-            $competences[$value->getCompetence()->getBloc()->getCategory()->getTheme()->getName()][$value->getCompetence()->getBloc()->getCategory()->getName()][$value->getCompetence()->getBloc()->getName()][$value->getCompetence()->getName()]=$value;
+            $competences[$value->getEvalcompetence()->getBloc()->getCategory()->getTheme()->getName()][$value->getEvalcompetence()->getBloc()->getCategory()->getName()][$value->getEvalcompetence()->getBloc()->getName()][$value->getEvalcompetence()->getName()]=$value;
         }
         $themes = $evalthemeRepository->findAll();
         // Configure Dompdf according to your needs
@@ -197,18 +197,9 @@ class GeneratePDFController extends AbstractController
         foreach($evaluation->getEvalstudents() as $evalstudent){
             foreach($evalstudent->getCompetencestudents() as $competenceStudent){
                 $evaluations[$evalstudent->getStudent()->getId()]['student']=$evalstudent->getStudent();
-                $evaluations[$evalstudent->getStudent()->getId()]['competences'][$competenceStudent->getCompetence()->getBloc()->getCategory()->getTheme()->getName()][$competenceStudent->getCompetence()->getBloc()->getCategory()->getName()][$competenceStudent->getCompetence()->getBloc()->getName()][$competenceStudent->getCompetence()->getName()]=$competenceStudent;
+                $evaluations[$evalstudent->getStudent()->getId()]['competences'][$competenceStudent->getEvalcompetence()->getBloc()->getCategory()->getTheme()->getName()][$competenceStudent->getEvalcompetence()->getBloc()->getCategory()->getName()][$competenceStudent->getEvalcompetence()->getBloc()->getName()][$competenceStudent->getEvalcompetence()->getName()]=$competenceStudent;
             }
         }
-
-
-        //gestion des données
-//        $evalsByStudent = [];
-//        foreach($evaluation->getEvalstudents() as $evalstudent) {
-//            foreach($evalstudent->getCompetencestudents() as $value){
-//                $evalsByStudent[$evalstudent->getId()][$value->getCompetence()->getBloc()->getCategory()->getTheme()->getName()][$value->getCompetence()->getBloc()->getCategory()->getName()][$value->getCompetence()->getBloc()->getName()][$value->getCompetence()->getName()]=$value;
-//            }
-//        }
 
         $themes = $evalthemeRepository->findAll();
         // Configure Dompdf according to your needs
