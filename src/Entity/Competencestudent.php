@@ -3,7 +3,10 @@
 namespace App\Entity;
 
 use App\Repository\CompetencestudentRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CompetencestudentRepository::class)
@@ -24,10 +27,10 @@ class Competencestudent
     private $evalstudent;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Evalcompetence::class)
+     * @ORM\ManyToOne(targetEntity=Evalcompetence::class, inversedBy="Competencestudents")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $competence;
+    private $evalcompetence;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -56,14 +59,14 @@ class Competencestudent
         return $this;
     }
 
-    public function getCompetence(): ?Evalcompetence
+    public function getEvalcompetence(): ?Evalcompetence
     {
-        return $this->competence;
+        return $this->evalcompetence;
     }
 
-    public function setCompetence(?Evalcompetence $competence): self
+    public function setEvalcompetence(?Evalcompetence $evalcompetence): self
     {
-        $this->competence = $competence;
+        $this->evalcompetence = $evalcompetence;
 
         return $this;
     }

@@ -3,11 +3,15 @@
 {% block title %}Edit Evalcompetence{% endblock %}
 
 {% block body %}
-    <h1>Edit Evalcompetence</h1>
-
+    <div class="text-center my-5">
+    <h1>Modifier une compétence</h1>
+<div class="text-left">
+    <a class="button button-dyna" href="{{ path('evaluation_show', {'id': evaluation.id}) }}">Retour</a>
+</div>
     {{ include('evalcompetence/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a class="button button-dyna" href="{{ path('evaluation_index', {'id': evalcompetence.evaluation.id}) }}">Retour</a>
 
     {{ include('evalcompetence/_delete_form.html.twig') }}
+    </div>
+<a class="button button-dyna" href="{{ path('evaluation_show', {'id': evaluation.id}) }}">Retour</a>
 {% endblock %}

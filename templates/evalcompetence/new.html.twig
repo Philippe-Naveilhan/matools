@@ -1,11 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Evalcompetence{% endblock %}
+{% block title %}Nouvelle compétence{% endblock %}
 
 {% block body %}
-    <h1>Create new Evalcompetence</h1>
+    <div class="text-center">
+        <h1 class="m-5">Enregistrer une nouvelle compétence</h1>
+<div class="text-left">
+        <a class="button button-dyna mt-2" href="{{ path('evaluation_show', {'id': evaluation.id}) }}">Retour</a>
+</div>
 
-    {{ include('evalcompetence/_form.html.twig') }}
+        {{ include('evalcompetence/_form.html.twig') }}
+    </div>
 
-    <a href="{{ path('evalcompetence_index') }}">back to list</a>
+    <a class="button button-dyna" href="{{ path('evaluation_show', {'id': evaluation.id}) }}">Retour</a>
 {% endblock %}

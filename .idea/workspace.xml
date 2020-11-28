@@ -2,28 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80652acf-bd8a-4c36-8ac1-8810217d5aa9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/admin/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/security/mail-sended.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/matools.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/matools.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c70c8e64-1b44-434a-a5cf-1d5f1ae1ffaa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c70c8e64-1b44-434a-a5cf-1d5f1ae1ffaa.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201102091956.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201102220327.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201102231715.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201103143257.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201103150305.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201103151620.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201107092653.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201107095431.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201107100306.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201116200301.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201116201028.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201116204335.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201116204653.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201117082026.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201117090502.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201117090640.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201124145957.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/EvalcompetenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvalcompetenceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/GeneratePDFController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GeneratePDFController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GraphicController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_navbar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/classroom/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/classroom/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/classroom/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/classroom/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Competencestudent.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Competencestudent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Evalcompetence.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evalcompetence.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/evalcompetence/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalcompetence/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evalcompetence/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalcompetence/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evalcompetence/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalcompetence/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evaluation/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evaluation/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evaluation/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalByEvalstudentDiv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalByEvalstudentDiv.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalByEvaluation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalByEvaluation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/image.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evalcompetence/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalcompetence/new.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,7 +218,7 @@
       <workItem from="1606204137024" duration="15127000" />
       <workItem from="1606298605054" duration="2620000" />
       <workItem from="1606378642972" duration="8509000" />
-      <workItem from="1606396744556" duration="14048000" />
+      <workItem from="1606396744556" duration="22964000" />
     </task>
     <servers />
   </component>
@@ -230,6 +235,10 @@
       <screen x="0" y="28" width="1680" height="1022" />
     </state>
     <state x="460" y="313" width="761" height="442" key="#com.intellij.fileTypes.FileTypeChooser/1680.0.1920.1080/0.28.1680.1022@0.28.1680.1022" timestamp="1606302854996" />
+    <state x="507" y="226" width="667" height="617" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606473914045">
+      <screen x="0" y="28" width="1680" height="1022" />
+    </state>
+    <state x="507" y="226" width="667" height="617" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/1680.0.1920.1080/0.28.1680.1022@0.28.1680.1022" timestamp="1606473914045" />
     <state x="445" y="226" width="792" height="617" key="DUMP_DIALOG_DIMENSION_KEY" timestamp="1606207778313">
       <screen x="0" y="28" width="1680" height="1022" />
     </state>
@@ -266,6 +275,14 @@
       <screen x="0" y="28" width="1680" height="1022" />
     </state>
     <state x="718" y="379" width="245" height="311" key="com.intellij.database.actions.DdlActions$CreateObject$1/1680.0.1920.1080/0.28.1680.1022@0.28.1680.1022" timestamp="1605557011045" />
+    <state x="627" y="379" width="441" height="310" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1" timestamp="1606515189491">
+      <screen x="0" y="28" width="1680" height="1022" />
+    </state>
+    <state x="627" y="379" width="441" height="310" key="com.intellij.database.actions.DdlActions$DeleteProvider2$1/1680.0.1920.1080/0.28.1680.1022@0.28.1680.1022" timestamp="1606515189491" />
+    <state x="543" y="311" width="595" height="442" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog" timestamp="1606515099619">
+      <screen x="0" y="28" width="1680" height="1022" />
+    </state>
+    <state x="543" y="311" width="595" height="442" key="com.intellij.database.psi.DbRenamePsiElementProcessor.DbRenameDialog/1680.0.1920.1080/0.28.1680.1022@0.28.1680.1022" timestamp="1606515099619" />
     <state x="467" y="254" key="run.anything.popup" timestamp="1605560663689">
       <screen x="0" y="28" width="1680" height="1022" />
     </state>
