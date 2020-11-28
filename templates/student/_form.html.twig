@@ -1,4 +1,41 @@
 {{ form_start(form) }}
+
+<div class="text-center">
+    <div>
+        {{ form_label(form.Firstname) }}
+        <div class="text-danger">
+            {{ form_errors(form.Firstname) }}
+        </div>
+    </div>
+    {{ form_widget(form.Firstname) }}
+</div>
+<div class="text-center">
+    <div>
+        {{ form_label(form.Lastname) }}
+        <div class="text-danger">
+            {{ form_errors(form.Lastname) }}
+        </div>
+    </div>
+    {{ form_widget(form.Lastname) }}
+</div>
+<div class="text-center">
+    <div>
+        {{ form_label(form.Birthday) }}
+        <div class="text-danger">
+            {{ form_errors(form.Birthday) }}
+        </div>
+    </div>
+    {{ form_widget(form.Birthday) }}
+</div>
+<div class="text-center">
+    <div>
+        {{ form_label(form.level) }}
+        <div class="text-danger">
+            {{ form_errors(form.level) }}
+        </div>
+    </div>
+    {{ form_widget(form.level) }}
+</div>
     {{ form_widget(form) }}
-    <button class="button button-secondary">{{ button_label|default('Enregistrer') }}</button>
+    <button class="button button-primary">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

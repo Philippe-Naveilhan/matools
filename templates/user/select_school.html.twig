@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sélection de mon école{% endblock %}
+
+{% block body %}
+    <h1>Sélectionnez votre école</h1>
+
+    <section id="school">
+        <div class="w-100 m-0 d-flex flex-wrap justify-content-around">
+            {% for school in schools %}
+                <a href="{{ path('select_school_save', {'id': school.id}) }}">
+                    <div class="m-2 pastille text-center">
+                        {{ school.name }}
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </section>
+
+    <a class="button button-dyna" href="{{ path('user_show') }}">Retour</a>
+{% endblock %}
