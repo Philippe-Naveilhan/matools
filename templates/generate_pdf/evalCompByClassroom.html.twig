@@ -102,9 +102,9 @@
             </tr>
         </thead>
         <tbody>
-        {% for evalstudent in evaluation.evalstudents %}
+        {% for student in students|sort((a,b) => a.firstname <=> b.firstname) %}
             <tr {% if loop.index is odd %}class="bg-color"{% endif %}>
-                <td class="firstname">{{ evalstudent.student.firstname ~ ' ' ~ evalstudent.student.lastname }}</td>
+                <td class="firstname">{{ student.firstname ~ ' ' ~ student.lastname }}</td>
                 {% for i in 1..10 %}
                 <td></td>
                 {% endfor %}

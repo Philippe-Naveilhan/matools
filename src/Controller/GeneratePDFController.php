@@ -60,6 +60,12 @@ class GeneratePDFController extends AbstractController
     {
         //gestion des données
         $themes = $evalthemeRepository->findAll();
+        $students = [];
+        foreach($evaluation->getClassroom()->getStudents() as $student){
+            if($evaluation->getLevel()->getId() == $student->getLevel()->getId()){
+                $students[]=$student;
+            }
+        }
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Arial');
@@ -72,9 +78,9 @@ class GeneratePDFController extends AbstractController
 
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('generate_pdf/evalViergeByClassroom.html.twig', [
+            'students' =>$students,
             'themes' => $themes,
             'evaluation' => $evaluation,
-            'controller_name' => "Feuille d'évaluation vierge"
         ]);
 
         // Load HTML to Dompdf
@@ -104,6 +110,12 @@ class GeneratePDFController extends AbstractController
             $competences[$value->getBloc()->getCategory()->getTheme()->getId()][]=$value;
         }
         $themes = $evalthemeRepository->findAll();
+        $students = [];
+        foreach($evaluation->getClassroom()->getStudents() as $student){
+            if($evaluation->getLevel()->getId() == $student->getLevel()->getId()){
+                $students[]=$student;
+            }
+        }
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();
         $pdfOptions->set('defaultFont', 'Arial');
@@ -119,7 +131,7 @@ class GeneratePDFController extends AbstractController
             'themes' => $themes,
             'competencesByTheme' => $competences,
             'evaluation' => $evaluation,
-            'controller_name' => "Feuille d'évaluation complète"
+            'students' => $students,
         ]);
 
         // Load HTML to Dompdf

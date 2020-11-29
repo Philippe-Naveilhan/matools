@@ -3,10 +3,10 @@
 {% block title %}Modifier l'évaluation{% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Modifier l'évaluation</h1>
+    <h1 class="text-center my-5">Modifier le nom de l'évaluation</h1>
 
-    {{ include('evaluation/_form_edit.html.twig', {'button_label': 'Update'}) }}
+    {{ include('evaluation/_form_edit.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a class="button button-primary" href="{{ path('evaluation_index', {'id': classroom.id}) }}">Retour</a>
+    <a class="button button-dyna" href="{{ path('evaluation_index', {'id': classroom.id}) }}">Retour</a>
 
 {% endblock %}
