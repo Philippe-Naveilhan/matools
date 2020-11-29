@@ -17,10 +17,8 @@ class BoardController extends AbstractController
         $user =$this->getUser();
         if($user->getFirstname() && $user->getLastname() && $user->getSchool()) {
             $classrooms = $user->getClassrooms();
-            $evaluations = $user->getEvaluations();
             return $this->render('board/index.html.twig', [
                 'classrooms' => $classrooms,
-                'evaluations' => $evaluations,
             ]);
         } else {
             return $this->render('user/show.html.twig', [
