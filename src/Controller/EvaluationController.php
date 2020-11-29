@@ -148,5 +148,13 @@ class EvaluationController extends AbstractController
         ]);
     }
 
-
+    /**
+     * @Route("/appreciation/{id}", name="evaluation_appreciation", methods={"GET"})
+     */
+    public function appreciation(Evaluation $evaluation): Response
+    {
+        return $this->render('evaluation/comments.html.twig', [
+            'evaluation' => $evaluation,
+        ]);
+    }
 }

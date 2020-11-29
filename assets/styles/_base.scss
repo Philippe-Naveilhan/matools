@@ -160,3 +160,8 @@ $red-dark: #731018;
     left: -5px*$i;
   }
 }
+@for $i from 1 through 5 {
+  .w-#{$i}00 {
+    width: 100px*$i;
+  }
+}
