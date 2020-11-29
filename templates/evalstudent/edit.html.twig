@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Appréciation{% endblock %}
+
+{% block body %}
+    <h1 class="my-5 text-center">Appréciation de {{ evalstudent.student.firstname ~ ' ' ~ evalstudent.student.lastname }}</h1>
+<div class="text-center">
+    {{ include('evalstudent/_form.html.twig', {'button_label': 'Valider'}) }}
+</div>
+    <a class="button button-dyna" href="{{ path('evaluation_appreciation', {'id': evalstudent.evaluation.id}) }}">Retour</a>
+{% endblock %}

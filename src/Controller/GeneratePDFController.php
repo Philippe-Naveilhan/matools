@@ -209,6 +209,7 @@ class GeneratePDFController extends AbstractController
         foreach($evaluation->getEvalstudents() as $evalstudent){
             foreach($evalstudent->getCompetencestudents() as $competenceStudent){
                 $evaluations[$evalstudent->getStudent()->getId()]['student']=$evalstudent->getStudent();
+                $evaluations[$evalstudent->getStudent()->getId()]['evalstudent']=$evalstudent;
                 $evaluations[$evalstudent->getStudent()->getId()]['competences'][$competenceStudent->getEvalcompetence()->getBloc()->getCategory()->getTheme()->getName()][$competenceStudent->getEvalcompetence()->getBloc()->getCategory()->getName()][$competenceStudent->getEvalcompetence()->getBloc()->getName()][$competenceStudent->getEvalcompetence()->getName()]=$competenceStudent;
             }
         }
