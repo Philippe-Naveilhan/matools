@@ -69,12 +69,7 @@ class User implements UserInterface
      */
     private $classrooms;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Evaluation::class, mappedBy="teacher")
-     */
-    private $evaluations;
-
-    /**
+      /**
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
@@ -230,36 +225,6 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($classroom->getTeacher() === $this) {
                 $classroom->setTeacher(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Evaluation[]
-     */
-    public function getEvaluations(): Collection
-    {
-        return $this->evaluations;
-    }
-
-    public function addEvaluation(Evaluation $evaluation): self
-    {
-        if (!$this->evaluations->contains($evaluation)) {
-            $this->evaluations[] = $evaluation;
-            $evaluation->setTeacher($this);
-        }
-
-        return $this;
-    }
-
-    public function removeEvaluation(Evaluation $evaluation): self
-    {
-        if ($this->evaluations->removeElement($evaluation)) {
-            // set the owning side to null (unless already changed)
-            if ($evaluation->getTeacher() === $this) {
-                $evaluation->setTeacher(null);
             }
         }
 

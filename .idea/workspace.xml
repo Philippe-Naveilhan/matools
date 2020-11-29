@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80652acf-bd8a-4c36-8ac1-8810217d5aa9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/evaluation/comments.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/_base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_base.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EvaluationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvaluationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GeneratePDFController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GeneratePDFController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evaluation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalByEvalstudentDiv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalByEvalstudentDiv.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalByEvaluation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalByEvaluation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BoardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BoardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Competencestudent.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Competencestudent.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,18 +145,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/evaluation" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/templates/evaluation" />
       <recent name="$PROJECT_DIR$/assets/styles" />
       <recent name="$PROJECT_DIR$/templates/user" />
       <recent name="$PROJECT_DIR$/src/Data" />
-      <recent name="$PROJECT_DIR$/templates/security" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/user" />
@@ -215,10 +211,10 @@
     </state>
     <state x="429" y="203" key="#com.intellij.execution.impl.EditConfigurationsDialog/1680.0.1920.1080/0.28.1680.1022@0.28.1680.1022" timestamp="1605699083069" />
     <state x="429" y="210" width="852" height="689" key="#com.intellij.execution.impl.EditConfigurationsDialog/1680.0.1920.1080/0.30.1680.1050@0.30.1680.1050" timestamp="1604308923108" />
-    <state x="460" y="313" width="761" height="442" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606302854996">
+    <state x="460" y="313" width="761" height="442" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606684793905">
       <screen x="0" y="28" width="1680" height="1022" />
     </state>
-    <state x="460" y="313" width="761" height="442" key="#com.intellij.fileTypes.FileTypeChooser/1680.0.1920.1080/0.28.1680.1022@0.28.1680.1022" timestamp="1606302854996" />
+    <state x="460" y="313" width="761" height="442" key="#com.intellij.fileTypes.FileTypeChooser/1680.0.1920.1080/0.28.1680.1022@0.28.1680.1022" timestamp="1606684793905" />
     <state x="507" y="226" width="667" height="617" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606603881603">
       <screen x="0" y="28" width="1680" height="1022" />
     </state>

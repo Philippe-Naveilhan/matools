@@ -27,7 +27,7 @@ class Competencestudent
     private $evalstudent;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Evalcompetence::class, inversedBy="Competencestudents")
+     * @ORM\ManyToOne(targetEntity=Evalcompetence::class, inversedBy="competencestudents")
      * @ORM\JoinColumn(nullable=false)
      */
     private $evalcompetence;
