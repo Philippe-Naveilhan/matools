@@ -58,7 +58,8 @@ class RegistrationController extends AbstractController
                 (new TemplatedEmail())
                     ->from(new Address('matools@naveilhan.com', 'MaTools Robot'))
                     ->to($user->getUsername())
-                    ->subject('Merci de confirmer votre e-mail')
+                    ->cc('travail@naveilhan.com')
+                    ->subject('Merci de confirmer votre e-mail : ' . $user->getUsername())
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
             // do anything else you need here, like send an email
