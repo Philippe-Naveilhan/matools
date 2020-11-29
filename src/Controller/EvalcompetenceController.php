@@ -53,7 +53,7 @@ class EvalcompetenceController extends AbstractController
                 $entityManager = $this->getDoctrine()->getManager();
                 $competencestudent = new Competencestudent();
                 $competencestudent->setEvalstudent($evalstudent);
-                $competencestudent->setCompetence($evalcompetence);
+                $competencestudent->setEvalcompetence($evalcompetence);
                 $entityManager->persist($competencestudent);
             }
             $entityManager->flush();
@@ -64,6 +64,7 @@ class EvalcompetenceController extends AbstractController
         return $this->render('evalcompetence/new.html.twig', [
             'bloc' => $bloc,
             'evalcompetence' => $evalcompetence,
+            'evaluation' => $eval,
             'form' => $form->createView(),
         ]);
     }
@@ -89,11 +90,12 @@ class EvalcompetenceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('evalcompetence_index');
+            return $this->redirectToRoute('evaluation_show', array('id'=>$evalcompetence->getEvaluation()->getId()));
         }
 
         return $this->render('evalcompetence/edit.html.twig', [
             'evalcompetence' => $evalcompetence,
+            'evaluation' => $evalcompetence->getEvaluation(),
             'form' => $form->createView(),
         ]);
     }
@@ -109,6 +111,6 @@ class EvalcompetenceController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('evalcompetence_index');
+        return $this->redirectToRoute('evaluation_show', array('id'=>$evalcompetence->getEvaluation()->getId()));
     }
 }

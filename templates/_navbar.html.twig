@@ -2,7 +2,7 @@
     <div class="col-6 offset-2 px-0 name-site text-center text-primary-light"><a class="font-title" href="{{ path('board') }}">Mat'Tools</a></div>
         {% if app.user %}
             {% if is_granted('ROLE_ADMIN') %}
-            <div class="col-2"><a href="{{ path('graphic') }}">Admin</a></div>
+            <div class="col-2"><a href="{{ path('admin_index') }}">Admin</a></div>
                 {% endif %}
         <div class="col-2 text-right pt-2 pr-4">
                 <a class="text-light" href="{{ path('user_show') }}">

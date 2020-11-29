@@ -68,7 +68,7 @@ class StudentController extends AbstractController
                         $competencestudent = new Competencestudent();
                         $entityManager = $this->getDoctrine()->getManager();
                         $competencestudent->setEvalstudent($evalstudent);
-                        $competencestudent->setCompetence($competence);
+                        $competencestudent->setEvalcompetence($competence);
                         $entityManager->persist($competencestudent);
                         $entityManager->flush();
                     }

@@ -15,11 +15,19 @@ class BoardController extends AbstractController
     public function index(): Response
     {
         $user =$this->getUser();
-        $classrooms = $user->getClassrooms();
-        $evaluations = $user->getEvaluations();
-        return $this->render('board/index.html.twig', [
-            'classrooms' => $classrooms,
-            'evaluations' => $evaluations,
-        ]);
+        if($user->getFirstname() && $user->getLastname() && $user->getSchool()) {
+            $classrooms = $user->getClassrooms();
+            $evaluations = $user->getEvaluations();
+            return $this->render('board/index.html.twig', [
+                'classrooms' => $classrooms,
+                'evaluations' => $evaluations,
+            ]);
+        } else {
+            return $this->render('user/show.html.twig', [
+                'message' => 'merci de compléter votre profil',
+                ]);
+        }
+
     }
 }
+

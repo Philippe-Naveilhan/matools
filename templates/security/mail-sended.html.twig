@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mail envoyé{% endblock %}
+
+{% block body %}
+<div class="text-center col-4 mx-auto">
+
+    <h1 class="h3 my-5 font-weight-normal">Mail envoyé</h1>
+
+    <div class="m-5">
+        Un mail vient de vous être envoyé avec un lien de confirmation afin de poursuivre votre inscripion.<br>
+        Merci de votre confiance.
+    </div>
+
+    <div class="text-center">
+        <a href="{{ path('board') }}" class="button button-dyna">Accueil</a>
+    </div>
+
+</div>
+{% endblock %}

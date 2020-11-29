@@ -104,7 +104,7 @@ class CompetencestudentController extends AbstractController
                                      CompetencestudentRepository $competencestudentRepository
     ): Response
     {
-        $listCompetenceByStudent = $competencestudentRepository->findBy(['competence'=>$evalcompetence]);
+        $listCompetenceByStudent = $competencestudentRepository->findBy(['evalcompetence'=>$evalcompetence]);
         $competenceByStudent=[];
         foreach($listCompetenceByStudent as $comp){
             $competenceByStudent[$comp->getEvalstudent()->getStudent()->getFirstname()]=$comp;
@@ -115,7 +115,7 @@ class CompetencestudentController extends AbstractController
         if(isset($_POST['evaluation'])){
             foreach($_POST['evaluation'] as $key=>$value)
             {
-                $competencestudent = $competencestudentRepository->findOneBy(['evalstudent'=>$key, 'competence'=>$evalcompetence->getId()]);
+                $competencestudent = $competencestudentRepository->findOneBy(['evalstudent'=>$key, 'evalcompetence'=>$evalcompetence->getId()]);
                 if($competencestudent == true){
                     $entityManager = $this->getDoctrine()->getManager();
                     if(isset($value['note'])) {

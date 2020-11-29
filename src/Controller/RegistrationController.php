@@ -35,7 +35,7 @@ class RegistrationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $username = $_POST['registration_form']['username'];
             $domain = explode('@', $username);
-            if($domain[1] != 'naveilhan.com'){
+            if(!in_array($domain[1], ['naveilhan.com', 'ac-orleans-tours.fr'])){
                 $this->addFlash('danger', 'Votre adresse email doit être votre adresse professionelle !');
                 $this->addFlash('danger', 'Par exemple : prenom.nom@ac-orleans-tours.fr .');
                 $this->addFlash('danger', $username . ' n\'est pas valide !');
@@ -63,7 +63,7 @@ class RegistrationController extends AbstractController
             );
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_login_mail_sended');
         }
 
         return $this->render('registration/register.html.twig', [
