@@ -7,6 +7,7 @@ use App\Entity\Student;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,10 +22,16 @@ class StudentType extends AbstractType
             ->add('Lastname', null, [
                 'label'=>'Nom'
             ])
-            ->add('Birthday', null, [
-                'label'=>'Date de naissance'
+            ->add('Birthday', DateType::class, [
+                'label' => 'Date de naissance (jj/mm/aaaa)',
+                'placeholder' => 'jj/mm/aaaa',
+                'widget' => 'single_text',
+                'format' => 'dd/MM/yyyy',
+                'html5' => false,
+                'attr' => ['class' => 'js-datepicker'],
             ])
             ->add('level', EntityType::class, [
+                'label' => 'Niveau',
                 'class' => Level::class,
                 'choice_label' => 'name',
                 'multiple' => false,

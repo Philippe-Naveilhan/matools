@@ -2,33 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80652acf-bd8a-4c36-8ac1-8810217d5aa9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c70c8e64-1b44-434a-a5cf-1d5f1ae1ffaa.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c70c8e64-1b44-434a-a5cf-1d5f1ae1ffaa.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/styles/_user.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/select_academy.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/select_circo.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/select_district.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/user/select_school.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201102091956.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201102220327.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201102231715.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201103143257.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201103150305.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201103151620.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201107092653.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201107095431.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201107100306.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201116200301.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201116201028.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201116204335.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201116204653.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201117082026.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201117090502.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201117090640.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/migrations/Version20201124145957.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EvalcompetenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvalcompetenceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GeneratePDFController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GeneratePDFController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/StudentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Competencestudent.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Competencestudent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Evalcompetence.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evalcompetence.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evalcompetence/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalcompetence/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evalcompetence/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalcompetence/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BoardController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BoardController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,21 +152,22 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/security" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/styles" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/user" />
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/styles" />
+      <recent name="$PROJECT_DIR$/templates/user" />
+      <recent name="$PROJECT_DIR$/src/Data" />
       <recent name="$PROJECT_DIR$/templates/security" />
       <recent name="$PROJECT_DIR$/templates/admin" />
-      <recent name="$PROJECT_DIR$/src/Controller" />
-      <recent name="$PROJECT_DIR$/public/bdd" />
-      <recent name="$PROJECT_DIR$/templates/evaluation" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -218,7 +203,8 @@
       <workItem from="1606204137024" duration="15127000" />
       <workItem from="1606298605054" duration="2620000" />
       <workItem from="1606378642972" duration="8509000" />
-      <workItem from="1606396744556" duration="22964000" />
+      <workItem from="1606396744556" duration="25206000" />
+      <workItem from="1606550120643" duration="10094000" />
     </task>
     <servers />
   </component>
