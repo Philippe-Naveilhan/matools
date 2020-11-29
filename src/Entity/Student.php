@@ -50,7 +50,8 @@ class Student
     private $level;
 
     /**
-     * @ORM\OneToMany(targetEntity=Evalstudent::class, mappedBy="student", orphanRemoval=true)
+     * @ORM\OneToMany(
+     *     targetEntity=Evalstudent::class, mappedBy="student", orphanRemoval=true)
      */
     private $evalstudents;
 
