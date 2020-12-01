@@ -6,15 +6,10 @@
     <h1 class="text-center my-5">Sélectionnez votre académie</h1>
 
     <section id="academy">
-    <div class="w-100 m-0 d-flex flex-wrap justify-content-around">
-        {% for academy in academies %}
-        <a href="{{ path('select_district', {'id': academy.id}) }}">
-            <div class="m-2 pastille text-center">
-                {{ academy.name }}
-            </div>
-        </a>
-        {% endfor %}
-    </div>
+        <div class="text-center">
+            {% include('svg/_academy.html.twig') %}
+        </div>
     </section>
+
     <a class="button button-dyna" href="{{ path('user_show') }}">Retour</a>
 {% endblock %}
