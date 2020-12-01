@@ -9,7 +9,7 @@
             {{ include('student/_form.html.twig', {'button_label': 'Modifier'}) }}
         </div>
 
-    <a class="button button-dyna" href="{{ path('student_index', {'id': student.classroom.id}) }}">Retour</a>
+    <a class="button button-dyna" href="{{ path('student_show', {'id': student.id}) }}">Retour</a>
 
 
 {% endblock %}

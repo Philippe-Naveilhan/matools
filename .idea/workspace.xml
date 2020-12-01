@@ -3,6 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="80652acf-bd8a-4c36-8ac1-8810217d5aa9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/_board.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_board.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/StudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/StudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/StudentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/StudentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/student/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/student/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/student/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,6 +203,7 @@
       <workItem from="1606396744556" duration="25206000" />
       <workItem from="1606550120643" duration="18989000" />
       <workItem from="1606643747449" duration="9725000" />
+      <workItem from="1606809604092" duration="3256000" />
     </task>
     <servers />
   </component>
