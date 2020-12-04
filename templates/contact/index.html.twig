@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact Mat'Tools!{% endblock %}
+
+{% block body %}
+
+<div class="text-center">
+<h1 class="my-5">Envoyer un message</h1>
+
+    {{ form_start(form) }}
+
+    <div class="col-8 offset-2 text-primary-dark text-center">
+        <div class="h5">
+            {{ form_label(form.username, 'Adresse mail') }}
+            <div class="text-danger">
+                {{ form_errors(form.username) }}
+            </div>
+        </div>
+        {{ form_widget(form.username) }}
+    </div>
+
+    <div class="col-8 offset-2 text-primary-dark text-center">
+        <div class="h5">
+            {{ form_label(form.message, 'Message') }}
+            <div class="text-danger">
+                {{ form_errors(form.message) }}
+            </div>
+        </div>
+        {{ form_widget(form.message) }}
+    </div>
+
+    {{ form_widget(form) }}
+    <button class="button button-primary">{{ button_label|default('Envoyer') }}</button>
+    {{ form_end(form) }}
+
+</div>
+{% endblock %}

@@ -24,15 +24,8 @@
                 </div>
                 <div class="text-center h2 text-primary">
                     <a href="{{ path('student_show', {'id':student.id}) }}">
-                    {{ student.firstname ~ ' ' ~ student.lastname|upper }}
+                    {{ student.firstname|capitelizeComposed ~ ' ' ~ student.lastname|upper }}
                     </a>
-                </div>
-                <div class="my-3">
-                    {% for eval in student.evalstudents %}
-                    <div class="button button-primary">
-                        <a class="" href="{{ path('eval_by_studenteval', {'id': eval.id}) }}" target="_blank">{{ eval.evaluation.name }}</a>
-                    </div>
-                    {% endfor %}
                 </div>
             </div>
         {% endfor %}

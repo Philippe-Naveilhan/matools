@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="80652acf-bd8a-4c36-8ac1-8810217d5aa9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/images/academies.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/academies.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/styles/_map.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/svg/_academy.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/svg/academies.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/ContactType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/contact/mail.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/select_academy.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/select_academy.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ContactController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ContactController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Contact.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_navbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/contact/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,24 +168,28 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="database.data.extractors.current.export.id" value="SQL Inserts" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/styles" />
+    <property name="javascript.nodejs.core.library.configured.version" value="10.15.2" />
+    <property name="javascript.nodejs.core.library.typings.version" value="10.17.48" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/contact" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="settings.nodejs" />
+    <property name="settings.editor.splitter.proportion" value="0.1589233" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/templates/user" />
-      <recent name="$PROJECT_DIR$/public" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/contact" />
+      <recent name="$PROJECT_DIR$/src/Form" />
       <recent name="$PROJECT_DIR$/assets/styles" />
       <recent name="$PROJECT_DIR$/templates/svg" />
       <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/templates/evaluation" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/user" />
+      <recent name="$PROJECT_DIR$/public" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -207,12 +228,28 @@
       <workItem from="1606396744556" duration="25206000" />
       <workItem from="1606550120643" duration="18989000" />
       <workItem from="1606643747449" duration="9725000" />
-      <workItem from="1606809604092" duration="13888000" />
+      <workItem from="1606809604092" duration="14659000" />
+      <workItem from="1606852726511" duration="4680000" />
+      <workItem from="1606899649382" duration="4018000" />
+      <workItem from="1606985854363" duration="3953000" />
+      <workItem from="1607068886379" duration="4417000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
@@ -235,9 +272,10 @@
       <screen x="0" y="28" width="1680" height="1022" />
     </state>
     <state x="445" y="226" width="792" height="617" key="DUMP_DIALOG_DIMENSION_KEY/1680.0.1920.1080/0.28.1680.1022@0.28.1680.1022" timestamp="1606207778313" />
-    <state x="570" y="226" width="542" height="617" key="FileChooserDialogImpl" timestamp="1606210588676">
-      <screen x="0" y="28" width="1680" height="1022" />
+    <state x="651" y="232" width="542" height="617" key="FileChooserDialogImpl" timestamp="1606860692598">
+      <screen x="0" y="28" width="1920" height="1052" />
     </state>
+    <state x="651" y="232" key="FileChooserDialogImpl/0.28.1920.1052@0.28.1920.1052" timestamp="1606860692598" />
     <state x="570" y="226" width="542" height="617" key="FileChooserDialogImpl/1680.0.1920.1080/0.28.1680.1022@0.28.1680.1022" timestamp="1606210588676" />
     <state width="1868" height="262" key="GridCell.Tab.0.bottom" timestamp="1604339338165">
       <screen x="1680" y="0" width="1920" height="1080" />
@@ -259,9 +297,10 @@
       <screen x="0" y="28" width="1680" height="1022" />
     </state>
     <state x="320" y="211" width="1042" height="647" key="IDE.errors.dialog/1680.0.1920.1080/0.28.1680.1022@0.28.1680.1022" timestamp="1605173157485" />
-    <state x="204" y="102" width="1271" height="924" key="SettingsEditor" timestamp="1604340615048">
-      <screen x="0" y="30" width="1680" height="1050" />
+    <state x="171" y="47" width="1137" height="926" key="SettingsEditor" timestamp="1606904131442">
+      <screen x="0" y="28" width="3600" height="1052" />
     </state>
+    <state x="171" y="47" width="1137" height="926" key="SettingsEditor/0.28.3600.1052@0.28.3600.1052" timestamp="1606904131442" />
     <state x="204" y="102" width="1271" height="924" key="SettingsEditor/1680.0.1920.1080/0.30.1680.1050@0.30.1680.1050" timestamp="1604340615048" />
     <state x="718" y="379" width="245" height="311" key="com.intellij.database.actions.DdlActions$CreateObject$1" timestamp="1605557011045">
       <screen x="0" y="28" width="1680" height="1022" />
