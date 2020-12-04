@@ -20,13 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="80652acf-bd8a-4c36-8ac1-8810217d5aa9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Form/ContactType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/contact/mail.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ContactController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ContactController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Contact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_navbar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contact/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/comments.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/comments.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/select_circo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/select_circo.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +228,7 @@
       <workItem from="1606852726511" duration="4680000" />
       <workItem from="1606899649382" duration="4018000" />
       <workItem from="1606985854363" duration="3953000" />
-      <workItem from="1607068886379" duration="4417000" />
+      <workItem from="1607068886379" duration="7069000" />
     </task>
     <servers />
   </component>
