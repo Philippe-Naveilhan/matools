@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact Mat'Tools!{% endblock %}
+
+{% block body %}
+
+<div class="text-center">
+<h1 class="my-5">Envoyer un message</h1>
+
+    <form action="#" method="post">
+        <div>
+        <label for="name">Votre nom ou mail</label><br>
+        <input type="text" name="name" {% if app.user %} value="{{ app.user.username }}"{% endif %}>
+        </div>
+        <div>
+        <label for="message">Votre message</label><br>
+            <textarea type="text" name="message" rows="5" placeholder="Incident, remarques, suggestions... Dites-le nous"></textarea>
+        </div>
+        <button class="button button-primary">Vite, vite petit facteur !</button>
+    </form>
+</div>
+{% endblock %}
