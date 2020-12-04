@@ -75,6 +75,7 @@ class StudentController extends AbstractController
                 }
             }
 
+            $this->addFlash('success', 'La fiche de l\'élève a été créée avec succès.');
             return $this->redirectToRoute('student_by_classroom', array('id'=>$classroom->getId()));
         }
 
@@ -107,6 +108,7 @@ class StudentController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'La fiche de l\'élève a été modifiée avec succès.');
             return $this->render('student/index.html.twig', [
                 'classroom' => $student->getClassroom(),
             ]);
@@ -129,6 +131,7 @@ class StudentController extends AbstractController
             $entityManager->flush();
         }
 
+        $this->addFlash('success', 'La fiche de l\'élève a été supprimée avec succès.');
         return $this->redirectToRoute('student_by_classroom', array('id'=>$student->getClassroom()->getId()));
     }
 }

@@ -10,21 +10,21 @@ class Contact
      * @Assert\Length(max=100, maxMessage="Votre nom/identifiant doit être inférieur à {{ limit }} caractères")
      * @Assert\NotBlank(message="Merci de saisir votre prénom")
      */
-    private $name;
+    private $username;
 
     /**
      * @Assert\NotBlank(message="Merci de saisir votre message")
      */
     private $message;
 
-    public function getName(): ?string
+    public function getUsername(): ?string
     {
-        return $this->name;
+        return $this->username;
     }
 
-    public function setName(string $name): self
+    public function setUsername(string $username): self
     {
-        $this->name = $name;
+        $this->username = $username;
 
         return $this;
     }
