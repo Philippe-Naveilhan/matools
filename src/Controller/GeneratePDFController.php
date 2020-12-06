@@ -61,10 +61,8 @@ class GeneratePDFController extends AbstractController
         //gestion des données
         $themes = $evalthemeRepository->findAll();
         $students = [];
-        foreach($evaluation->getClassroom()->getStudents() as $student){
-            if($evaluation->getLevel()->getId() == $student->getLevel()->getId()){
-                $students[]=$student;
-            }
+        foreach($evaluation->getEvalstudents() as $evalstudent){
+                $students[]=$evalstudent->getStudent();
         }
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();
