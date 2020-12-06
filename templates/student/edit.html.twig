@@ -3,13 +3,13 @@
 {% block title %}Modifier la fiche d'un élève{% endblock %}
 
 {% block body %}
-    <h1 class="text-center">Modifier la fiche d'un élève</h1>
+    <h1 class="my-5 text-center">Modifier la fiche d'un élève</h1>
 
         <div class="text-center">
             {{ include('student/_form.html.twig', {'button_label': 'Modifier'}) }}
         </div>
 
-    <a class="button button-dyna" href="{{ path('student_index', {'id': student.classroom.id}) }}">Retour</a>
+    <a class="button button-dyna" href="{{ path('student_show', {'id': student.id}) }}">Retour</a>
 
 
 {% endblock %}

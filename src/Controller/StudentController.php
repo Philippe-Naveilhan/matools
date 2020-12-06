@@ -75,6 +75,7 @@ class StudentController extends AbstractController
                 }
             }
 
+            $this->addFlash('success', 'La fiche de l\'élève a été créée avec succès.');
             return $this->redirectToRoute('student_by_classroom', array('id'=>$classroom->getId()));
         }
 
@@ -86,7 +87,7 @@ class StudentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="student_show", methods={"GET"})
+     * @Route("/show/{id}", name="student_show", methods={"GET"})
      */
     public function show(Student $student): Response
     {
@@ -104,9 +105,13 @@ class StudentController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('student_index');
+            $this->addFlash('success', 'La fiche de l\'élève a été modifiée avec succès.');
+            return $this->render('student/index.html.twig', [
+                'classroom' => $student->getClassroom(),
+            ]);
         }
 
         return $this->render('student/edit.html.twig', [
@@ -126,6 +131,7 @@ class StudentController extends AbstractController
             $entityManager->flush();
         }
 
+        $this->addFlash('success', 'La fiche de l\'élève a été supprimée avec succès.');
         return $this->redirectToRoute('student_by_classroom', array('id'=>$student->getClassroom()->getId()));
     }
 }

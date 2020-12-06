@@ -17,9 +17,9 @@
                 <td class="col-8 text-center py-2">Appréciation</td>
                 <td class="col-1 text-center py-2"></td>
             </tr>
-            {% for evalstudent in evaluation.evalstudents %}
+            {% for evalstudent in evaluation.evalstudents|sort((a,b) => a.student.firstname <=> b.student.firstname) %}
             <tr class="{% if loop.index is odd %}bg-primary-light text-primary-dark{% endif %}">
-                <td class="col-4">{{ evalstudent.student.firstname ~ ' ' ~ evalstudent.student.lastname }}</td>
+                <td class="col-4">{{ evalstudent.student.firstname|capitelizeComposed ~ ' ' ~ evalstudent.student.lastname|upper }}</td>
                 <td class="col-8">{{ evalstudent.comment ?? 'Non saisi' }}</td>
                 <td class="col-1">
                     <a href="{{ path('evalstudent_edit', {'id':evalstudent.id}) }}">

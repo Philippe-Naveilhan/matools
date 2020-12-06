@@ -13,7 +13,6 @@
         </div>
     </div>
     {% for student in classroom.students %}
-        <a href="">
             <div class="position-relative mx-3 p-4 border-primary pt-4 bg-dyna-light student">
                 <div class="delete position-absolute">
                     {{ include('student/_delete_form.html.twig') }}
@@ -24,18 +23,11 @@
                     </svg><span class="font-title level">{{ student.level.name|upper }}</span>
                 </div>
                 <div class="text-center h2 text-primary">
-                    {{ student.firstname ~ ' ' ~ student.lastname|upper }}
-{#                    <a href="{{ path('student_edit', {'id':student.id}) }}" class="h5">#}
-{#                        <span class="text-primary">(modifier)</span>#}
-{#                    </a>#}
-                </div>
-                <div class="my-3">
-                    {% for eval in student.evalstudents %}
-                    <a class="button button-primary" href="{{ path('eval_by_studenteval', {'id': eval.id}) }}" target="_blank">{{ eval.evaluation.name }}</a>
-                    {% endfor %}
+                    <a href="{{ path('student_show', {'id':student.id}) }}">
+                    {{ student.firstname|capitelizeComposed ~ ' ' ~ student.lastname|upper }}
+                    </a>
                 </div>
             </div>
-        </a>
         {% endfor %}
     <div class="position-relative mx-3 p-4 border-primary pt-4 bg-primary student">
         <div class="text-dyna text-center">
