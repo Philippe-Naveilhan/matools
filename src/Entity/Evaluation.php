@@ -39,6 +39,7 @@ class Evaluation
 
     /**
      * @ORM\OneToMany(targetEntity=Evalcompetence::class, mappedBy="evaluation", cascade={"persist", "remove"})
+     * @ORM\OrderBy ({"bloc" = "ASC", "placeorder" = "ASC"})
      */
     private $evalcompetences;
 

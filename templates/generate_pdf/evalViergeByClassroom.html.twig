@@ -66,11 +66,13 @@
 <div class="example-wrapper">
     <h3>{{ evaluation.name }} - {{ evaluation.level.name }}</h3>
 {% for theme in themes %}
+    {% for category in theme.evalcategories %}
     <table>
         <thead>
             <tr>
                 <td class="top-left">
-                        {{ theme.name }}
+                        {{ theme.name }}<br>
+                    {% if category.name != 'unique' %}({{ category.name }}){% endif %}
                 </td>
                 {% for i in 0..9 %}
                     <td class="rotate">
@@ -93,6 +95,7 @@
         {% endfor %}
         </tbody>
     </table>
+    {% endfor %}
 {% endfor %}
 </div>
 {% endblock %}
