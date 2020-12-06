@@ -105,7 +105,7 @@ class GeneratePDFController extends AbstractController
         //gestion des données
         $competences = [];
         foreach($evaluation->getEvalcompetences() as $value){
-            $competences[$value->getBloc()->getCategory()->getTheme()->getId()][]=$value;
+            $competences[$value->getBloc()->getCategory()->getTheme()->getName()][$value->getBloc()->getCategory()->getName()][]=$value;
         }
         $themes = $evalthemeRepository->findAll();
         $students = [];
