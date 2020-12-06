@@ -82,12 +82,29 @@ class EvaluationController extends AbstractController
                          EvalthemeRepository $evalthemeRepository): Response
     {
         $themes = $evalthemeRepository->findAll();
-        $competences = $evalcompetenceRepository->findBy(['evaluation'=>$evaluation]);
+        $competences = $evalcompetenceRepository->findBy(['evaluation'=>$evaluation], ['placeorder'=>'ASC']);
+        $arbotheme = [];
+        foreach ($themes as $theme) {
+            $arbotheme[$theme->getName()]=[];
+            foreach ($theme->getEvalcategories() as $category){
+                $arbotheme[$theme->getName()][$category->getName()]=[];
+                foreach ($category->getEvalblocs() as $bloc){
+                    $arbotheme[$theme->getName()][$category->getName()][$bloc->getName()]['id']=$bloc->getId();
+                    $arbotheme[$theme->getName()][$category->getName()][$bloc->getName()]['competences']=[];
+                }
+            }
+        }
+        foreach ($competences as $competence){
+            $arbotheme[
+                $competence->getBloc()->getCategory()->getTheme()->getName()][
+                    $competence->getBloc()->getCategory()->getName()][
+                        $competence->getBloc()->getName()]['competences'][] = $competence;
+        }
 
         return $this->render('evaluation/show.html.twig', [
             'evaluation' => $evaluation,
             'competences' => $competences,
-            'themes' => $themes,
+            'themes' => $arbotheme,
         ]);
     }
 
@@ -146,6 +163,29 @@ class EvaluationController extends AbstractController
             'competences' => $competences,
             'themes' => $themes,
         ]);
+    }
+
+    /**
+     * @Route("/updown/{id}/{direction}", name="evaluation_updown", methods={"GET"})
+     */
+    public function updown(Evalcompetence $evalcompetence,
+                           $direction,
+                           EvalcompetenceRepository $evalcompetenceRepository): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        if($direction == 'up'){
+            $otherCompetence = $evalcompetenceRepository->findOneBy(['bloc'=>$evalcompetence->getBloc(), 'placeorder'=>($evalcompetence->getPlaceorder()+1)]);
+            $evalcompetence->setPlaceorder($evalcompetence->getPlaceorder()+1);
+            $otherCompetence->setPlaceorder($otherCompetence->getPlaceorder()-1);
+        }
+        elseif ($direction == 'down') {
+            $otherCompetence = $evalcompetenceRepository->findOneBy(['bloc'=>$evalcompetence->getBloc(), 'placeorder'=>($evalcompetence->getPlaceorder()-1)]);
+            $evalcompetence->setPlaceorder($evalcompetence->getPlaceorder()-1);
+            $otherCompetence->setPlaceorder($otherCompetence->getPlaceorder()+1);
+        }
+        $entityManager->flush();
+
+        return $this->redirectToRoute('evaluation_show', array('id'=>$evalcompetence->getEvaluation()->getId()));
     }
 
     /**

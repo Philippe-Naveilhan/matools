@@ -43,6 +43,11 @@ class Evalcompetence
      */
     private $competencestudents;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $placeorder;
+
 
     public function __construct()
     {
@@ -116,6 +121,18 @@ class Evalcompetence
                 $competencestudent->setEvalcompetence(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPlaceorder(): ?int
+    {
+        return $this->placeorder;
+    }
+
+    public function setPlaceorder(?int $placeorder): self
+    {
+        $this->placeorder = $placeorder;
 
         return $this;
     }

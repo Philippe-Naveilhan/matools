@@ -17,6 +17,9 @@ class EvalcompetenceType extends AbstractType
                 'label' => ' ',
                 'attr' => ['rows'=>'3', 'class'=>'h-100px'],
             ])
+            ->add('placeorder', null, [
+                'label' => 'order',
+            ])
         ;
     }
 

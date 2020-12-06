@@ -13,45 +13,69 @@
         </label>
 
         <div id="evaluation_competence row">
-            {% for theme in themes %}
-                <div class="h2 text-light col-12 bg-primary-dark m-0">{{ theme.name }}</div>
-                {% for category in theme.evalcategories %}
+            {% for key,theme in themes %}
+                <div class="h2 text-light col-12 bg-primary-dark m-0">{{ key }}</div>
+                {% for key,category in theme %}
                     <div class="col-10 offset-1">
                         <div class="h3 text-dark bg-secondary-light">
-                        {{ category.name == 'unique' ? '' :  category.name }}
+                        {{ key == 'unique' ? '' :  key }}
                         </div>
-                        {% for bloc in category.evalblocs %}
+                        {% for key,bloc in category %}
                             <div class="row">
                                 <div class="h4 col-3">
-                                    <p>{{ bloc.name }}</p>
+                                    <p>{{ key }}</p>
                                 </div>
                                 <div class="col-8">
-                                    {% for competence in competences %}
-                                        {% if competence.bloc.id == bloc.id  %}
-                                    <div class="h4">
-                                        <a class="text-secondary-light" href="{{ path('evalcompetence_edit', {'id': competence.id}) }}" title="Modifier ou supprimer l'intitulé de la compétence">
+                                    {% set idbloc = bloc.id %}
+                                    {% set placeorder = 0 %}
+                                    {% for competence in bloc.competences %}
+                                        {% set placeorder = loop.length %}
+                                    <div class="h4 row mb-0 border-bottom border-primary">
+                                        <div class="col-1 d-flex align-items-center">
+                                        <a class="text-secondary-light mx-auto" href="{{ path('evalcompetence_edit', {'id': competence.id}) }}" title="Modifier ou supprimer l'intitulé de la compétence">
                                             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                                             </svg>
                                         </a>
-
-                                        <a class="text-dyna-light" href="{{ path('evalByCompetence_save', {'id': competence.id}) }}" title="Saisir les résultats de cet item">
-                                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
-                                        </svg>
-                                        </a>
-
-                                        {{ competence.name }}
-                                    </div>
-
+                                        </div>
+                                        <div class="row col-1">
+                                            <div class="col-5">
+                                        {% if competence.placeorder != 1 %}
+                                            <a class="" href="{{ path('evaluation_updown', {'id':competence.id, 'direction':'down'}) }}">
+                                                <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                                                </svg></a>
                                         {% endif %}
-                                    {% endfor %}
-                                    <p>
-                                        <a class="button button-primary" href="{{path('evalcompetence_new', {'bloc': bloc.id, 'eval': evaluation.id}) }}">
-                                            Ajouter une compétence
+                                            </div>
+                                            <div class="col-5">
+                                        {% if competence.placeorder != loop.length %}
+                                            <a class="" href="{{ path('evaluation_updown', {'id':competence.id, 'direction':'up'}) }}">
+                                                <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-arrow-down-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                                                </svg></a>
+                                        {% endif %}
+                                            </div>
+                                        </div>
+                                        <div class="pl-4 col-9 d-flex align-items-center">
+                                        {{ competence.name }}
+                                        </div>
+                                        <div class="col-1">
+                                        <a class="text-dyna-light" href="{{ path('evalByCompetence_save', {'id': competence.id}) }}" title="Saisir les résultats de cet item">
+                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z"/>
+                                            </svg>
                                         </a>
-                                    </p>
+                                        </div>
+                                    </div>
+                        {% endfor %}
+                                    <div class="col-10 offset-2 mt-3">
+                                        <p>
+                                            <a class="button button-primary" href="{{path('evalcompetence_new', {'bloc': idbloc, 'eval': evaluation.id, 'placeorder': placeorder + 1}) }}">
+                                                Ajouter une compétence
+                                            </a>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         {% endfor %}
