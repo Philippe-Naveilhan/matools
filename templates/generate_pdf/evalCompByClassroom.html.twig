@@ -65,21 +65,19 @@
 
 <div class="example-wrapper">
     <h3>{{ evaluation.name }} - {{ evaluation.level.name }}</h3>
-{% for key,theme in competencesByTheme %}
+{% for keytheme,theme in competencesByTheme %}
+    {% for keycategory,category in theme %}
   {% set  pages = ((theme|length - 1) // 10) %}
     {% for i in 0..pages %}
     <table>
         <thead>
             <tr>
                 <td class="top-left">
-                {% for themetitle in themes  %}
-                    {% if themetitle.id == key %}
-                        {{ themetitle.name }}
-                    {% endif %}
-                {% endfor %}
+                        {{ keytheme }}<br>
+                    {% if keycategory != 'unique' %}({{ keycategory }}){% endif %}
                 </td>
                 {% set col = 10 %}
-                {% for competence in theme[(10 * i):10] %}
+                {% for competence in category[(10 * i):10] %}
                     <td class="rotate">
                         <div class="container">
                             <div class="content">
@@ -114,5 +112,6 @@
     </table>
     {% endfor %}
 {% endfor %}
+    {% endfor %}
 </div>
 {% endblock %}

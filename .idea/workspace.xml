@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e7577e7-a47b-493d-a865-98969a256bad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/GeneratePDFController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GeneratePDFController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Evaluation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evaluation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalViergeByClassroom.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalViergeByClassroom.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalCompByClassroom.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalCompByClassroom.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
