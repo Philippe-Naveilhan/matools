@@ -30,11 +30,12 @@ class EvalcompetenceController extends AbstractController
     }
 
     /**
-     * @Route("/new/{bloc}/{eval}", name="evalcompetence_new", methods={"GET","POST"})
+     * @Route("/new/{bloc}/{eval}/{placeorder}", name="evalcompetence_new", methods={"GET","POST"})
      */
     public function new(Request $request,
                         Evalbloc $bloc,
                         Evaluation $eval,
+                        $placeorder,
                         EvalstudentRepository $evalstudentRepository
 ): Response
     {
@@ -45,6 +46,7 @@ class EvalcompetenceController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $evalcompetence->setBloc($bloc);
+            $evalcompetence->setPlaceorder($placeorder);
             $evalcompetence->setEvaluation($eval);
             $entityManager->persist($evalcompetence);
             $entityManager->flush();
