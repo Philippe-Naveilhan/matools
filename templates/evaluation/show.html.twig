@@ -23,11 +23,13 @@
                 </div>
                 {% for category in theme.evalcategories %}
                 <div class="category_container pb-4 m-1 mt-5 position-relative">
+                    {% if category.name != 'unique' %}
                     <div class="text-center">
                         <div class="category_title w-50 mx-auto d-flex justify-content-around align-items-center">
-                            <h3>{{ category.name == 'unique' ? '- | -' : category.name }}</h3>
+                            <h3>{{ category.name }}</h3>
                         </div>
                     </div>
+                    {% endif %}
                     <div class="row mx-0">
                         {% for bloc in category.evalblocs %}
                             <div class="row w-100 m-0 ml-3 align-items-center font-weight-bold">
