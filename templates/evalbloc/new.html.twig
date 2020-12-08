@@ -3,9 +3,11 @@
 {% block title %}New Evalbloc{% endblock %}
 
 {% block body %}
-    <h1>Create new Evalbloc</h1>
+    <h1 class="my-5 text-center">Créer un nouveau bloc de compétences</h1>
 
+    <div class="text-center">
     {{ include('evalbloc/_form.html.twig') }}
+    </div>
 
-    <a href="{{ path('evalbloc_index') }}">back to list</a>
+    <a class="button button-dyna" href="{{ path('evaluation_showarbo', {'id': evaluation.id}) }}">Retour</a>
 {% endblock %}

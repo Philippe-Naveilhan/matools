@@ -49,11 +49,17 @@ class Evaluation
      */
     private $level;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Evaltheme::class, mappedBy="evaluation", cascade={"persist", "remove"})
+     */
+    private $evalthemes;
+
     public function __construct()
     {
         $this->evalstudents = new ArrayCollection();
         $this->competence = new ArrayCollection();
         $this->evalcompetences = new ArrayCollection();
+        $this->evalthemes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -153,6 +159,36 @@ class Evaluation
     public function setLevel(?Level $level): self
     {
         $this->level = $level;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Evaltheme[]
+     */
+    public function getEvalthemes(): Collection
+    {
+        return $this->evalthemes;
+    }
+
+    public function addEvaltheme(Evaltheme $evaltheme): self
+    {
+        if (!$this->evalthemes->contains($evaltheme)) {
+            $this->evalthemes[] = $evaltheme;
+            $evaltheme->setEvaluation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvaltheme(Evaltheme $evaltheme): self
+    {
+        if ($this->evalthemes->removeElement($evaltheme)) {
+            // set the owning side to null (unless already changed)
+            if ($evaltheme->getEvaluation() === $this) {
+                $evaltheme->setEvaluation(null);
+            }
+        }
 
         return $this;
     }

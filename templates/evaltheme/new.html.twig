@@ -3,9 +3,11 @@
 {% block title %}New Evaltheme{% endblock %}
 
 {% block body %}
-    <h1>Create new Evaltheme</h1>
+    <h1 class="text-center my-5">Créer un nouveau thème</h1>
+    <div class="text-center">
 
     {{ include('evaltheme/_form.html.twig') }}
+    </div>
 
-    <a href="{{ path('evaltheme_index') }}">back to list</a>
+    <a class="button button-dyna" href="{{ path('evaluation_showarbo', {'id': evaluation.id} ) }}">retour</a>
 {% endblock %}

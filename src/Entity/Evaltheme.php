@@ -27,9 +27,14 @@ class Evaltheme
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity=Evalcategory::class, mappedBy="theme")
+     * @ORM\OneToMany(targetEntity=Evalcategory::class, mappedBy="theme", cascade={"persist", "remove"})
      */
     private $evalcategories;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=evaluation::class, inversedBy="evalthemes")
+     */
+    private $evaluation;
 
     public function __construct()
     {
@@ -79,6 +84,18 @@ class Evaltheme
                 $evalcategory->setTheme(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEvaluation(): ?evaluation
+    {
+        return $this->evaluation;
+    }
+
+    public function setEvaluation(?evaluation $evaluation): self
+    {
+        $this->evaluation = $evaluation;
 
         return $this;
     }

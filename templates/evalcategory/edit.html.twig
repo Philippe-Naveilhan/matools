@@ -1,13 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Evalcategory{% endblock %}
+{% block title %}Modifier une catégorie{% endblock %}
 
 {% block body %}
-    <h1>Edit Evalcategory</h1>
+    <h1 class="text-center my-5">Modification de la catégorie :<br> "{{ evalcategory.name }}"</h1>
 
-    {{ include('evalcategory/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="text-center">
+    {{ include('evalcategory/_form.html.twig', {'button_label': 'Modifier'}) }}
 
-    <a href="{{ path('evalcategory_index') }}">back to list</a>
 
-    {{ include('evalcategory/_delete_form.html.twig') }}
+        {{ include('evalcategory/_delete_form.html.twig') }}
+    </div>
+    <a class="button button-dyna" href="{{ path('evaluation_showarbo', {'id': evalcategory.theme.evaluation.id}) }}">Retour</a>
+
 {% endblock %}

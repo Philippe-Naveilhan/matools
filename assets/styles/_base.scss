@@ -154,6 +154,12 @@ $red-dark: #731018;
   background-color: transparent;
   border: none;
 }
+
+@for $i from 1 through 10 {
+  .font-size-#{$i} {
+    font-size: 6px+2px*$i;
+  }
+}
 @for $i from 1 through 10 {
   .dec-lt-#{$i} {
     top: -5px*$i;

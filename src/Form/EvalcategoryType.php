@@ -12,9 +12,9 @@ class EvalcategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('theme', null, [
-                'choice_label' => 'name'])
+            ->add('name', null, [
+                'label' => ' ',
+            ])
         ;
     }
 

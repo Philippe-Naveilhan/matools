@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Evalbloc;
+use App\Entity\Evalcategory;
 use App\Form\EvalblocType;
 use App\Repository\EvalblocRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,9 +27,9 @@ class EvalblocController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="evalbloc_new", methods={"GET","POST"})
+     * @Route("/new/{category}", name="evalbloc_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Evalcategory $category): Response
     {
         $evalbloc = new Evalbloc();
         $form = $this->createForm(EvalblocType::class, $evalbloc);
@@ -36,13 +37,15 @@ class EvalblocController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $evalbloc->setCategory($category);
             $entityManager->persist($evalbloc);
             $entityManager->flush();
 
-            return $this->redirectToRoute('evalbloc_index');
+            return $this->redirectToRoute('evaluation_showarbo', array('id'=>$evalbloc->getCategory()->getTheme()->getEvaluation()->getId()));
         }
 
         return $this->render('evalbloc/new.html.twig', [
+            'evaluation' => $category->getTheme()->getEvaluation(),
             'evalbloc' => $evalbloc,
             'form' => $form->createView(),
         ]);
@@ -69,10 +72,11 @@ class EvalblocController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('evalbloc_index');
+            return $this->redirectToRoute('evaluation_showarbo', array('id'=>$evalbloc->getCategory()->getTheme()->getEvaluation()->getId()));
         }
 
         return $this->render('evalbloc/edit.html.twig', [
+            'evaluation' => $evalbloc->getCategory()->getTheme()->getEvaluation(),
             'evalbloc' => $evalbloc,
             'form' => $form->createView(),
         ]);
@@ -89,6 +93,6 @@ class EvalblocController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('evalbloc_index');
+        return $this->redirectToRoute('evaluation_showarbo', array('id'=>$evalbloc->getCategory()->getTheme()->getEvaluation()->getId()));
     }
 }

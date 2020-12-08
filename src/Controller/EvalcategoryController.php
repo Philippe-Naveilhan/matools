@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Evalcategory;
+use App\Entity\Evaltheme;
 use App\Form\EvalcategoryType;
 use App\Repository\EvalcategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,9 +27,9 @@ class EvalcategoryController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="evalcategory_new", methods={"GET","POST"})
+     * @Route("/new/{theme}", name="evalcategory_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Evaltheme $theme): Response
     {
         $evalcategory = new Evalcategory();
         $form = $this->createForm(EvalcategoryType::class, $evalcategory);
@@ -36,13 +37,15 @@ class EvalcategoryController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $evalcategory->setTheme($theme);
             $entityManager->persist($evalcategory);
             $entityManager->flush();
 
-            return $this->redirectToRoute('evalcategory_index');
+            return $this->redirectToRoute('evaluation_showarbo', array('id'=>$theme->getEvaluation()->getId()));
         }
 
         return $this->render('evalcategory/new.html.twig', [
+            'evaluation' => $theme->getEvaluation(),
             'evalcategory' => $evalcategory,
             'form' => $form->createView(),
         ]);
@@ -69,7 +72,7 @@ class EvalcategoryController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('evalcategory_index');
+            return $this->redirectToRoute('evaluation_showarbo', array('id'=>$evalcategory->getTheme()->getEvaluation()->getId()));
         }
 
         return $this->render('evalcategory/edit.html.twig', [
@@ -89,6 +92,6 @@ class EvalcategoryController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('evalcategory_index');
+        return $this->redirectToRoute('evaluation_showarbo', array('id'=>$evalcategory->getTheme()->getEvaluation()->getId()));
     }
 }

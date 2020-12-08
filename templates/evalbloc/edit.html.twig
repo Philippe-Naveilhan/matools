@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Evalbloc{% endblock %}
+{% block title %}Modifier un bloc de compétences{% endblock %}
 
 {% block body %}
-    <h1>Edit Evalbloc</h1>
+    <h1 class="text-center my-5">Modifier le bloc de compétence :<br> "{{ evalbloc.name }}"</h1>
 
-    {{ include('evalbloc/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('evalbloc_index') }}">back to list</a>
+    <div class="text-center">
+    {{ include('evalbloc/_form.html.twig', {'button_label': 'Modifier'}) }}
 
     {{ include('evalbloc/_delete_form.html.twig') }}
+    </div>
+    <a class="button button-dyna" href="{{ path('evaluation_showarbo', {'id': evaluation.id}) }}">Retour</a>
 {% endblock %}

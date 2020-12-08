@@ -12,9 +12,9 @@ class EvalblocType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('category', null, [
-                'choice_label' => 'name'])
+            ->add('name', null, [
+                'label' => ' ',
+            ])
         ;
     }
 
