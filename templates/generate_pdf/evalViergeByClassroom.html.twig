@@ -65,7 +65,7 @@
 
 <div class="example-wrapper">
     <h3>{{ evaluation.name }} - {{ evaluation.level.name }}</h3>
-{% for theme in themes %}
+{% for theme in evaluation.evalthemes %}
     {% for category in theme.evalcategories %}
     <table>
         <thead>
@@ -85,9 +85,9 @@
             </tr>
         </thead>
         <tbody>
-        {% for student in students|sort((a,b) => a.firstname <=> b.firstname) %}
+        {% for evalstudent in evaluation.evalstudents|sort((a,b) => a.student.firstname <=> b.student.firstname) %}
             <tr {% if loop.index is odd %}class="bg-color"{% endif %}>
-                <td class="firstname">{{ student.firstname ~ ' ' ~ student.lastname }}</td>
+                <td class="firstname">{{ evalstudent.student.firstname ~ ' ' ~ evalstudent.student.lastname }}</td>
                 {% for i in 0..9 %}
                 <td></td>
                 {% endfor %}
