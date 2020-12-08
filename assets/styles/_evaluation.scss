@@ -33,6 +33,40 @@
 #evaluation{
     background-color: $secondary-light;
 }
+.up_and_down{
+    width: 50px;
+    margin: 0 10px 0 10px;
+}
 .btn-up{
     margin-right: -10px;
+}
+#evaluation_competence{
+    .theme_container{
+        padding: 0 5px 10px 5px;
+        background-color: $secondary-light;
+        border: solid 2px $primary-dark;
+        border-radius: 30px;
+    }
+    .theme_title{
+        border-radius: 30px;
+        margin-top: -25px;
+        background-color: $primary-dark;
+        color: $primary-light;
+    }
+    .category_container{
+        background-color: $primary-light;
+        border: solid 2px $primary-dark;
+        border-radius: 20px;
+        margin-bottom: 20px;
+    }
+    .category_title{
+        border-radius: 30px;
+        margin-top: -20px;
+        color: $primary-dark;
+        background-color: $secondary-light;
+        border: solid 2px $primary-dark;
+    }
+    ul, li{
+        list-style-type: none;
+    }
 }

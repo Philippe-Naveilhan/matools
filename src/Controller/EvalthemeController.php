@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Evaltheme;
+use App\Entity\Evaluation;
 use App\Form\EvalthemeType;
 use App\Repository\EvalthemeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -11,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/evaltheme")
+ * @Route("/app/evaltheme")
  */
 class EvalthemeController extends AbstractController
 {
@@ -26,9 +27,9 @@ class EvalthemeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="evaltheme_new", methods={"GET","POST"})
+     * @Route("/new/{eval}", name="evaltheme_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Evaluation $eval): Response
     {
         $evaltheme = new Evaltheme();
         $form = $this->createForm(EvalthemeType::class, $evaltheme);
@@ -36,13 +37,15 @@ class EvalthemeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $evaltheme->setEvaluation($eval);
             $entityManager->persist($evaltheme);
             $entityManager->flush();
 
-            return $this->redirectToRoute('evaltheme_index');
+            return $this->redirectToRoute('evaluation_showarbo', array('id'=>$eval->getId()));
         }
 
         return $this->render('evaltheme/new.html.twig', [
+            'evaluation' => $eval,
             'evaltheme' => $evaltheme,
             'form' => $form->createView(),
         ]);
@@ -69,7 +72,7 @@ class EvalthemeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('evaltheme_index');
+            return $this->redirectToRoute('evaluation_showarbo', array('id'=>$evaltheme->getEvaluation()->getId()));
         }
 
         return $this->render('evaltheme/edit.html.twig', [
@@ -89,6 +92,6 @@ class EvalthemeController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('evaltheme_index');
+        return $this->redirectToRoute('evaluation_showarbo', array('id'=>$evaltheme->getEvaluation()->getId()));
     }
 }

@@ -33,7 +33,7 @@ class Evalcategory
     private $theme;
 
     /**
-     * @ORM\OneToMany(targetEntity=Evalbloc::class, mappedBy="category")
+     * @ORM\OneToMany(targetEntity=Evalbloc::class, mappedBy="category", cascade={"persist", "remove"})
      */
     private $evalblocs;
 

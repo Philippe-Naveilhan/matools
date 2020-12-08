@@ -33,7 +33,8 @@ class Evalbloc
     private $category;
 
     /**
-     * @ORM\OneToMany(targetEntity=Evalcompetence::class, mappedBy="bloc")
+     * @ORM\OneToMany(targetEntity=Evalcompetence::class, mappedBy="bloc", cascade={"persist", "remove"})
+     * @ORM\OrderBy ({"placeorder" = "ASC"})
      */
     private $evalcompetences;
 

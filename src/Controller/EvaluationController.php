@@ -2,18 +2,21 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Entity\Evaltheme;
+use App\Repository\EvalthemeRepository;
+use App\Entity\Evalcategory;
+use App\Entity\Evalbloc;
+use App\Repository\EvalblocRepository;
 use App\Entity\Evalcompetence;
+use App\Repository\EvalcompetenceRepository;
 use App\Entity\Classroom;
 use App\Entity\Evalstudent;
-use App\Entity\Evaltheme;
-use App\Entity\User;
 use App\Entity\Evaluation;
 use App\Form\EvaluationType;
-use App\Repository\EvalblocRepository;
-use App\Repository\EvalcompetenceRepository;
-use App\Repository\EvalthemeRepository;
 use App\Repository\EvaluationRepository;
 use App\Repository\LevelRepository;
+use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -64,7 +67,71 @@ class EvaluationController extends AbstractController
                     $entityManager->persist($evalStudent);
                 }
             }
+            $arbothemes = [
+                "Mobiliser le langage dans toutes ses dimensions" => [
+                    "L'oral" => [
+                        "Commencer à refléchir sur la langue et à acquérir une conscience phonologique"
+                    ],
+                    "L'écrit" => [
+                        "Découvrir le principe alphabétique",
+                        "Commencer à écrire tout seul"
+                    ]
+                ],
+                "Agir, s'exprimer, comprendre à travers l'activité physique" => [
+                    "unique" => [
+                        "Collaborer, coopérer, s'opposer"
+                    ]
+                ],
+                "Agir, s'exprimer, comprendre à travers les activités artistiques" => [
+                    "unique" => [
+                        "Univers sonores",
+                        "Les productions plastiques et visuelles"
+                    ]
+                ],
+                "Construire les premiers outils pour structurer sa pensée" => [
+                    "unique" => [
+                        "Les nombres et leurs utilisations",
+                        "Formes, grandeurs et suites organisées"
+                    ]
+                ],
+                "Explorer le monde" => [
+                    "unique" => [
+                        "Le vivant, la matière, les objets"
+                    ]
+                ],
+                "Apprendre ensemble et vivre ensemble" => [
+                    "unique" => [
+                        "Comprendre la fonction de l'école, se construire comme une personne singulière au sein du groupe"
+                    ]
+                ]
+            ];
+            foreach ($arbothemes as $arbotheme => $arbocategories){
+            // create default themes
+            $theme = new Evaltheme;
+            $entityManager = $this->getDoctrine()->getManager();
+            $theme->setName($arbotheme);
+            $theme->setEvaluation($evaluation);
+            $entityManager->persist($theme);
             $entityManager->flush();
+                foreach ($arbocategories as $arbocategory => $arboblocs){
+                    // create default category
+                    $category = new Evalcategory;
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $category->setName($arbocategory);
+                    $category->setTheme($theme);
+                    $entityManager->persist($category);
+                    $entityManager->flush();
+                    foreach  ($arboblocs as $arbobloc){
+                        // create default bloc
+                        $bloc = new Evalbloc;
+                        $entityManager = $this->getDoctrine()->getManager();
+                        $bloc->setName($arbobloc);
+                        $bloc->setCategory($category);
+                        $entityManager->persist($bloc);
+                    }
+                    $entityManager->flush();
+                }
+            }
 
             return $this->redirectToRoute('evaluation_index', array('id'=>$classroom->getId()));
         }
@@ -105,6 +172,18 @@ class EvaluationController extends AbstractController
             'evaluation' => $evaluation,
             'competences' => $competences,
             'themes' => $arbotheme,
+        ]);
+    }
+
+    /**
+     * @Route("/showarbo/{id}", name="evaluation_showarbo", methods={"GET"})
+     */
+    public function showarbo(Evaluation $evaluation): Response
+    {
+        $themes = $evaluation->getEvalthemes();
+
+        return $this->render('evaluation/show_arbo.html.twig', [
+            'evaluation' => $evaluation,
         ]);
     }
 
@@ -185,7 +264,7 @@ class EvaluationController extends AbstractController
         }
         $entityManager->flush();
 
-        return $this->redirectToRoute('evaluation_show', array('id'=>$evalcompetence->getEvaluation()->getId()));
+        return $this->redirectToRoute('evaluation_showarbo', array('id'=>$evalcompetence->getEvaluation()->getId()));
     }
 
     /**
