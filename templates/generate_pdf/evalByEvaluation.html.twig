@@ -180,9 +180,15 @@
                                                         {{ competence.comment }}
                                                     {% else %}
                                                         {% if competence.note %}
-                                                            {% for i in 1..competence.note %}
-                                                                <img src="build/star.png"/>
-                                                            {% endfor %}
+                                                            {% if competence.note < 4 %}
+                                                                {% for i in 1..competence.note %}
+                                                                    <img src="build/star.png"/>
+                                                                {% endfor %}
+                                                            {% elseif competence.note == 4%}
+                                                                Absent(e)
+                                                            {% else %}
+                                                                <span class="font-size-1">Non Evalué</span>
+                                                            {% endif %}
                                                         {% else %}
                                                             NE
                                                         {% endif %}
