@@ -2,7 +2,7 @@
 
 {% block title %}{{ app.user.username }}{% endblock %}
 {% block body %}
-<h1 class="text-center">Mon profil</h1>
+<h1 class="text-center my-5">Mon profil</h1>
         <h2 class="text-danger text-center">{{ message ?? '' }}</h2>
     <div class="my-5 text-center h3">
         <div class="my-3">Identifiant : {{ app.user.username }}</div>
@@ -31,6 +31,16 @@
                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                 </svg>
             </a>
+        </div>
+        <div class="text-center pt-2">
+        {% if is_granted('ROLE_ADMIN') %}
+            <a class="text-primary-dark" href="{{ path('admin_index') }}">
+                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pie-chart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M15.985 8.5H8.207l-5.5 5.5a8 8 0 0 0 13.277-5.5zM2 13.292A8 8 0 0 1 7.5.015v7.778l-5.5 5.5zM8.5.015V7.5h7.485A8.001 8.001 0 0 0 8.5.015z"/>
+                </svg><br>
+                Admin
+            </a>
+        {% endif %}
         </div>
     </div>
     <div class="text-center">

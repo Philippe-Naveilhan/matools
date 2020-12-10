@@ -15,16 +15,16 @@
         {% for theme in evaluation.evalthemes %}
             <div class="col-10 offset-1 my-5 theme_container">
                 <div class="text-center">
-                    <div class="theme_title w-50 mx-auto d-flex justify-content-around align-items-center p-2">
-                        <div class="p-1 text-primary-dark bg-secondary font-size-1">
+                    <div class="theme_title w-50 mx-auto d-flex justify-content-around align-items-center p-2 font-size-2">
+                        <div class="p-1 text-primary-dark bg-secondary br-2">
                             THEME
                         </div>
-                        <div class="h3 text-secondary-light">
+                        <div class="font-size-10 font-weight-bold text-secondary-light">
                             {{ theme.name }}
                         </div>
                         <div>
                             <a class="text-secondary-light" href="{{ path('evaltheme_edit', {'id': theme.id}) }}">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
                                 </svg>
@@ -36,10 +36,10 @@
                 <div class="category_container pb-4 m-1 mt-5 position-relative">
                     <div class="text-center">
                         <div class="category_title w-50 mx-auto d-flex justify-content-around align-items-center">
-                            <div class="p-1 mr-2 text-secondary bg-primary font-size-1">CAT.</div>
-                            <h3>{{ category.name == 'unique' ? '- | -' : category.name }}</h3>
+                            <div class="p-1 mr-2 text-secondary bg-primary font-size-2 br-2">CAT.</div>
+                            <span class="font-size-9 font-weight-bold">{{ category.name == 'unique' ? '- -' : category.name }}</span>
                                 <a class="text-primary-dark" href="{{ path('evalcategory_edit', {'id': category.id}) }}">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
                                         <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
                                     </svg>
@@ -49,12 +49,12 @@
                     <div class="row mx-0">
                         {% for bloc in category.evalblocs %}
                             <div class="row w-100 m-0 ml-3 align-items-center">
-                                <div class="p-1 mr-2 text-danger bg-secondary font-size-1">
+                                <div class="p-1 mr-2 text-danger bg-secondary-light font-size-2 br-2">
                                     BLOC
                                 </div>
-                                {{ bloc.name }}
+                                <span class="font-weight-bold font-size-7">{{ bloc.name == 'unique' ? '- -' : bloc.name }}</span>
                                 <a class="ml-2 text-primary-dark" href="{{ path('evalbloc_edit', {'id': bloc.id}) }}">
-                                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
                                         <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
                                     </svg>
@@ -65,11 +65,11 @@
                             {% for competence in bloc.evalcompetences %}
                                     {% set placeorder = loop.length %}
                                     <div class="row">
-                                        <div class="mb-1 p-1 mr-2 text-light bg-primary-dark font-size-1">
+                                        <div class="mb-1 p-1 mr-2 text-light bg-primary-dark font-size-2 br-2">
                                             COMP.
                                         </div>
                                         <a class="text-primary-dark" href="{{ path('evalcompetence_edit', {'id': competence.id}) }}" title="Modifier ou supprimer l'intitulé de la compétence">
-                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                                 <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                                             </svg>
@@ -77,24 +77,24 @@
                                         <div class="up_and_down">
                                             {% if competence.placeorder != 1 %}
                                                 <a href="{{ path('evaluation_updown', {'id':competence.id, 'direction':'down'}) }}">
-                                                    <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
                                                     </svg>
                                                 </a>
                                             {% else %}
-                                                <svg class="text-primary-light" width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <svg class="text-primary-light" width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
                                                 </svg>
                                             {% endif %}
                                             {% if competence.placeorder != loop.length %}
                                                 <a class="" href="{{ path('evaluation_updown', {'id':competence.id, 'direction':'up'}) }}">
-                                                    <svg width="20px" height="20px" viewBox="0 0 16 16" class="bi bi-arrow-down-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                         <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
                                                     </svg>
                                                 </a>
                                             {% endif %}
                                         </div>
-                                        {{ competence.name }}
+                                        <span class="font-size-5">{{ competence.name }}</span>
                                     </div>
                                 {% endfor %}
                             <div class="my-3 font-size-3">

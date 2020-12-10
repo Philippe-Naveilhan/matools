@@ -8,7 +8,8 @@ class Contact
 {
     /**
      * @Assert\Length(max=100, maxMessage="Votre nom/identifiant doit être inférieur à {{ limit }} caractères")
-     * @Assert\NotBlank(message="Merci de saisir votre prénom")
+     * @Assert\Email(message = "The email '{{ value }}' is not a valid email.")
+     * @Assert\NotBlank(message="Merci de saisir votre mail")
      */
     private $username;
 
