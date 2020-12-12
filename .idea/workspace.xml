@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e7577e7-a47b-493d-a865-98969a256bad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Service/Completion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EvalcompetenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvalcompetenceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EvaluationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvaluationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Evalcompetence.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evalcompetence.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ContactType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ContactType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CompetencestudentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CompetencestudentRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evaluation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evaluation/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/show.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="3e7577e7-a47b-493d-a865-98969a256bad" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -175,6 +163,7 @@
       <workItem from="1607588445178" duration="4920000" />
       <workItem from="1607674293927" duration="10485000" />
       <workItem from="1607697823949" duration="2940000" />
+      <workItem from="1607767669058" duration="319000" />
     </task>
     <servers />
   </component>
