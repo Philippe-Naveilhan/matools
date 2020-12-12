@@ -48,6 +48,7 @@ class EvalcompetenceController extends AbstractController
             $evalcompetence->setBloc($bloc);
             $evalcompetence->setPlaceorder($placeorder);
             $evalcompetence->setEvaluation($eval);
+            $evalcompetence->setCompletion('empty');
             $entityManager->persist($evalcompetence);
             $entityManager->flush();
 

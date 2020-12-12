@@ -19,22 +19,22 @@ class CompetencestudentRepository extends ServiceEntityRepository
         parent::__construct($registry, Competencestudent::class);
     }
 
-    // /**
-    //  * @return Competencestudent[] Returns an array of Competencestudent objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Competencestudent[] Returns an array of Competencestudent objects
+      */
+    public function findByEmpty($evalcompetence)
     {
+        $vide = "";
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+            ->Where('c.evalcompetence = :val')
+            ->andWhere('c.note IS NULL')
+            ->andWhere('c.comment = :vide')
+            ->setParameter('val', $evalcompetence)
+            ->setParameter('vide', $vide)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
 
     /*
     public function findOneBySomeField($value): ?Competencestudent

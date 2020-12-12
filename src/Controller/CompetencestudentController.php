@@ -7,7 +7,9 @@ use App\Entity\Evalcompetence;
 use App\Entity\Evalstudent;
 use App\Form\CompetencestudentType;
 use App\Repository\CompetencestudentRepository;
+use App\Repository\EvalcompetenceRepository;
 use App\Repository\EvalstudentRepository;
+use App\Service\Completion;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -101,7 +103,9 @@ class CompetencestudentController extends AbstractController
     public function saveByCompetence(Request $request,
                                      Evalcompetence $evalcompetence,
                                      EvalstudentRepository $evalstudentRepository,
-                                     CompetencestudentRepository $competencestudentRepository
+                                     CompetencestudentRepository $competencestudentRepository,
+                                     EvalcompetenceRepository $evalcompetenceRepository,
+                                     Completion $completion
     ): Response
     {
         $listCompetenceByStudent = $competencestudentRepository->findBy(['evalcompetence'=>$evalcompetence]);
@@ -125,7 +129,12 @@ class CompetencestudentController extends AbstractController
                     $entityManager->persist($competencestudent);
                 }
             }
+            $entityManager->flush();
 
+            $entityManager = $this->getDoctrine()->getManager();
+            $result = $completion->completion($evalcompetence->getId());
+            $evalcompetence->setCompletion($result);
+            $entityManager->persist($evalcompetence);
             $entityManager->flush();
 
             return $this->redirectToRoute('evaluation_show', ['id'=>$evaluation->getId()]);

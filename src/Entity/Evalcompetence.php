@@ -48,6 +48,11 @@ class Evalcompetence
      */
     private $placeorder;
 
+    /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    private $completion;
+
 
     public function __construct()
     {
@@ -133,6 +138,18 @@ class Evalcompetence
     public function setPlaceorder(?int $placeorder): self
     {
         $this->placeorder = $placeorder;
+
+        return $this;
+    }
+
+    public function getCompletion(): ?string
+    {
+        return $this->completion;
+    }
+
+    public function setCompletion(?string $completion): self
+    {
+        $this->completion = $completion;
 
         return $this;
     }
