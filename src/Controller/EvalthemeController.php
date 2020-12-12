@@ -82,7 +82,7 @@ class EvalthemeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="evaltheme_delete", methods={"DELETE"})
+     * @Route("/delete/{id}", name="evaltheme_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Evaltheme $evaltheme): Response
     {
