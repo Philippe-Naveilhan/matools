@@ -2,17 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e7577e7-a47b-493d-a865-98969a256bad" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Service/Completion.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/_base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_base.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/_evaluation.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_evaluation.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Contact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_navbar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/competencestudent/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/competencestudent/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EvalcompetenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvalcompetenceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EvaluationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvaluationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Evalcompetence.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evalcompetence.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ContactType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ContactType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CompetencestudentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CompetencestudentRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/evaluation/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evaluation/show_arbo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/show_arbo.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalByEvalstudentDiv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalByEvalstudentDiv.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalByEvaluation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalByEvaluation.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +173,8 @@
       <workItem from="1607413865579" duration="15636000" />
       <workItem from="1607525922934" duration="11013000" />
       <workItem from="1607588445178" duration="4920000" />
+      <workItem from="1607674293927" duration="10485000" />
+      <workItem from="1607697823949" duration="2940000" />
     </task>
     <servers />
   </component>

@@ -11,7 +11,7 @@
     </div>
         <form class="col-12" action="#" method="post">
     {%  for competence in competences %}
-        <div class="col-12 d-flex flex-row border p-0 m-0">
+        <div class="col-12 d-flex flex-row border p-0 m-0 bg-primary-light">
             <div class="col-5 p-2 text-primary-dark font-weight-bolder h4">
                 {{ competence.evalstudent.student.firstname ~ ' ' ~ competence.evalstudent.student.lastname|upper}}
             </div>

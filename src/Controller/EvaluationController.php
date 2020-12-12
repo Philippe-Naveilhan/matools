@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Evaltheme;
+use App\Repository\CompetencestudentRepository;
 use App\Repository\EvalthemeRepository;
 use App\Entity\Evalcategory;
 use App\Entity\Evalbloc;
@@ -21,6 +22,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\Completion;
 
 /**
  * @Route("/app/evaluation")
@@ -144,34 +146,11 @@ class EvaluationController extends AbstractController
     /**
      * @Route("/show/{id}", name="evaluation_show", methods={"GET"})
      */
-    public function show(EvalcompetenceRepository $evalcompetenceRepository,
-                         Evaluation $evaluation,
-                         EvalthemeRepository $evalthemeRepository): Response
+    public function show(Evaluation $evaluation): Response
     {
-        $themes = $evalthemeRepository->findAll();
-        $competences = $evalcompetenceRepository->findBy(['evaluation'=>$evaluation], ['placeorder'=>'ASC']);
-        $arbotheme = [];
-        foreach ($themes as $theme) {
-            $arbotheme[$theme->getName()]=[];
-            foreach ($theme->getEvalcategories() as $category){
-                $arbotheme[$theme->getName()][$category->getName()]=[];
-                foreach ($category->getEvalblocs() as $bloc){
-                    $arbotheme[$theme->getName()][$category->getName()][$bloc->getName()]['id']=$bloc->getId();
-                    $arbotheme[$theme->getName()][$category->getName()][$bloc->getName()]['competences']=[];
-                }
-            }
-        }
-        foreach ($competences as $competence){
-            $arbotheme[
-                $competence->getBloc()->getCategory()->getTheme()->getName()][
-                    $competence->getBloc()->getCategory()->getName()][
-                        $competence->getBloc()->getName()]['competences'][] = $competence;
-        }
 
         return $this->render('evaluation/show.html.twig', [
-            'evaluation' => $evaluation,
-            'competences' => $competences,
-            'themes' => $arbotheme,
+            'evaluation' => $evaluation
         ]);
     }
 
