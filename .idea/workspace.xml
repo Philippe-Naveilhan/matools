@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3e7577e7-a47b-493d-a865-98969a256bad" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EvalblocController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvalblocController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/EvalthemeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvalthemeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evalbloc/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalbloc/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Evalcategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evalcategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Evaltheme.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evaltheme.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/EvalblocType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EvalblocType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evalbloc/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalbloc/edit.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +172,9 @@
       <workItem from="1607674293927" duration="10485000" />
       <workItem from="1607697823949" duration="2940000" />
       <workItem from="1607767669058" duration="1713000" />
-      <workItem from="1607810909175" duration="2536000" />
+      <workItem from="1607810909175" duration="5061000" />
+      <workItem from="1607864089045" duration="3467000" />
+      <workItem from="1607938567002" duration="6196000" />
     </task>
     <servers />
   </component>
