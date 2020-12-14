@@ -22,7 +22,7 @@ class Evalcategory
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Veuillez indiquer le nom du sou-thème.")
+     * @Assert\NotBlank(message="Veuillez indiquer le nom du sous-thème.")
      */
     private $name;
 

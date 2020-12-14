@@ -62,7 +62,7 @@ class EvalthemeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="evaltheme_edit", methods={"GET","POST"})
+     * @Route("/edit/{id}", name="evaltheme_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Evaltheme $evaltheme): Response
     {

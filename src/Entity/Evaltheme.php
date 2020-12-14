@@ -32,7 +32,8 @@ class Evaltheme
     private $evalcategories;
 
     /**
-     * @ORM\ManyToOne(targetEntity=evaluation::class, inversedBy="evalthemes")
+     * @ORM\ManyToOne(targetEntity=Evaluation::class, inversedBy="evalthemes")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $evaluation;
 

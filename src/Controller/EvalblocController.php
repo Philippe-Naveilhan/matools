@@ -76,7 +76,6 @@ class EvalblocController extends AbstractController
         }
 
         return $this->render('evalbloc/edit.html.twig', [
-            'evaluation' => $evalbloc->getCategory()->getTheme()->getEvaluation(),
             'evalbloc' => $evalbloc,
             'form' => $form->createView(),
         ]);

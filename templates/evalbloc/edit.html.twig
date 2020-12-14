@@ -10,5 +10,6 @@
 
     {{ include('evalbloc/_delete_form.html.twig') }}
     </div>
-    <a class="button button-dyna" href="{{ path('evaluation_showarbo', {'id': evaluation.id}) }}">Retour</a>
+{#    {{ dump(evalbloc.category.theme.id) }}#}
+    <a class="button button-dyna" href="{{ path('evaluation_showarbo', {'id': evalbloc.category.theme.evaluation.id}) }}">Retour</a>
 {% endblock %}
