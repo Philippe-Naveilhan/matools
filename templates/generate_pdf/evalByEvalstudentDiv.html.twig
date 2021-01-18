@@ -160,7 +160,7 @@
                     <div class="no-break">
                         <table>
                             <tr>
-                                <td class="bloc">{{ keybloc }}</td>
+                                <td class="bloc">{% if keybloc != 'Unique' %}{{ keybloc }}{% endif %}</td>
                                 <td class="comp">
                                 {% for keycompetence,competence in bloc %}
                                     <div class="relative">

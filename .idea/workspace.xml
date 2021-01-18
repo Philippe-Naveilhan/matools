@@ -3,7 +3,17 @@
   <component name="ChangeListManager">
     <list default="true" id="3e7577e7-a47b-493d-a865-98969a256bad" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/_base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_base.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RegistrationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Academy.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Academy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Test.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/AcademyType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AcademyType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/TestRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/academy/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/academy/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error403.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error403.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalByEvalstudentDiv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalByEvalstudentDiv.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalByEvaluation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalByEvaluation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/registration/register.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +182,14 @@
       <workItem from="1607938567002" duration="6196000" />
       <workItem from="1608395842696" duration="633000" />
       <workItem from="1608417921335" duration="705000" />
-      <workItem from="1610214573656" duration="2974000" />
+      <workItem from="1610214573656" duration="3710000" />
+      <workItem from="1610309036757" duration="4304000" />
+      <workItem from="1610373151956" duration="673000" />
+      <workItem from="1610439998138" duration="1116000" />
+      <workItem from="1610472259460" duration="32000" />
+      <workItem from="1610636518533" duration="1591000" />
+      <workItem from="1610698716684" duration="1874000" />
+      <workItem from="1610960476619" duration="10035000" />
     </task>
     <servers />
   </component>

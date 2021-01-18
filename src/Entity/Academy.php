@@ -13,6 +13,43 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Academy
 {
+    const DOMAINS = [
+        'ac-orleans-tours.fr',
+        'ac-rennes.fr',
+        'ac-rouen.fr',
+        'ac-amiens.fr',
+        'ac-lille.fr',
+        'ac-reims.fr',
+        'ac-nancy-metz.fr',
+        'ac-strasbourg.fr',
+        'ac-besancon.fr',
+        'ac-dijon.fr',
+        'ac-nantes.fr',
+        'ac-poitiers.fr',
+        'ac-limoges.fr',
+        'ac-clermont.fr',
+        'ac-lyon.fr',
+        'ac-grenoble.fr',
+        'ac-aix-marseille.fr',
+        'ac-nice.fr',
+        'ac-corse.fr',
+        'ac-montpellier.fr',
+        'ac-toulouse.fr',
+        'ac-bordeaux.fr',
+        'ac-mayotte.fr',
+        'ac-guyane.fr',
+        'ac-reunion.fr',
+        'ac-guadeloupe.fr',
+        'ac-martinique.fr',
+        'ac-versailles.fr',
+        'ac-paris.fr',
+        'ac-creteil.fr',
+        'ac-wf.wf',
+        'ac-polynesie.pf',
+        'ac-noumea.nc',
+        'ac-spm.fr'
+    ];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -50,6 +87,11 @@ class Academy
      * @ORM\OneToMany(targetEntity=District::class, mappedBy="inspection")
      */
     private $districts;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $domain;
 
     public function __construct()
     {
@@ -135,6 +177,18 @@ class Academy
                 $district->setInspection(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDomain(): ?string
+    {
+        return $this->domain;
+    }
+
+    public function setDomain(string $domain): self
+    {
+        $this->domain = $domain;
 
         return $this;
     }

@@ -218,6 +218,27 @@ $red-dark: #731018;
   border-radius: 50%
 }
 
+$timeline-color: (
+        1: #00384f,
+        2: #196b84,
+        3: #3a9eb5,
+        4: #52bcce,
+);
+@each $key, $color in $timeline-color {
+  .color-timeline-#{$key}{
+    color: #{$color};
+  }
+  .bg-timeline-#{$key} {
+    background-color: #{$color};
+  }
+  .bl-#{$key}{
+    border-left: 40px solid #{$color};
+  }
+  .border-timeline-#{$key} {
+    border-color: #{$color};
+  }
+}
+
 @for $i from 1 through 10 {
   .font-size-#{$i} {
     font-size: 6px+(3px*$i);

@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Academy;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\AcademyRepository;
 use App\Security\EmailVerifier;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,9 +35,11 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            /** @var Academy $academy */
+            $academy = new Academy();
             $username = $_POST['registration_form']['username'];
             $domain = explode('@', $username);
-            if(!in_array($domain[1], ['naveilhan.com', 'ac-orleans-tours.fr'])){
+            if(!in_array($domain[1], $academy::DOMAINS)){
                 $this->addFlash('danger', 'Votre adresse email doit être votre adresse professionelle !');
                 $this->addFlash('danger', 'Par exemple : prenom.nom@ac-orleans-tours.fr .');
                 $this->addFlash('danger', $username . ' n\'est pas valide !');

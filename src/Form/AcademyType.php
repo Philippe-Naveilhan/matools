@@ -16,6 +16,7 @@ class AcademyType extends AbstractType
             ->add('adress')
             ->add('zipcode')
             ->add('city')
+            ->add('domain')
         ;
     }
 
