@@ -3,29 +3,29 @@
 {% block title %}Evaluation{% endblock %}
 
 {% block body %}
-    <h1 class="text-center mt-5">Saisie des résultats</h1>
+    <h1 class=" text-primary text-center mt-5">Saisie des résultats</h1>
 <a class="button button-dyna" href="{{ path('evaluation_index', {'id': evaluation.classroom.id}) }}">Retour</a>
 
 
 <div class="w-75 mx-auto">
-    <h2 class="required w-100 text-center font-title h2 my-5">
+    <h2 class="required w-100 text-center font-title h2 my-5 text-primary">
         "{{ evaluation.name }}"
     </h2>
     <div id="evaluation_competence">
         {% for theme in evaluation.evalthemes %}
             <div class="col-10 offset-1 my-5 theme_container">
                 <div class="text-center">
-                    <div class="theme_title w-50 mx-auto d-flex justify-content-around align-items-center p-2">
-                        <div class="font-size-10 font-weight-bold text-secondary-light">
+                    <div class="theme_title w-50 d-flex justify-content-around align-items-center p-2">
+                        <div class="font-size-10 font-weight-bold text-light">
                             {{ theme.name }}
                         </div>
                     </div>
                 </div>
                 {% for category in theme.evalcategories %}
-                <div class="category_container pb-4 m-1 mt-5 position-relative">
+                <div class="category_container pb-4 mt-4 position-relative">
                     {% if category.name != 'unique' %}
                     <div class="text-center">
-                        <div class="category_title w-50 mx-auto text-center font-size-9 font-weight-bold">
+                        <div class="category_title w-75 mx-auto text-center font-size-9 font-weight-bold">
                             {{ category.name }}
                         </div>
                     </div>
@@ -40,23 +40,20 @@
                                 <div id="competence.id" class="row">
                                     {% if competence.completion %}
                                         {% if competence.completion == 'empty' %}
-                                            <svg class="text-primary-dark" width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                             </svg>
                                         {% elseif competence.completion == 'partiel' %}
-                                            <svg class="text-primary-dark" width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-circle-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-circle-half" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M8 15V1a7 7 0 1 1 0 14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
                                             </svg>
                                         {% elseif competence.completion == 'full' %}
-                                            <svg class="text-primary-dark" width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                 <circle cx="8" cy="8" r="8"/>
                                             </svg>
                                         {% endif %}
                                     {% endif %}
                                     <a class="ml-1 text-primary-dark pb-1 mr-2 text-decoration-none" href="{{ path('evalByCompetence_save', {'id': competence.id}) }}" title="Saisir les résultats de cet item">
-{#                                        <svg class="text-dyna mb-2" width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">#}
-{#                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>#}
-{#                                        </svg>#}
                                     <span class="font-size-5 ml-2">{{ competence.name }}</span>
                                     </a>
                                 </div>

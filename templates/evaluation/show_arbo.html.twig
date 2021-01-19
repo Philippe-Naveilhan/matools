@@ -3,27 +3,29 @@
 {% block title %}Evaluation{% endblock %}
 
 {% block body %}
-    <h1 class="text-center mt-5">"{{ evaluation.name }}"</h1>
-<a class="button button-dyna" href="{{ path('evaluation_index', {'id': evaluation.classroom.id}) }}">Retour</a>
+    <h1 class="required w-100 text-center font-title h2 my-5">
+        Réalisation de l'évaluation
+    </h1>
+    <div class="mt-3">
+        <a class="button button-dyna" href="{{ path('evaluation_index', {'id': evaluation.classroom.id}) }}">Retour</a>
+    </div>
 
 
 <div class="w-75 mx-auto">
-    <h2 class="required w-100 text-center font-title h2 my-5">
-        Réalisation de l'évaluation
-    </h2>
+    <h2 class="text-center mt-5">"{{ evaluation.name }}"</h2>
     <div id="evaluation_competence">
         {% for theme in evaluation.evalthemes %}
             <div class="col-10 offset-1 my-5 theme_container">
                 <div class="text-center">
-                    <div class="theme_title w-50 mx-auto d-flex justify-content-around align-items-center p-2 font-size-2">
-                        <div class="p-1 text-primary-dark bg-secondary br-2">
+                    <div class="theme_title w-75 d-flex justify-content-around align-items-center p-2 font-size-2">
+                        <div class="p-1 text-primary bg-light br-2">
                             THEME
                         </div>
-                        <div class="font-size-10 font-weight-bold text-secondary-light">
+                        <div class="font-size-10 font-weight-bold text-light">
                             {{ theme.name }}
                         </div>
                         <div>
-                            <a class="text-secondary-light" href="{{ path('evaltheme_edit', {'id': theme.id}) }}">
+                            <a class="text-light" href="{{ path('evaltheme_edit', {'id': theme.id}) }}">
                                 <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
                                     <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
@@ -33,10 +35,10 @@
                     </div>
                 </div>
                 {% for category in theme.evalcategories %}
-                <div class="category_container pb-4 m-1 mt-5 position-relative">
+                <div class="category_container pb-4 m-1 mt-4 position-relative">
                     <div class="text-center">
-                        <div class="category_title w-50 mx-auto d-flex justify-content-around align-items-center">
-                            <div class="p-1 mr-2 text-secondary bg-primary font-size-2 br-2">CAT.</div>
+                        <div class="category_title w-75 mx-auto d-flex justify-content-around align-items-center">
+                            <div class="p-1 mr-2 text-light bg-primary font-size-2 br-2">CAT.</div>
                             <span class="font-size-9 font-weight-bold">{{ category.name == 'unique' ? '- -' : category.name }}</span>
                                 <a class="text-primary-dark" href="{{ path('evalcategory_edit', {'id': category.id}) }}">
                                     <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +51,7 @@
                     <div class="row mx-0">
                         {% for bloc in category.evalblocs %}
                             <div class="row w-100 m-0 ml-3 align-items-center">
-                                <div class="p-1 mr-2 text-danger bg-secondary-light font-size-2 br-2">
+                                <div class="p-1 mr-2 text-light bg-primary font-size-2 br-2">
                                     BLOC
                                 </div>
                                 <span class="font-weight-bold font-size-7">{{ bloc.name == 'unique' ? '- -' : bloc.name }}</span>
@@ -65,15 +67,9 @@
                             {% for competence in bloc.evalcompetences %}
                                     {% set placeorder = loop.length %}
                                     <div class="row">
-                                        <div class="mb-1 p-1 mr-2 text-light bg-primary-dark font-size-2 br-2">
+                                        <div class="mb-1 p-1 mr-2 text-light bg-primary font-size-2 br-2">
                                             COMP.
                                         </div>
-                                        <a class="text-primary-dark" href="{{ path('evalcompetence_edit', {'id': competence.id}) }}" title="Modifier ou supprimer l'intitulé de la compétence">
-                                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                            </svg>
-                                        </a>
                                         <div class="up_and_down">
                                             {% if competence.placeorder != 1 %}
                                                 <a href="{{ path('evaluation_updown', {'id':competence.id, 'direction':'down'}) }}">
@@ -82,7 +78,7 @@
                                                     </svg>
                                                 </a>
                                             {% else %}
-                                                <svg class="text-primary-light" width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <svg class="text-light" width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
                                                 </svg>
                                             {% endif %}
@@ -95,6 +91,12 @@
                                             {% endif %}
                                         </div>
                                         <span class="font-size-5">{{ competence.name }}</span>
+                                        <a class="ml-3 text-primary-dark" href="{{ path('evalcompetence_edit', {'id': competence.id}) }}" title="Modifier ou supprimer l'intitulé de la compétence">
+                                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                            </svg>
+                                        </a>
                                     </div>
                                 {% endfor %}
                             <div class="my-3 font-size-3">

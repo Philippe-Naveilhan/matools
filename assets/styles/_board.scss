@@ -39,13 +39,9 @@
         }
         .delete{
             color: $red;
-            top:-16px;
-            left:222px;
+            top:-6px;
+            left:210px;
         }
-    }
-    .student:hover{
-        top:5px;
-        left:10px;
     }
     a{
         color: currentColor;
@@ -54,7 +50,4 @@
     opacity: 0.8;
     text-decoration: none;
     }
-}
-#evaluation{
-    background-color: $secondary-light;
 }
