@@ -1,30 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin&family=Righteous&display=swap');
 
-.font-title, h1, h2{
+.font-title{
   font-family: 'Righteous', cursive;
 }
 h1{
   font-size: 32px!important;
 }
-.font-text {
+h1, h2, .font-text {
   font-family: 'Cabin', sans-serif;
 }
-$primary-light: #4195CA;
-$secondary-light: #C5DF5E;
-$orange-light: #F48056;
-$red-light: #F46C77;
-
-$primary: #0460D9;
-$secondary: #B4D91A;
-$light: #dad6d4;
-$dark: #021827;
-$orange: #F2490C;
-$red: #F22233;
-
-$primary-dark: #012840;
-$secondary-dark: #4A590B;
-$orange-dark: #732306;
-$red-dark: #731018;
+$primary: #2e63a7;
+//$secondary: #7cbb00;
+$secondary: #173559;
+$light: #eee;
+$dark: #111;
+$orange: #f1c064;
+$red: #ef5150;
 
 .bg-primary{
   background-color: $primary;
@@ -47,63 +38,15 @@ $red-dark: #731018;
   color: $light;
 }
 
-.bg-primary-light{
-  background-color: $primary-light;
-}
-.bg-secondary-light{
-  background-color: $secondary-light;
-}
-.bg-dyna-light{
-  background-color: $orange-light;
-}
-.bg-alert-light{
-  background-color: $red-light;
-}
 
-.bg-primary-dark{
-  background-color: $primary-dark;
-}
-.bg-secondary-dark{
-  background-color: $secondary-dark;
-}
-.bg-dyna-dark{
-  background-color: $orange-dark;
-}
-.bg-alert-dark{
-  background-color: $red-dark;
-}
-.text-primary-light{
-  color: $primary-light;
-}
-.text-primary-dark{
-  color: $primary-dark;
-}
-.text-secondary-light{
-  color: $secondary-light;
-}
 .text-secondary{
   color: $secondary;
-}
-.text-secondary-dark{
-  color: $secondary-dark;
 }
 .text-dyna{
   color: $orange;
 }
-.text-dyna-dark{
-  color: $orange-dark;
-}
-.text-dyna-light{
-  color: $orange-light;
-}
-.text-danger-light{
-  color: $red-light;
-}
 .text-danger{
   color: $red;
-}
-.text-danger-dark{
-  color: $red-dark;
 }
 .button {
   margin: 8px;
@@ -134,12 +77,14 @@ $red-dark: #731018;
 }
 
 .button-dyna{
-  background-color: $orange;
+  background-color: $primary;
+  border: solid 1px $primary;
   color: $light;
 }
 .button-dyna:hover{
   background-color: $light;
-  color: $orange;
+  color: $primary;
+  border: solid 1px $primary;
 }
 
 .button-danger{
@@ -168,7 +113,7 @@ $red-dark: #731018;
   height: 30px;
   width: 30px;
   transition: all 0.15s ease-out 0s;
-  background: #cbd1d8;
+  background: #fff;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -184,14 +129,13 @@ $red-dark: #731018;
 }
 
 .option-input:checked {
-  background: $primary-dark;
+  background: $primary;
 }
 
 .option-input:checked::before {
   height: 30px;
   width: 30px;
   position: absolute;
-  //content: "\f111";
   font-family: "Font Awesome 5 Free";
   display: inline-block;
   font-size: 26.66667px;
@@ -203,7 +147,7 @@ $red-dark: #731018;
   -webkit-animation: click-wave 0.25s;
   -moz-animation: click-wave 0.25s;
   animation: click-wave 0.25s;
-  background: $primary-dark;
+  background: $primary;
   content: '';
   display: block;
   position: relative;
@@ -216,27 +160,6 @@ $red-dark: #731018;
 
 .option-input.radio::after {
   border-radius: 50%
-}
-
-$timeline-color: (
-        1: #00384f,
-        2: #196b84,
-        3: #3a9eb5,
-        4: #52bcce,
-);
-@each $key, $color in $timeline-color {
-  .color-timeline-#{$key}{
-    color: #{$color};
-  }
-  .bg-timeline-#{$key} {
-    background-color: #{$color};
-  }
-  .bl-#{$key}{
-    border-left: 40px solid #{$color};
-  }
-  .border-timeline-#{$key} {
-    border-color: #{$color};
-  }
 }
 
 @for $i from 1 through 10 {

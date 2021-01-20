@@ -3,9 +3,11 @@
 {% block title %}Appréciation{% endblock %}
 
 {% block body %}
+    <div class="mt-3">
+        <a class="button button-dyna" href="{{ path('evaluation_appreciation', {'id': evalstudent.evaluation.id}) }}">Retour</a>
+    </div>
     <h1 class="my-5 text-center">Appréciation de {{ evalstudent.student.firstname ~ ' ' ~ evalstudent.student.lastname }}</h1>
-<div class="text-center">
+<div class="text-center mb-5">
     {{ include('evalstudent/_form.html.twig', {'button_label': 'Valider'}) }}
 </div>
-    <a class="button button-dyna" href="{{ path('evaluation_appreciation', {'id': evalstudent.evaluation.id}) }}">Retour</a>
 {% endblock %}

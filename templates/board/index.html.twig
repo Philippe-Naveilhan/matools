@@ -6,12 +6,12 @@
     <div class="board py-5">
         <div id="classrooms">
             {% for classroom in classrooms %}
-                <div class="classroom m-5 {{ classroom.active==true ? 'bg-primary' : 'bg-primary-light' }} position-relative d-flex flex-wrap justify-content-around">
-                    <div class="classname row bg-primary-light position-absolute dec-lt-4 text-secondary pt-2 pl-2 pr-0 border border-primary">
+                <div class="classroom m-5 {{ classroom.active==true ? 'bg-primary' : 'bg-primary' }} position-relative d-flex flex-wrap justify-content-around">
+                    <div class="classname row bg-primary position-absolute dec-lt-4 text-light pt-2 pl-2 pr-0 border border-light">
                         <div>
                             <h1>{{ classroom.name }}</h1>
                         </div>
-                        <div class="menu bg-primary-light text-right m-0 pt-1 pr-2 pb-2">
+                        <div class="menu bg-primary text-right m-0 pt-1 pr-2 pb-2">
                             <div>
                                 <a href="#">
                                     <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -110,13 +110,13 @@
                 </div>
             {% endfor %}
             <div class="classroom m-5 bg-primary position-relative d-flex flex-wrap justify-content-around py-2">
-                <div class="position-relative mx-3 p-1 border-primary bg-primary student my-0">
-                    <div class="text-secondary text-center">
-                        <a href="{{ path('classroom_new') }}" class=""><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <div class="position-relative mx-3 p-1 border-primary bg-primary my-0">
+                    <a href="{{ path('classroom_new') }}">
+                    <div class="text-dyna text-center"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                             </svg>
-                        </a><br>AJOUTER UNE CLASSE
-                    </div>
+                        <br>AJOUTER UNE CLASSE
+                    </div></a>
                 </div>
             </div>
         </div>

@@ -31,7 +31,7 @@
     }
 }
 #evaluation{
-    background-color: $secondary-light;
+    background-color: $secondary;
 }
 .up_and_down{
     width: 60px;
@@ -43,28 +43,27 @@
 #evaluation_competence{
     .theme_container{
         padding: 0 5px 10px 5px;
-        background-color: $secondary-light;
-        border: solid 2px $primary-dark;
-        border-radius: 30px;
+        //border: solid 2px $primary;
+        border-radius: 2px;
     }
     .theme_title{
-        border-radius: 30px;
+        border-radius: 2px;
         margin-top: -25px;
-        background-color: $primary-dark;
-        color: $primary-light;
+        background-color: $primary;
     }
     .category_container{
-        background-color: $primary-light;
-        border: solid 2px $primary-dark;
-        border-radius: 20px;
+        background-color: $light;
+        color: $primary;
+        border: solid 2px $primary;
+        border-radius: 2px;
         margin-bottom: 20px;
     }
     .category_title{
-        border-radius: 30px;
+        border-radius: 2px;
         margin-top: -20px;
-        color: $primary-dark;
-        background-color: $secondary-light;
-        border: solid 2px $primary-dark;
+        color: $primary;
+        background-color: $light;
+        border: solid 2px $primary;
     }
     ul, li{
         list-style-type: none;

@@ -3,9 +3,14 @@
 {% block title %}Enregistrer un nouvel élève{% endblock %}
 
 {% block body %}
+    <div class="pt-3">
+        <a href="{{ path('student_by_classroom', {'id': classroom.id}) }}" class="button button button-dyna">Retour</a>
+    </div>
+
     <h1 class="my-5 text-center">Enregistrer un nouvel élève pour la classe "{{ classroom.name }}"</h1>
-<div class="text-center">
-    {{ include('student/_form.html.twig') }}
-</div>
-    <a href="{{ path('student_by_classroom', {'id': classroom.id}) }}" class="button button button-dyna">Retour</a>
+
+    <div class="text-center">
+        {{ include('student/_form.html.twig') }}
+    </div>
+
 {% endblock %}
