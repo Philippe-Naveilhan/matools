@@ -9,12 +9,13 @@ h1{
 h1, h2, .font-text {
   font-family: 'Cabin', sans-serif;
 }
-$primary: #00187b;
-$secondary: #7cbb00;
+$primary: #2e63a7;
+//$secondary: #7cbb00;
+$secondary: #173559;
 $light: #eee;
 $dark: #111;
-$orange: #ffbb00;
-$red: #ec4f13;
+$orange: #f1c064;
+$red: #ef5150;
 
 .bg-primary{
   background-color: $primary;
@@ -112,7 +113,7 @@ $red: #ec4f13;
   height: 30px;
   width: 30px;
   transition: all 0.15s ease-out 0s;
-  background: #cbd1d8;
+  background: #fff;
   border: none;
   color: #fff;
   cursor: pointer;

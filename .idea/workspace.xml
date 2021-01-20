@@ -2,30 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e7577e7-a47b-493d-a865-98969a256bad" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/_footer.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/matools.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/matools.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/styles/_base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_base.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/styles/_board.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_board.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/_evaluation.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_evaluation.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/_map.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_map.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/_user.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_user.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Evalstudent.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evalstudent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/_navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_navbar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/board/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/board/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evaluation/comments.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/comments.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evaluation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evaluation/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/competencestudent/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/competencestudent/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evalstudent/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalstudent/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/evaluation/show_arbo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/show_arbo.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/student/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/student/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/student/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/student/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -206,7 +188,8 @@
       <workItem from="1610636518533" duration="1591000" />
       <workItem from="1610698716684" duration="1874000" />
       <workItem from="1610960476619" duration="11399000" />
-      <workItem from="1611044202666" duration="13545000" />
+      <workItem from="1611044202666" duration="13649000" />
+      <workItem from="1611133751834" duration="3891000" />
     </task>
     <servers />
   </component>

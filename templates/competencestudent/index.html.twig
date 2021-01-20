@@ -3,17 +3,21 @@
 {% block title %}Compétences & élèves{% endblock %}
 
 {% block body %}
-    <h1 class="text-center my-5">Enregistrement des évaluations</h1>
-<a class="button button-dyna" href="{{ path('evaluation_show', {'id':evaluation.id}) }}">Retour</a>
+    <div class="mt-4">
+        <a class="button button-dyna" href="{{ path('evaluation_show', {'id':evaluation.id}) }}">Retour</a>
+    </div>
+    <h1 class="text-center my-5 text-primary">Enregistrement des évaluations</h1>
 <div class="row w-50 mx-auto text-center">
-    <div class="col-12 bg-secondary-light border border-primary h3 text-center">
+    <div class="h3 col-12 text-light bg-primary border border-primary text-center">
         {{ competence.name }}
     </div>
-        <form class="col-12" action="#" method="post">
+        <form class="col-12 px-0" action="#" method="post">
     {%  for competence in competences %}
-        <div class="col-12 d-flex flex-row border p-0 m-0 bg-primary-light">
-            <div class="col-5 p-2 text-primary-dark font-weight-bolder h4">
+        <div class="col-12 d-flex flex-row border p-0 m-0 border-primary">
+            <div class="h4 col-5 p-2 text-primary font-weight-bolder row m-0 px-2 align-items-center">
+                <div>
                 {{ competence.evalstudent.student.firstname ~ ' ' ~ competence.evalstudent.student.lastname|upper}}
+                </div>
             </div>
             <div class="col-6 p-0">
                 <div class="text-center d-flex justify-content-between" id="evaluation_note_{{ competence.evalstudent.id }}">
