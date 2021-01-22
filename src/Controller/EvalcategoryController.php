@@ -52,6 +52,22 @@ class EvalcategoryController extends AbstractController
     }
 
     /**
+    * @Route("/new_empty/{theme}", name="evalcategory_new_empty", methods={"GET","POST"})
+    */
+    public function new_empty(Evaltheme $theme): Response
+        {
+            $evalcategory = new Evalcategory();
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $evalcategory->setTheme($theme);
+            $evalcategory->setName('empty');
+            $entityManager->persist($evalcategory);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('evaluation_showarbo', array('id'=>$theme->getEvaluation()->getId()));
+        }
+
+    /**
      * @Route("/{id}", name="evalcategory_show", methods={"GET"})
      */
     public function show(Evalcategory $evalcategory): Response

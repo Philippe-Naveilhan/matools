@@ -116,8 +116,9 @@ class CompetencestudentController extends AbstractController
             $competenceByStudent[$key]=$comp;
         }
         ksort($competenceByStudent);
+        $test = json_encode($competenceByStudent);
         $evaluation = $evalcompetence->getEvaluation();
-
+//        dd($competenceByStudent);
         if(isset($_POST['evaluation'])){
             foreach($_POST['evaluation'] as $key=>$value)
             {

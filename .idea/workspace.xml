@@ -4,9 +4,15 @@
     <list default="true" id="3e7577e7-a47b-493d-a865-98969a256bad" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/styles/_base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_base.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/_board.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_board.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/competencestudent/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/competencestudent/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evalstudent/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalstudent/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/_evaluation.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_evaluation.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EvalcategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvalcategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EvaluationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvaluationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evalbloc/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalbloc/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evalcategory/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalcategory/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaltheme/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaltheme/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/evaluation/show_arbo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/show_arbo.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,7 +195,9 @@
       <workItem from="1610698716684" duration="1874000" />
       <workItem from="1610960476619" duration="11399000" />
       <workItem from="1611044202666" duration="13649000" />
-      <workItem from="1611133751834" duration="3891000" />
+      <workItem from="1611133751834" duration="4992000" />
+      <workItem from="1611217636939" duration="7644000" />
+      <workItem from="1611304452373" duration="7173000" />
     </task>
     <servers />
   </component>

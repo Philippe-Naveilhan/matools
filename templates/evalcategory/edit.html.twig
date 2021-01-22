@@ -3,6 +3,10 @@
 {% block title %}Modifier une catégorie{% endblock %}
 
 {% block body %}
+    <div class="my-4">
+        <a class="button button-dyna" href="{{ path('evaluation_showarbo', {'id': evalcategory.theme.evaluation.id}) }}">Retour</a>
+    </div>
+
     <h1 class="text-center my-5">Modification de la catégorie :<br> "{{ evalcategory.name }}"</h1>
 
     <div class="text-center">
@@ -11,6 +15,5 @@
 
         {{ include('evalcategory/_delete_form.html.twig') }}
     </div>
-    <a class="button button-dyna" href="{{ path('evaluation_showarbo', {'id': evalcategory.theme.evaluation.id}) }}">Retour</a>
 
 {% endblock %}
