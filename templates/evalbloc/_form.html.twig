@@ -1,4 +1,9 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="button button-primary">{{ button_label|default('Créer') }}</button>
+    <div class="text-danger">
+        {{ form_errors(form.name) }}
+    </div>
+<div>
+    {{ form_widget(form.name) }}
+</div>
+    <button class="button button-primary mb-4">{{ button_label|default('Créer') }}</button>
 {{ form_end(form) }}

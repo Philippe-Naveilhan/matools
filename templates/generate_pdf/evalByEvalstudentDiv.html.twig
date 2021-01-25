@@ -153,14 +153,14 @@
         <div class="bloc-theme">
             <div class="theme">{{ keytheme }}</div>
                 {% for keycategory, category in theme %}
-                    {% if keycategory != 'unique' %}
+                    {% if keycategory != 'empty' %}
                     <div class="category">{{ keycategory }}</div>
                     {% endif %}
                     {% for keybloc, bloc in category  %}
                     <div class="no-break">
                         <table>
                             <tr>
-                                <td class="bloc">{% if keybloc != 'Unique' %}{{ keybloc }}{% endif %}</td>
+                                <td class="bloc">{% if keybloc != 'empty' %}{{ keybloc }}{% endif %}</td>
                                 <td class="comp">
                                 {% for keycompetence,competence in bloc %}
                                     <div class="relative">

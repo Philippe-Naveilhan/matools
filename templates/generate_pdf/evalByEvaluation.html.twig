@@ -7,6 +7,9 @@
     @page{
         margin: 1cm;
     }
+    .font-size-1{
+        font-size: 9pt;
+    }
     section{
         page-break-after: always;
     }
@@ -163,14 +166,14 @@
             <div class="bloc-theme">
                 <div class="theme">{{ keytheme }}</div>
                 {% for keycategory, category in theme %}
-                    {% if keycategory != 'unique' %}
+                    {% if keycategory != 'empty' %}
                         <div class="category">{{ keycategory }}</div>
                     {% endif %}
                     {% for keybloc, bloc in category  %}
                         <div class="no-break">
                             <table>
                                 <tr>
-                                    <td class="bloc">{% if keybloc != 'Unique' %}
+                                    <td class="bloc">{% if keybloc != 'empty' %}
                                             {{ keybloc }}
                                         {% endif %}
                                     </td>
@@ -188,9 +191,9 @@
                                                                     <img src="build/star.png"/>
                                                                 {% endfor %}
                                                             {% elseif competence.note == 4%}
-                                                                Absent(e)
+                                                                <span class="font-size-1">Absent(e)</span>
                                                             {% else %}
-                                                                <span class="font-size-1">Non Evalué</span>
+                                                                <span class="font-size-1">Non Evaluée</span>
                                                             {% endif %}
                                                         {% else %}
                                                             NE

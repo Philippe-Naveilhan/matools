@@ -173,6 +173,7 @@ class EvaluationController extends AbstractController
                     $entityManager->persist($evalStudent);
                 }
             }
+            $entityManager->flush();
 
             return $this->redirectToRoute('evaluation_index', array('id'=>$classroom->getId()));
         }

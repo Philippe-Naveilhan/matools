@@ -2,7 +2,10 @@
 
 {% block title %}{{ app.user.username }}{% endblock %}
 {% block body %}
-<h1 class="text-center my-5">Mon profil</h1>
+<h1 class="text-center mt-3">Mon profil</h1>
+    <div class="my-4">
+        <a href="{{ path('board') }}" class="button button-dyna">Retour</a>
+    </div>
         <h2 class="text-danger text-center">{{ message ?? '' }}</h2>
     <div class="my-5 text-center h3">
         <div class="my-3">Identifiant : {{ app.user.username }}</div>
@@ -43,8 +46,7 @@
         {% endif %}
         </div>
     </div>
-    <div class="text-center">
+    <div class="text-center mb-4">
         <a href="{{ path('app_logout') }}" class="button button-danger">Déconnexion</a>
     </div>
-    <a href="{{ path('board') }}" class="button button-dyna">Retour</a>
 {% endblock %}

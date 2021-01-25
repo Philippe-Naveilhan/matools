@@ -41,14 +41,31 @@ class EvalblocController extends AbstractController
             $entityManager->persist($evalbloc);
             $entityManager->flush();
 
-            return $this->redirectToRoute('evaluation_showarbo', array('id'=>$evalbloc->getCategory()->getTheme()->getEvaluation()->getId()));
+            return $this->redirectToRoute('evaluation_showarbo', array('id'=>$category->getTheme()->getEvaluation()->getId()));
         }
 
         return $this->render('evalbloc/new.html.twig', [
             'evaluation' => $category->getTheme()->getEvaluation(),
             'evalbloc' => $evalbloc,
+            'category' => $category,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/new_empty/{category}", name="evalbloc_new_empty", methods={"GET","POST"})
+     */
+    public function new_empty(Request $request, Evalcategory $category): Response
+    {
+        $evalbloc = new Evalbloc();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $evalbloc->setCategory($category);
+        $evalbloc->setName('empty');
+        $entityManager->persist($evalbloc);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('evaluation_showarbo', array('id'=>$category->getTheme()->getEvaluation()->getId()));
     }
 
     /**

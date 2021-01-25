@@ -117,9 +117,9 @@
         </div>
     </div>
 {% endfor %}
-    <div class="classroom m-5 bg-primary position-relative justify-content-around py-2">
-        <div class="position-relative py-1 border-primary bg-primary student w-100 d-flex justify-content-around row my-0 mx-0">
-            <div class="text-light text-center col-3">
+    <div class="classroom m-5 bg-light border border-primary position-relative justify-content-around p-1">
+        <div class="position-relative py-1 border border-primary bg-light text-primary student w-100 d-flex justify-content-around row m-0">
+            <div class="text-center col-3">
                 <a href="{{ path('evaluation_new_empty', {'id': classroom.id}) }}" class="">
                     <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
@@ -132,7 +132,7 @@
                 </svg>
                 </a>
             </div>
-                <div class="text-light text-center col-3">
+            <div class="text-center col-3">
                     <a href="{{ path('evaluation_new', {'id': classroom.id}) }}">
                         <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
@@ -146,18 +146,18 @@
                         </svg>
                     </a>
                 </div>
-            <div class="text-light text-center col-3">
-                <a href="{{ path('evaluation_new', {'id': classroom.id}) }}">
+            <div class="text-center col-3">
+{#                <a href="{{ path('evaluation_new', {'id': classroom.id}) }}">#}
                     <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
                     </svg>
                 <br>
-                Dupliquer une évaluation pré-exitante
+                Dupliquer une évaluation pré-existante
                 <br>
                 <svg xmlns="http://www.w3.org/2000/svg" width="3em" height="3em" fill="currentColor" class="bi bi-files" viewBox="0 0 16 16">
                     <path d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z"/>
                 </svg>
-                </a>
+{#                </a>#}
             </div>
         </div>
     </div>

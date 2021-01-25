@@ -4,10 +4,18 @@
 
 {% block body %}
 
+    <h1 class="my-5 text-center">Créer un nouveau bloc de compétences</h1>
+    <h3 class="text-center">
+        Theme : {{ category.theme.name }}
+    </h3>
+    {% if category.name != 'empty' %}
+    <h5 class="text-center">
+        Catégorie : {{ category.name }}
+    </h5>
+    {% endif %}
     <div class="my-4">
         <a class="button button-dyna" href="{{ path('evaluation_showarbo', {'id': evaluation.id}) }}">Retour</a>
     </div>
-    <h1 class="my-5 text-center">Créer un nouveau bloc de compétences</h1>
 
     <div class="text-center">
     {{ include('evalbloc/_form.html.twig') }}

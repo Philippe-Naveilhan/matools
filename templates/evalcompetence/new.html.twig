@@ -3,14 +3,13 @@
 {% block title %}Nouvelle compétence{% endblock %}
 
 {% block body %}
-    <div class="text-center">
+    <div class="text-center text-primary">
         <h1 class="m-5">Enregistrer une nouvelle compétence</h1>
-<div class="text-left">
-        <a class="button button-dyna mt-2" href="{{ path('evaluation_show', {'id': evaluation.id}) }}">Retour</a>
-</div>
+        <div class="text-left">
+                <a class="button button-dyna mt-2" href="{{ path('evaluation_showarbo', {'id': evaluation.id}) }}">Retour</a>
+        </div>
 
         {{ include('evalcompetence/_form.html.twig') }}
     </div>
 
-    <a class="button button-dyna" href="{{ path('evaluation_show', {'id': evaluation.id}) }}">Retour</a>
 {% endblock %}

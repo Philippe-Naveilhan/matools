@@ -36,8 +36,10 @@
                     {% for category in theme.evalcategories %}
                     <div class="category_container pb-4 m-1 mt-4 position-relative">
                         <div class="text-center {{ category.name == 'empty' ? 'd-none' : '' }}">
-                            <div class="category_title w-75 mx-auto d-flex justify-content-around align-items-center">
-                                <div class="p-1 mr-2 text-light bg-primary font-size-2 br-2">CAT.</div>
+                            <div class="category_title w-75 mx-auto mb-3 d-flex justify-content-around align-items-center">
+                                <div class="p-1 mr-2 text-light bg-primary font-size-2 br-2">
+                                    CAT.
+                                </div>
                                 <span class="font-size-9 font-weight-bold">{{ category.name == 'unique' ? '- -' : category.name }}</span>
                                     <a class="text-primary-dark" href="{{ path('evalcategory_edit', {'id': category.id}) }}">
                                         <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -47,20 +49,23 @@
                                     </a>
                             </div>
                         </div>
-                        <div class="row mx-0">
+                        <div class="mx-0">
                             {% for bloc in category.evalblocs %}
-                                <div class="row w-100 m-0 ml-3 align-items-center">
-                                    <div class="p-1 mr-2 text-light bg-primary font-size-2 br-2">
-                                        BLOC
+                                <div class="mb-5">
+                                    {% if bloc.name != 'empty' %}
+                                    <div class="row w-100 m-0 ml-3 align-items-center mb-3">
+                                        <div class="p-1 mr-2 text-light bg-primary font-size-2 br-2">
+                                            BLOC
+                                        </div>
+                                        <span class="font-weight-bold font-size-7">{{ bloc.name == 'unique' ? '- -' : bloc.name }}</span>
+                                        <a class="ml-2 text-primary-dark" href="{{ path('evalbloc_edit', {'id': bloc.id}) }}">
+                                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
+                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
+                                            </svg>
+                                        </a>
                                     </div>
-                                    <span class="font-weight-bold font-size-7">{{ bloc.name == 'unique' ? '- -' : bloc.name }}</span>
-                                    <a class="ml-2 text-primary-dark" href="{{ path('evalbloc_edit', {'id': bloc.id}) }}">
-                                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
-                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
-                                        </svg>
-                                    </a>
-                                </div>
+                                    {% endif %}
                                 {% set placeorder = 0 %}
                                 <div class="col-11 offset-1">
                                 {% for competence in bloc.evalcompetences %}
@@ -98,31 +103,54 @@
                                             </a>
                                         </div>
                                     {% endfor %}
-                                <div class="my-3 font-size-3">
+                                <div class="ml-5 my-3 font-size-3">
                                     <a class="button button-primary" href="{{path('evalcompetence_new', {'bloc': bloc.id, 'eval': evaluation.id, 'placeorder': placeorder + 1}) }}">
                                         Ajouter une compétence
                                     </a>
                                 </div>
                                 </div>
+                                </div>
                             {% endfor %}
-                            <div class="p-1 ml-3 mr-2 text-primary-dark font-size-5">
-                                AJOUTER UN BLOC
-                            <a class="font-size-5" href="{{ path('evalbloc_new', {'category': category.id}) }}">
-                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
-                                </svg>
-                            </a>
-                        </div>
+
+                            {% if category.evalblocs[0] is defined and category.evalblocs[0].name == 'empty' %}
+                                {#
+                                Le bloc 1 est créée et a comme valeur 'empty',
+                                le user ne souhaite donc pas créer de bloc dans cette catégorie.
+                                #}
+                            {% else %}
+                                <div class="category_container border-0 mx-auto mt-5 position-relative">
+                                    <div class="text-center d-flex justify-content-around">
+                                        <div class="h4 col-5">
+                                            <a class="text-primary-dark" href="{{ path('evalbloc_new', {'category': category.id}) }}">
+                                                Ajouter un bloc de compétences<br>
+                                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                        {% if category.evalblocs|length == 0 %}
+                                            <div class="h4 col-5">
+                                                <a class="text-primary-dark" href="{{ path('evalbloc_new_empty', {'category': category.id}) }}">
+                                                    Ne pas répartir les compétences en bloc<br>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endif %}
+
                         </div>
                     </div>
                     {% endfor %}
-                    {% set empty = 0 %}
-                    {% if theme.evalcategories[0] is defined %}
-                        {% if theme.evalcategories[0].name == 'empty' %}
-                            {% set empty = 1 %}
-                        {% endif %}
-                    {% endif %}
-                    {% if empty == 0 %}
+                    {% if theme.evalcategories[0] is defined and theme.evalcategories[0].name == 'empty' %}
+                            {#
+                            La catégorie 1 est créée et a comme valeur 'empty',
+                            le user ne souhaite donc pas créer de catégories dans ce thème.
+                            #}
+                    {% else %}
                     <div class="category_container pb-4 m-1 mt-5 position-relative">
                         <div class="text-center">
                             <div class="category_title w-75 mx-auto d-flex justify-content-around align-items-center">

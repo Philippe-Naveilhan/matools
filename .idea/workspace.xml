@@ -6,14 +6,27 @@
       <change beforePath="$PROJECT_DIR$/assets/styles/_base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_base.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/styles/_evaluation.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_evaluation.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CompetencestudentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/EvalcategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvalcategoryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EvalblocController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvalblocController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/EvaluationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvaluationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Classroom.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Classroom.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evalbloc/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalbloc/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evalbloc/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalbloc/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/evalbloc/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalbloc/new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/evalcategory/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalcategory/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evalcategory/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalcategory/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evalcompetence/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalcompetence/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evalcompetence/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalcompetence/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evalstudent/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evalstudent/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaltheme/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaltheme/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/evaltheme/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaltheme/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/evaluation/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/evaluation/show_arbo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/show_arbo.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalByEvalstudentDiv.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalByEvalstudentDiv.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalByEvaluation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalByEvaluation.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/student/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/student/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/show.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +210,10 @@
       <workItem from="1611044202666" duration="13649000" />
       <workItem from="1611133751834" duration="4992000" />
       <workItem from="1611217636939" duration="7644000" />
-      <workItem from="1611304452373" duration="7173000" />
+      <workItem from="1611304452373" duration="8516000" />
+      <workItem from="1611393922458" duration="1747000" />
+      <workItem from="1611509798177" duration="1548000" />
+      <workItem from="1611563820269" duration="10702000" />
     </task>
     <servers />
   </component>

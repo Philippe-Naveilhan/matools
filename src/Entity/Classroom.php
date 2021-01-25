@@ -45,6 +45,7 @@ class Classroom
 
     /**
      * @ORM\OneToMany(targetEntity=Evaluation::class, mappedBy="classroom", orphanRemoval=true)
+     * @ORM\OrderBy ({"id" = "DESC"})
      */
     private $evaluations;
 

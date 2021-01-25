@@ -3,7 +3,10 @@
 {% block title %}Modification de thème{% endblock %}
 
 {% block body %}
-    <h1 class="text-center my-5">Modification du thème :<br> "{{ evaltheme.name }}"</h1>
+    <h1 class="text-center text-primary my-5">Modification du thème :<br> "{{ evaltheme.name }}"</h1>
+    <div class="my-4">
+        <a class="button button-dyna" href="{{ path('evaluation_showarbo', {'id': evaltheme.evaluation.id}) }}">Retour</a>
+    </div>
     <div class="text-center">
     {{ include('evaltheme/_form.html.twig', {'button_label': 'Modifier'}) }}
 
@@ -11,6 +14,4 @@
 
     </div>
 
-
-    <a class="button button-dyna" href="{{ path('evaluation_showarbo', {'id': evaltheme.evaluation.id}) }}">Retour</a>
 {% endblock %}
