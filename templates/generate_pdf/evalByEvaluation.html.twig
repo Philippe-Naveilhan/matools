@@ -7,6 +7,9 @@
     @page{
         margin: 1cm;
     }
+    .bloc-theme{
+        page-break-after: always;
+    }
     .font-size-1{
         font-size: 9pt;
     }
@@ -133,36 +136,37 @@
 {% for evalstudent in evaluations %}
 
     <section class="evalByStudent">
-        <h1 class="center">Année scolaire 2020/2021</h1>
-        <h2 class="center">Classe de :
-            {% if evaluation.level.id == 1 %}
-                Petite Section
-            {% elseif evaluation.level.id == 2 %}
-                Moyenne Section
-            {% else %}
-                Grande Section
-            {% endif %}
-        </h2>
-        <h3 class="center">Enseignant(e) : {{ evaluation.classroom.teacher.firstname ?? '' }} {{ evaluation.classroom.teacher.lastname }}</h3>
-        <h2 class="center mt mb">{{ evaluation.name }}</h2>
+    {% for keytheme,theme in evalstudent.competences %}
+            <h1 class="center">Année scolaire 2020/2021</h1>
+            <h2 class="center">Classe de :
+                {% if evaluation.level.id == 1 %}
+                    Petite Section
+                {% elseif evaluation.level.id == 2 %}
+                    Moyenne Section
+                {% else %}
+                    Grande Section
+                {% endif %}
+            </h2>
+            <h3 class="center">Enseignant(e) : {{ evaluation.classroom.teacher.firstname ?? '' }} {{ evaluation.classroom.teacher.lastname }}</h3>
+            <h2 class="center mt mb">{{ evaluation.name }}</h2>
 
-        <div class="appreciation">
-            <div class="student">{{ evalstudent['student'].firstname ~ ' ' ~ evalstudent['student'].lastname|upper }}</div>
-            <h3 class="mt"><u>Code d'appréciation</u></h3>
-            <p>
-                <img src="build/star.png"/>
-                Compétence fragile, à travailler.</p>
-            <p>
-                <img src="build/star.png"/>
-                <img src="build/star.png"/>
-                Compétence en cours d'acquisition.</p>
-            <p>
-                <img src="build/star.png"/>
-                <img src="build/star.png"/>
-                <img src="build/star.png"/>
-                Compétence acquise.</p>
-        </div>
-        {% for keytheme,theme in evalstudent.competences %}
+            <div class="appreciation">
+                <div class="student">{{ evalstudent['student'].firstname ~ ' ' ~ evalstudent['student'].lastname|upper }}</div>
+                <h3 class="mt"><u>Code d'appréciation</u></h3>
+                <p>
+                    <img src="build/star.png"/>
+                    Compétence fragile, à travailler.</p>
+                <p>
+                    <img src="build/star.png"/>
+                    <img src="build/star.png"/>
+                    Compétence en cours d'acquisition.</p>
+                <p>
+                    <img src="build/star.png"/>
+                    <img src="build/star.png"/>
+                    <img src="build/star.png"/>
+                    Compétence acquise.</p>
+            </div>
+
             <div class="bloc-theme">
                 <div class="theme">{{ keytheme }}</div>
                 {% for keycategory, category in theme %}

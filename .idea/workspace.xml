@@ -3,26 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3e7577e7-a47b-493d-a865-98969a256bad" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/_form.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_form.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/translation.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/translation.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Academy.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Academy.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Circo.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Circo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Classroom.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Classroom.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Competencestudent.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Competencestudent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Contact.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Contact.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/District.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/District.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Evalbloc.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evalbloc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Evalcategory.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evalcategory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Evalcompetence.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evalcompetence.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Evaltheme.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evaltheme.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Evaluation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Evaluation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Program.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/School.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/School.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Student.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Student.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/EvalstudentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EvalstudentType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/EvaluationType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/EvaluationType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/evaluation/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/generate_pdf/evalByEvaluation.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/generate_pdf/evalByEvaluation.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -210,7 +192,7 @@
       <workItem from="1611393922458" duration="1747000" />
       <workItem from="1611509798177" duration="1548000" />
       <workItem from="1611563820269" duration="14329000" />
-      <workItem from="1611648243712" duration="4959000" />
+      <workItem from="1611648243712" duration="11576000" />
     </task>
     <servers />
   </component>
