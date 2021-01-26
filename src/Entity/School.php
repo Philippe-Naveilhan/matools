@@ -30,11 +30,18 @@ class School
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Length(max=255, maxMessage="L'adresse de l'école ne peut excéder {{ limit }} caractères.")
      */
     private $adress;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=5, nullable=true)
+     * @Assert\Length(
+     *     max=5,
+     *     min=5,
+     *     maxMessage="Le code postal doit être de {{ limit }} caractères.")
+     *     minMessage="Le code postal doit être de {{ limit }} caractères.")
+     * @Assert\Regex("/^\d/")
      */
     private $zipcode;
 

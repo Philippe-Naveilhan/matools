@@ -23,17 +23,20 @@ class Student
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez indiquer le prénom de l'élève.")
+     * @Assert\Length(max=255, maxMessage="Votre prénom ne peut excéder {{ limit }} caractères.")
      */
     private $Firstname;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez indiquer le nom de l'élève.")
+     * @Assert\Length(max=255, maxMessage="Votre nom ne peut excéder {{ limit }} caractères.")
      */
     private $Lastname;
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Assert\Date()
      */
     private $Birthday;
 

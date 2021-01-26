@@ -38,7 +38,8 @@ class Competencestudent
     private $note;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=20, nullable=true)
+     * @Assert\Length(max=20, maxMessage="Ce champ ne peut éxéder {{ limit }} caractères.")
      */
     private $comment;
 

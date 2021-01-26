@@ -23,6 +23,7 @@ class Classroom
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez donner un nom à votre classe.")
+     * @Assert\Length(max=255, maxMessage="La nom de la classe ne peut faire plus de {{ limit }} caractères.")
      */
     private $Name;
 

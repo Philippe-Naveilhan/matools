@@ -23,6 +23,7 @@ class Evalbloc
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez indiquer le nom de ce bloc de compétences.")
+     * @Assert\Length(max=255, maxMessage="L'intitulé du bloc de compétences ne peut excéder {{ limit }} caractères.")
      */
     private $name;
 

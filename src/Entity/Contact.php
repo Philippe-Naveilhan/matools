@@ -15,6 +15,7 @@ class Contact
 
     /**
      * @Assert\NotBlank(message="Merci de saisir votre message")
+     * @Assert\Length(max=1000, maxMessage="Votre message ne peut excéder {{ limit }} caractères.")
      */
     private $message;
 

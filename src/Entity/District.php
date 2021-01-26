@@ -23,6 +23,7 @@ class District
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez indiquer le nom de l'inspection académique.")
+     * @Assert\Length(max=255, maxMessage="Le nom du département ne peut excéder {{ limit }} caractères.")
      */
     private $name;
 

@@ -23,6 +23,7 @@ class Evaluation
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez indiquer le nom que vous souhaitez donner à l'évaluation.")
+     * @Assert\Length(max=255, maxMessage="L'intitulé de l'évaluation ne peut excéder {{ limit }} caractères.")
      */
     private $name;
 

@@ -10,7 +10,10 @@ form {
   input{
     height: 40px;
   }
-  .h-100px {
-    height: 100px;
+
+  @for $i from 1 through 5 {
+    .h-#{$i}00 {
+      height: 100px*$i;
+    }
   }
 }

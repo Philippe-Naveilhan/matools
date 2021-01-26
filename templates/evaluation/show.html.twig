@@ -23,18 +23,20 @@
                 </div>
                 {% for category in theme.evalcategories %}
                 <div class="category_container pb-4 mt-4 position-relative">
-                    {% if category.name != 'unique' %}
+                    {% if category.name != 'empty' %}
                     <div class="text-center">
                         <div class="category_title w-75 mx-auto text-center font-size-9 font-weight-bold">
                             {{ category.name }}
                         </div>
                     </div>
                     {% endif %}
-                    <div class="row mx-0">
+                    <div class="row mx-0 pt-3">
                         {% for bloc in category.evalblocs %}
+                            {% if bloc.name != 'empty' %}
                             <div class="row w-100 m-0 ml-3 align-items-center font-size-7 font-weight-bold">
                                 {{ bloc.name }}
                             </div>
+                            {% endif %}
                             <div class="col-11 offset-1">
                             {% for competence in bloc.evalcompetences %}
                                 <div id="competence.id" class="row">

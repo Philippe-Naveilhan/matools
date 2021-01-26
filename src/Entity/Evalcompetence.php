@@ -23,6 +23,7 @@ class Evalcompetence
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez indiquer le nom de la compétence à enregistrer.")
+     * @Assert\Length(max=255, maxMessage="L'intitulé de la compétence ne peut excéder {{ limit }} caractères.")
      */
     private $name;
 

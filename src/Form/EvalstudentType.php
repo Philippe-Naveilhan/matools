@@ -14,7 +14,7 @@ class EvalstudentType extends AbstractType
     {
         $builder
             ->add('comment', TextareaType::class, [
-                'attr'=>['class'=>'h-100px'],
+                'attr'=>['class'=>'h-200 w-50 font-size-5'],
                 'label' => ' ',
             ])
         ;

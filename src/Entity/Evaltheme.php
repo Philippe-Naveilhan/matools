@@ -23,6 +23,7 @@ class Evaltheme
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez indiquer le nom du thème.")
+     * @Assert\Length(max=255, maxMessage="L'intitulé du thème ne peut excéder {{ limit }} caractères.")
      */
     private $name;
 

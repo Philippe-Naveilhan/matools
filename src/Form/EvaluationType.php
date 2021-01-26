@@ -16,13 +16,6 @@ class EvaluationType extends AbstractType
     {
         $builder
             ->add('name')
-//            ->add('competence', EntityType::class, [
-//                'class' => Evalcompetence::class,
-//                'multiple' => true,
-//                'expanded' => true,
-//                'choice_label' => 'name',
-//                'by_reference' => false,
-//        ])
         ;
     }
 

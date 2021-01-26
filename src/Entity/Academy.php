@@ -68,18 +68,21 @@ class Academy
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez communiquer une adresse pour cette académie")
+     * @Assert\Length(max=255, maxMessage="L'adresse ne peut faire plus de {{ limit }} caractères.")
      */
     private $adress;
 
     /**
      * @ORM\Column(type="string", length=5)
      * @Assert\NotBlank(message="Veuillez indiquer le code postal de cette académie.")
+     * @Assert\Length(max=5, maxMessage="Le code postal ne peut dépasser {{ limit }} caractères.")
      */
     private $zipcode;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez indiquer la ville de l'académie.")
+     * @Assert\Length(max=255, maxMessage="La ville ne peut faire plus de {{ limit }} caractères.")
      */
     private $city;
 
@@ -87,11 +90,6 @@ class Academy
      * @ORM\OneToMany(targetEntity=District::class, mappedBy="inspection")
      */
     private $districts;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $domain;
 
     public function __construct()
     {
@@ -177,18 +175,6 @@ class Academy
                 $district->setInspection(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getDomain(): ?string
-    {
-        return $this->domain;
-    }
-
-    public function setDomain(string $domain): self
-    {
-        $this->domain = $domain;
 
         return $this;
     }

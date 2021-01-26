@@ -23,6 +23,7 @@ class Circo
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez indiquer le nom de la circonscription.")
+     * @Assert\Length(max=255, maxMessage="Le nom de la circonscription ne peut faire plus de {{ limit }} caractères.")
      */
     private $name;
 

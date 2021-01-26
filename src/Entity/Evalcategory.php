@@ -23,6 +23,7 @@ class Evalcategory
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Veuillez indiquer le nom du sous-thème.")
+     * @Assert\Length(max=255, maxMessage="L'intitulé de la catégorie ne peut excéder {{ limit }} caractères.")
      */
     private $name;
 
