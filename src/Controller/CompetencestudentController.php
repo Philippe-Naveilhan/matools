@@ -21,83 +21,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class CompetencestudentController extends AbstractController
 {
     /**
-     * @Route("/", name="competencestudent_index", methods={"GET"})
-     */
-    public function index(CompetencestudentRepository $competencestudentRepository): Response
-    {
-        return $this->render('competencestudent/index.html.twig', [
-            'competencestudents' => $competencestudentRepository->findAll(),
-        ]);
-    }
-
-    /**
-     * @Route("/new", name="competencestudent_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $competencestudent = new Competencestudent();
-        $form = $this->createForm(CompetencestudentType::class, $competencestudent);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($competencestudent);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('competencestudent_index');
-        }
-
-        return $this->render('competencestudent/new.html.twig', [
-            'competencestudent' => $competencestudent,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="competencestudent_show", methods={"GET"})
-     */
-    public function show(Competencestudent $competencestudent): Response
-    {
-        return $this->render('competencestudent/show.html.twig', [
-            'competencestudent' => $competencestudent,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/edit", name="competencestudent_edit", methods={"GET","POST"})
-     */
-    public function edit(Request $request, Competencestudent $competencestudent): Response
-    {
-        $form = $this->createForm(CompetencestudentType::class, $competencestudent);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('competencestudent_index');
-        }
-
-        return $this->render('competencestudent/edit.html.twig', [
-            'competencestudent' => $competencestudent,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="competencestudent_delete", methods={"DELETE"})
-     */
-    public function delete(Request $request, Competencestudent $competencestudent): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$competencestudent->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($competencestudent);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('competencestudent_index');
-    }
-
-    /**
      * @Route("/saveByCompetence/{id}", name="evalByCompetence_save", methods={"GET","POST"})
      */
     public function saveByCompetence(Request $request,
@@ -108,6 +31,10 @@ class CompetencestudentController extends AbstractController
                                      Completion $completion
     ): Response
     {
+        if ($this->getUser() != $evalcompetence->getEvaluation()->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cet évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         $listCompetenceByStudent = $competencestudentRepository->findBy(['evalcompetence'=>$evalcompetence]);
         $competenceByStudent=[];
         $key="";
@@ -116,9 +43,7 @@ class CompetencestudentController extends AbstractController
             $competenceByStudent[$key]=$comp;
         }
         ksort($competenceByStudent);
-        $test = json_encode($competenceByStudent);
         $evaluation = $evalcompetence->getEvaluation();
-//        dd($competenceByStudent);
         if(isset($_POST['evaluation'])){
             foreach($_POST['evaluation'] as $key=>$value)
             {

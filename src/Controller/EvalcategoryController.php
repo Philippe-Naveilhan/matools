@@ -17,20 +17,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class EvalcategoryController extends AbstractController
 {
     /**
-     * @Route("/", name="evalcategory_index", methods={"GET"})
-     */
-    public function index(EvalcategoryRepository $evalcategoryRepository): Response
-    {
-        return $this->render('evalcategory/index.html.twig', [
-            'evalcategories' => $evalcategoryRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/new/{theme}", name="evalcategory_new", methods={"GET","POST"})
      */
     public function new(Request $request, Evaltheme $theme): Response
     {
+        if ($this->getUser() != $theme->getEvaluation()->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         $evalcategory = new Evalcategory();
         $form = $this->createForm(EvalcategoryType::class, $evalcategory);
         $form->handleRequest($request);
@@ -56,6 +50,10 @@ class EvalcategoryController extends AbstractController
     */
     public function new_empty(Evaltheme $theme): Response
         {
+            if ($this->getUser() != $theme->getEvaluation()->getClassroom()->getTeacher()) {
+                $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+                return $this->redirectToRoute('board');
+            }
             $evalcategory = new Evalcategory();
 
             $entityManager = $this->getDoctrine()->getManager();
@@ -68,20 +66,14 @@ class EvalcategoryController extends AbstractController
         }
 
     /**
-     * @Route("/{id}", name="evalcategory_show", methods={"GET"})
-     */
-    public function show(Evalcategory $evalcategory): Response
-    {
-        return $this->render('evalcategory/show.html.twig', [
-            'evalcategory' => $evalcategory,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/edit", name="evalcategory_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Evalcategory $evalcategory): Response
     {
+        if ($this->getUser() != $evalcategory->getTheme()->getEvaluation()->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         $form = $this->createForm(EvalcategoryType::class, $evalcategory);
         $form->handleRequest($request);
 
@@ -102,6 +94,10 @@ class EvalcategoryController extends AbstractController
      */
     public function delete(Request $request, Evalcategory $evalcategory): Response
     {
+        if ($this->getUser() != $evalcategory->getTheme()->getEvaluation()->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         if ($this->isCsrfTokenValid('delete'.$evalcategory->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($evalcategory);

@@ -16,16 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class ClassroomController extends AbstractController
 {
     /**
-     * @Route("/", name="classroom_index", methods={"GET"})
-     */
-    public function index(ClassroomRepository $classroomRepository): Response
-    {
-        return $this->render('classroom/index.html.twig', [
-            'classrooms' => $classroomRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/new", name="classroom_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
@@ -51,20 +41,14 @@ class ClassroomController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="classroom_show", methods={"GET"})
-     */
-    public function show(Classroom $classroom): Response
-    {
-        return $this->render('classroom/show.html.twig', [
-            'classroom' => $classroom,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/edit", name="classroom_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Classroom $classroom): Response
     {
+        if ($this->getUser() != $classroom->getTeacher()){
+            $this->addFlash('danger', 'Cette classe ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         $form = $this->createForm(ClassroomType::class, $classroom);
         $form->handleRequest($request);
 
@@ -85,6 +69,11 @@ class ClassroomController extends AbstractController
      */
     public function delete(Request $request, Classroom $classroom): Response
     {
+        if ($this->getUser() != $classroom->getTeacher()) {
+        $this->addFlash('danger', 'Cette classe ne vous est pas rattachée.');
+        return $this->redirectToRoute('board');
+        }
+
         if ($this->isCsrfTokenValid('delete'.$classroom->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($classroom);
@@ -99,6 +88,11 @@ class ClassroomController extends AbstractController
      */
     public function active(Request $request, Classroom $classroom): Response
     {
+        if ($this->getUser() != $classroom->getTeacher()) {
+            $this->addFlash('danger', 'Cette classe ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
+
         if ($classroom->getActive() == true) {
             $classroom->setActive(false);
         } else {

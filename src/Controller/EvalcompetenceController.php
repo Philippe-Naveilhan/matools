@@ -20,25 +20,19 @@ use Symfony\Component\Routing\Annotation\Route;
 class EvalcompetenceController extends AbstractController
 {
     /**
-     * @Route("/", name="evalcompetence_index", methods={"GET"})
-     */
-    public function index(EvalcompetenceRepository $evalcompetenceRepository): Response
-    {
-        return $this->render('evalcompetence/index.html.twig', [
-            'evalcompetences' => $evalcompetenceRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/new/{bloc}/{eval}/{placeorder}", name="evalcompetence_new", methods={"GET","POST"})
      */
     public function new(Request $request,
                         Evalbloc $bloc,
-                        Evaluation $eval,
+                        Evaluation $evaluation,
                         $placeorder,
                         EvalstudentRepository $evalstudentRepository
-): Response
+    ): Response
     {
+        if ($this->getUser() != $evaluation->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         $evalcompetence = new Evalcompetence();
         $form = $this->createForm(EvalcompetenceType::class, $evalcompetence);
         $form->handleRequest($request);
@@ -47,12 +41,12 @@ class EvalcompetenceController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $evalcompetence->setBloc($bloc);
             $evalcompetence->setPlaceorder($placeorder);
-            $evalcompetence->setEvaluation($eval);
+            $evalcompetence->setEvaluation($evaluation);
             $evalcompetence->setCompletion('empty');
             $entityManager->persist($evalcompetence);
             $entityManager->flush();
 
-            foreach($evalstudentRepository->findBy(['evaluation'=>$eval]) as $evalstudent){
+            foreach($evalstudentRepository->findBy(['evaluation'=>$evaluation]) as $evalstudent){
                 $entityManager = $this->getDoctrine()->getManager();
                 $competencestudent = new Competencestudent();
                 $competencestudent->setEvalstudent($evalstudent);
@@ -61,24 +55,14 @@ class EvalcompetenceController extends AbstractController
             }
             $entityManager->flush();
 
-            return $this->redirectToRoute('evaluation_showarbo', array('id'=>$eval->getId()));
+            return $this->redirectToRoute('evaluation_showarbo', array('id'=>$evaluation->getId()));
         }
 
         return $this->render('evalcompetence/new.html.twig', [
             'bloc' => $bloc,
             'evalcompetence' => $evalcompetence,
-            'evaluation' => $eval,
+            'evaluation' => $evaluation,
             'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="evalcompetence_show", methods={"GET"})
-     */
-    public function show(Evalcompetence $evalcompetence): Response
-    {
-        return $this->render('evalcompetence/show.html.twig', [
-            'evalcompetence' => $evalcompetence,
         ]);
     }
 
@@ -87,6 +71,10 @@ class EvalcompetenceController extends AbstractController
      */
     public function edit(Request $request, Evalcompetence $evalcompetence): Response
     {
+        if ($this->getUser() != $evalcompetence->getEvaluation()->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         $form = $this->createForm(EvalcompetenceType::class, $evalcompetence);
         $form->handleRequest($request);
 
@@ -108,6 +96,11 @@ class EvalcompetenceController extends AbstractController
      */
     public function delete(Request $request, Evalcompetence $evalcompetence): Response
     {
+        if ($this->getUser() != $evalcompetence->getEvaluation()->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
+
         if ($this->isCsrfTokenValid('delete'.$evalcompetence->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($evalcompetence);

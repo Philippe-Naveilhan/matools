@@ -7,6 +7,7 @@ use App\Entity\Competencestudent;
 use App\Entity\Evalstudent;
 use App\Entity\Student;
 use App\Form\StudentType;
+use App\Repository\ClassroomRepository;
 use App\Repository\StudentRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,20 +20,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class StudentController extends AbstractController
 {
     /**
-     * @Route("/", name="student_index", methods={"GET"})
-     */
-    public function index(StudentRepository $studentRepository): Response
-    {
-        return $this->render('student/index.html.twig', [
-            'students' => $studentRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/{id}", name="student_by_classroom", methods={"GET"})
      */
     public function by_class(Classroom $classroom): Response
     {
+        if ($this->getUser() != $classroom->getTeacher()) {
+            $this->addFlash('danger', 'Cette classe ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         return $this->render('student/index.html.twig', [
             'classroom' => $classroom,
         ]);
@@ -43,6 +38,11 @@ class StudentController extends AbstractController
      */
     public function new(Request $request, Classroom $classroom): Response
     {
+        if ($this->getUser() != $classroom->getTeacher()) {
+            $this->addFlash('danger', 'Cette classe ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
+
         $student = new Student();
         $form = $this->createForm(StudentType::class, $student);
         $form->handleRequest($request);
@@ -91,6 +91,7 @@ class StudentController extends AbstractController
      */
     public function show(Student $student): Response
     {
+
         return $this->render('student/show.html.twig', [
             'student' => $student,
         ]);
@@ -101,6 +102,11 @@ class StudentController extends AbstractController
      */
     public function edit(Request $request, Student $student): Response
     {
+        if ($this->getUser() != $student->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cet élève ne vous est pas rattaché.');
+            return $this->redirectToRoute('board');
+        }
+
         $form = $this->createForm(StudentType::class, $student);
         $form->handleRequest($request);
 
@@ -125,6 +131,11 @@ class StudentController extends AbstractController
      */
     public function delete(Request $request, Student $student): Response
     {
+        if ($this->getUser() != $student->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cet élève ne vous est pas rattaché.');
+            return $this->redirectToRoute('board');
+        }
+
         if ($this->isCsrfTokenValid('delete'.$student->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($student);

@@ -17,47 +17,32 @@ use Symfony\Component\Routing\Annotation\Route;
 class EvalthemeController extends AbstractController
 {
     /**
-     * @Route("/", name="evaltheme_index", methods={"GET"})
-     */
-    public function index(EvalthemeRepository $evalthemeRepository): Response
-    {
-        return $this->render('evaltheme/index.html.twig', [
-            'evalthemes' => $evalthemeRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/new/{eval}", name="evaltheme_new", methods={"GET","POST"})
      */
-    public function new(Request $request, Evaluation $eval): Response
+    public function new(Request $request, Evaluation $evaluation): Response
     {
+        if ($this->getUser() != $evaluation->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
+
         $evaltheme = new Evaltheme();
         $form = $this->createForm(EvalthemeType::class, $evaltheme);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $evaltheme->setEvaluation($eval);
+            $evaltheme->setEvaluation($evaluation);
             $entityManager->persist($evaltheme);
             $entityManager->flush();
 
-            return $this->redirectToRoute('evaluation_showarbo', array('id'=>$eval->getId()));
+            return $this->redirectToRoute('evaluation_showarbo', array('id'=>$evaluation->getId()));
         }
 
         return $this->render('evaltheme/new.html.twig', [
-            'evaluation' => $eval,
+            'evaluation' => $evaluation,
             'evaltheme' => $evaltheme,
             'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="evaltheme_show", methods={"GET"})
-     */
-    public function show(Evaltheme $evaltheme): Response
-    {
-        return $this->render('evaltheme/show.html.twig', [
-            'evaltheme' => $evaltheme,
         ]);
     }
 
@@ -66,6 +51,10 @@ class EvalthemeController extends AbstractController
      */
     public function edit(Request $request, Evaltheme $evaltheme): Response
     {
+        if ($this->getUser() != $evaltheme->getEvaluation()->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         $form = $this->createForm(EvalthemeType::class, $evaltheme);
         $form->handleRequest($request);
 
@@ -86,6 +75,10 @@ class EvalthemeController extends AbstractController
      */
     public function delete(Request $request, Evaltheme $evaltheme): Response
     {
+        if ($this->getUser() != $evaltheme->getEvaluation()->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         if ($this->isCsrfTokenValid('delete'.$evaltheme->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($evaltheme);

@@ -17,20 +17,14 @@ use Symfony\Component\Routing\Annotation\Route;
 class EvalblocController extends AbstractController
 {
     /**
-     * @Route("/", name="evalbloc_index", methods={"GET"})
-     */
-    public function index(EvalblocRepository $evalblocRepository): Response
-    {
-        return $this->render('evalbloc/index.html.twig', [
-            'evalblocs' => $evalblocRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/new/{category}", name="evalbloc_new", methods={"GET","POST"})
      */
     public function new(Request $request, Evalcategory $category): Response
     {
+        if ($this->getUser() != $category->getTheme()->getEvaluation()->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         $evalbloc = new Evalbloc();
         $form = $this->createForm(EvalblocType::class, $evalbloc);
         $form->handleRequest($request);
@@ -57,6 +51,10 @@ class EvalblocController extends AbstractController
      */
     public function new_empty(Request $request, Evalcategory $category): Response
     {
+        if ($this->getUser() != $category->getTheme()->getEvaluation()->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         $evalbloc = new Evalbloc();
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -69,20 +67,14 @@ class EvalblocController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="evalbloc_show", methods={"GET"})
-     */
-    public function show(Evalbloc $evalbloc): Response
-    {
-        return $this->render('evalbloc/show.html.twig', [
-            'evalbloc' => $evalbloc,
-        ]);
-    }
-
-    /**
      * @Route("/{id}/edit", name="evalbloc_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Evalbloc $evalbloc): Response
     {
+        if ($this->getUser() != $evalbloc->getCategory()->getTheme()->getEvaluation()->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         $form = $this->createForm(EvalblocType::class, $evalbloc);
         $form->handleRequest($request);
 
@@ -103,6 +95,10 @@ class EvalblocController extends AbstractController
      */
     public function delete(Request $request, Evalbloc $evalbloc): Response
     {
+        if ($this->getUser() != $evalbloc->getCategory()->getTheme()->getEvaluation()->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         if ($this->isCsrfTokenValid('delete'.$evalbloc->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($evalbloc);

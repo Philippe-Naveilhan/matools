@@ -18,46 +18,17 @@ use Dompdf\Options;
 class GeneratePDFController extends AbstractController
 {
     /**
-     * @Route("/", name="generate_pdf")
-     */
-    public function index(): Response
-    {
-// Configure Dompdf according to your needs
-        $pdfOptions = new Options();
-        $pdfOptions->set('defaultFont', 'Arial');
-
-        // Instantiate Dompdf with our options
-        $dompdf = new Dompdf($pdfOptions);
-
-        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
-        $dompdf->setPaper('A4', 'landscape');
-
-        // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('generate_pdf/index.html.twig', [
-            'controller_name' => "Welcome to our PDF Test"
-        ]);
-
-        // Load HTML to Dompdf
-        $dompdf->loadHtml($html);
-
-        // Render the HTML as PDF
-        $dompdf->render();
-
-        // the file's name
-        $name = 'test'.rand(0,10).'.pdf';
-        // Output the generated PDF to Browser (inline view)
-        $dompdf->stream($name, [
-            "Attachment" => false
-        ]);
-    }
-
-    /**
      * @Route("/eval_vierge/{id}", name="eval_vierge")
      */
     public function eval_vierge(Evaluation $evaluation,
                                 EvalthemeRepository $evalthemeRepository
     ): Response
     {
+        if ($this->getUser() != $evaluation->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
+
         //gestion des données
         $themes = $evalthemeRepository->findAll();
         $students = [];
@@ -102,6 +73,10 @@ class GeneratePDFController extends AbstractController
                                   EvalthemeRepository $evalthemeRepository
     ): Response
     {
+        if ($this->getUser() != $evaluation->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         //gestion des données
         $competences = [];
         foreach($evaluation->getEvalcompetences() as $value){
@@ -153,6 +128,11 @@ class GeneratePDFController extends AbstractController
                                   EvalthemeRepository $evalthemeRepository
     ): Response
     {
+        if ($this->getUser() != $evalstudent->getEvaluation()->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cet élève ne vous est pas rattaché.');
+            return $this->redirectToRoute('board');
+        }
+
         //gestion des données
         $competences = [];
         foreach($evalstudent->getCompetencestudents() as $value){
@@ -202,7 +182,10 @@ class GeneratePDFController extends AbstractController
                                  EvalthemeRepository $evalthemeRepository
     ): Response
     {
-
+        if ($this->getUser() != $evaluation->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         $evaluations = [];
         foreach($evaluation->getEvalstudents() as $evalstudent){
             foreach($evalstudent->getCompetencestudents() as $competenceStudent){

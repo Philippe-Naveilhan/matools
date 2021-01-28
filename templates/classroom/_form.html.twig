@@ -1,4 +1,10 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+
+    <div>
+        {{ form_errors(form.Name) }}
+    </div>
+    <div>
+        {{ form_widget(form.Name) }}
+    </div>
     <button class="button button-primary">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

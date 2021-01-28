@@ -3,12 +3,14 @@
 {% block title %}Edit Classroom{% endblock %}
 
 {% block body %}
-    <div class="text-center">
+    <div class="text-center mb-3">
     <h1 class="my-5">Modifier le nom de la classe</h1>
+        <div class="my-3 text-left">
+            <a class="button button-dyna" href="{{ path('board') }}">Retour</a>
+        </div>
 
     {{ include('classroom/_form.html.twig', {'button_label': 'Modifier'}) }}
     </div>
-    <a class="button button-dyna" href="{{ path('board') }}">Retour</a>
 
 
 {% endblock %}

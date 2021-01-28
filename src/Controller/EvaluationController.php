@@ -34,6 +34,11 @@ class EvaluationController extends AbstractController
      */
     public function index(Classroom $classroom): Response
     {
+        if ($this->getUser() != $classroom->getTeacher()) {
+            $this->addFlash('danger', 'Cette classe ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
+
         return $this->render('evaluation/index.html.twig', [
             'classroom' => $classroom,
         ]);
@@ -47,7 +52,10 @@ class EvaluationController extends AbstractController
                         LevelRepository $levelRepository
     ): Response
     {
-
+        if ($this->getUser() != $classroom->getTeacher()) {
+            $this->addFlash('danger', 'Cette classe ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         if (isset($_POST['evaluation'])) {
             $evaluation = new Evaluation();
             $entityManager = $this->getDoctrine()->getManager();
@@ -151,7 +159,10 @@ class EvaluationController extends AbstractController
                         LevelRepository $levelRepository
     ): Response
     {
-
+        if ($this->getUser() != $classroom->getTeacher()) {
+            $this->addFlash('danger', 'Cette classe ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         if (isset($_POST['evaluation'])) {
             $evaluation = new Evaluation();
             $entityManager = $this->getDoctrine()->getManager();
@@ -188,6 +199,10 @@ class EvaluationController extends AbstractController
      */
     public function show(Evaluation $evaluation): Response
     {
+        if ($this->getUser() != $evaluation->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
 
         return $this->render('evaluation/show.html.twig', [
             'evaluation' => $evaluation
@@ -199,7 +214,10 @@ class EvaluationController extends AbstractController
      */
     public function showarbo(Evaluation $evaluation): Response
     {
-        $themes = $evaluation->getEvalthemes();
+        if ($this->getUser() != $evaluation->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
 
         return $this->render('evaluation/show_arbo.html.twig', [
             'evaluation' => $evaluation,
@@ -213,6 +231,11 @@ class EvaluationController extends AbstractController
                          Evaluation $evaluation,
                          LevelRepository $levelRepository): Response
     {
+        if ($this->getUser() != $evaluation->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
+
         $form = $this->createForm(EvaluationType::class, $evaluation);
         $form->handleRequest($request);
 
@@ -237,6 +260,11 @@ class EvaluationController extends AbstractController
      */
     public function delete(Request $request, Evaluation $evaluation): Response
     {
+        if ($this->getUser() != $evaluation->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
+
         if ($this->isCsrfTokenValid('delete'.$evaluation->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($evaluation);
@@ -253,6 +281,10 @@ class EvaluationController extends AbstractController
                          Evaluation $evaluation,
                          EvalthemeRepository $evalthemeRepository): Response
     {
+        if ($this->getUser() != $evaluation->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
         $themes = $evalthemeRepository->findAll();
         $competences = $evalcompetenceRepository->findBy(['evaluation'=>$evaluation]);
 
@@ -270,6 +302,11 @@ class EvaluationController extends AbstractController
                            $direction,
                            EvalcompetenceRepository $evalcompetenceRepository): Response
     {
+        if ($this->getUser() != $evalcompetence->getEvaluation()->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
+
         $entityManager = $this->getDoctrine()->getManager();
         if($direction == 'up'){
             $otherCompetence = $evalcompetenceRepository->findOneBy(['bloc'=>$evalcompetence->getBloc(), 'placeorder'=>($evalcompetence->getPlaceorder()+1)]);
@@ -291,6 +328,11 @@ class EvaluationController extends AbstractController
      */
     public function appreciation(Evaluation $evaluation): Response
     {
+        if ($this->getUser() != $evaluation->getClassroom()->getTeacher()) {
+            $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
+            return $this->redirectToRoute('board');
+        }
+
         return $this->render('evaluation/comments.html.twig', [
             'evaluation' => $evaluation,
         ]);
