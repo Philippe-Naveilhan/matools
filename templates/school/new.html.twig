@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New School{% endblock %}
+{% block title %}Nouvelle école{% endblock %}
 
 {% block body %}
-    <h1>Create new School</h1>
+    <h1 class="text-center">Enregistrer une nouvelle école</h1>
 
-    {{ include('school/_form.html.twig') }}
+    <div class="my-4 ml-3">
+        <a class="btn btn-primary" href="{{ path('select_academy') }}">Retour</a>
+    </div>
+    <div class="col-6 offset-3">
+        {{ include('school/_form.html.twig') }}
+    </div>
 
-    <a href="{{ path('school_index') }}">back to list</a>
 {% endblock %}

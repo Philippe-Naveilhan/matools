@@ -4,11 +4,11 @@
 
 {% block body %}
     <h1 class="text-center">Modification des données utilisateur</h1>
+    <div class="ml-3 my-5">
+        <a class="button button-primary" href="{{ path('user_show') }}">Retour</a>
+    </div>
 
     <div class="text-center">
         {{ include('user/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
     </div>
-
-    <a class="button button-primary" href="{{ path('user_show') }}">Retour</a>
-
 {% endblock %}

@@ -14,6 +14,7 @@ use App\Repository\CircoRepository;
 use App\Repository\SchoolRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,39 +24,29 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class UserController extends AbstractController
 {
-    /**
-     * @Route("/", name="user_index", methods={"GET"})
-     */
-    public function index(UserRepository $userRepository): Response
-    {
-        return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findAll(),
-        ]);
-    }
-
-    /**
-     * @Route("/new", name="user_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('user_index');
-        }
-
-        return $this->render('user/new.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);
-    }
-
+//    /**
+//     * @Route("/new", name="user_new", methods={"GET","POST"})
+//     */
+//    public function new(Request $request): Response
+//    {
+//        $user = new User();
+//        $form = $this->createForm(UserType::class, $user);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $entityManager = $this->getDoctrine()->getManager();
+//            $entityManager->persist($user);
+//            $entityManager->flush();
+//
+//            return $this->redirectToRoute('user_index');
+//        }
+//
+//        return $this->render('user/new.html.twig', [
+//            'user' => $user,
+//            'form' => $form->createView(),
+//        ]);
+//    }
+//
     /**
      * @Route("/profil", name="user_show", methods={"GET"})
      */
@@ -113,33 +104,51 @@ class UserController extends AbstractController
     /**
      * @Route("/select_district/{id}", name="select_district", methods={"GET","POST"})
      */
-    public function select_district(DistrictRepository $districtRepository, Academy $academy): Response
+    public function select_district(Academy $academy): Response
     {
-        $districts = $districtRepository->findBy(['inspection'=>$academy->getId()],['name'=>'ASC']);
-        return $this->render('user/select_district.html.twig', [
-            'districts' => $districts,
-        ]);
+        $array = [];
+        $districts = $academy->getDistricts();
+        foreach ($districts as $district){
+            $array[$district->getId()] = $district->getName();
+    }
+        $disctrictsJSON = json_encode($array);
+        return $this->json([
+            'code' => 200,
+            'message' => $disctrictsJSON
+        ], 200);
     }
 
     /**
      * @Route("/select_circo/{id}", name="select_circo", methods={"GET","POST"})
      */
-    public function select_circo(CircoRepository $circoRepository, District $district): Response
+    public function select_circo(District $district): Response
     {
-        $circos = $circoRepository->findBy(['district'=>$district->getId()],['name'=>'ASC']);
-        return $this->render('user/select_circo.html.twig', [
-            'circos' => $circos,
+        $array = [];
+        $circos = $district->getCircos();
+        foreach ($circos as $circo){
+            $array[$circo->getId()] = $circo->getName();
+        }
+        $circosJSON = json_encode($array);
+        return $this->json([
+            'code' => 200,
+            'message' => $circosJSON
         ]);
     }
 
     /**
      * @Route("/select_school/{id}", name="select_school", methods={"GET","POST"})
      */
-    public function select_school(SchoolRepository $schoolRepository, Circo $circo): Response
+    public function select_school(Circo $circo): Response
     {
-        $schools = $schoolRepository->findBy(['circo'=>$circo->getId()],['name'=>'ASC']);
-        return $this->render('user/select_school.html.twig', [
-            'schools' => $schools,
+        $array = [];
+        $schools = $circo->getSchools();
+        foreach ($schools as $school){
+            $array[$school->getId()] = $school->getName();
+        }
+        $schoolsJSON = json_encode($array);
+        return $this->json([
+            'code' => 200,
+            'message' => $schoolsJSON,
         ]);
     }
 

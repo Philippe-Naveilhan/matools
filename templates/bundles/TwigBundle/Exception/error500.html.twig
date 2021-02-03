@@ -3,12 +3,17 @@
 {% block body %}
     {% include '_errorsNavbar.html.twig' %}
 
-    <div class="errorPage container d-flex justify-content-center pb-5">
-        <div class="col-10 justify-content-center d-flex flex-column" >
-            <h1 class="text-center ">Oops ! Une erreur 500 est survenue...</h1>
-            <h3 class="text-center ">
-                Il semblerait que le serveur rencontre quelques difficultés. Vous pouvez retourner à <a href="{{ path('app_index') }}">l'accueil du site en cliquant là</a>.
-            </h3>
-        </div>
+    <div style="height:800px; width:1200px" class="mx-auto overflow-hidden">
+        {% set rand = random(0,1000) %}
+        {% set text = random(1001,1900) %}
+        {% for i in (0..2000) %}
+            {% if i == rand %}
+                <span style="font-size: 20px" class="text-danger font-title">E R R O R 5 0 0</span>
+            {% elseif i == text %}
+                <span style="font-size: 20px" class="text-danger font-title">. . E R R O R . . S E R V E R . .</span>
+            {% else %}
+                <span style="font-size: {{ random(['12','14','16','18','20','24']) }}px;color:#{% for i in 0..5 %}{{ random(['0','1','2','3','4','5','6','7','8','9','a','b','c','d','e','f']) }}{% endfor %}">{{ random(0,9) }}</span>
+            {% endif %}
+        {% endfor %}
     </div>
 {% endblock %}

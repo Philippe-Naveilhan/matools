@@ -4,12 +4,113 @@
 
 {% block body %}
     <h1 class="text-center my-5">Sélectionnez votre académie</h1>
+    <div class="my-3">
+        <a class="button button-dyna" href="{{ path('user_show') }}">Retour</a>
+    </div>
 
     <section id="academy">
-        <div class="text-center">
-            {% include('svg/_academy.html.twig') %}
+
+
+        <div class="row m-0">
+            <div class="col-6 offset-1">
+                <div class="text-center">
+                    {% include('svg/_academy.html.twig') %}
+                </div>
+            </div>
+            <div class="col-2 d-flex flex-column">
+                <div class="mt-5">Département</div>
+                <div class="my-3" id="listDistricts">
+                    <select>
+                        <option value="nope">Cliquez sur une académie...</option>
+                    </select>
+                </div>
+                <div class="mt-5">Circonscription</div>
+                <div class="my-3" id="listCircos">
+                    <select>
+                        <option value="nope">puis choisissez un département...</option>
+                    </select>
+                </div>
+                <div class="mt-5">Ecole</div>
+                <div class="my-3" id="listSchools">
+                    <select>
+                        <option value="nope">puis votre école...</option>
+                    </select>
+                </div>
+                <div id="validSchool">
+                </div>
+            </div>
         </div>
     </section>
+{% endblock %}
+{% block javascripts %}
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function onClickChargeDistricts(event){
+            event.preventDefault();
+            const url = this.href;
+            axios.get(url.animVal).then(function (response){
+                let districts = "";
+                donnees = JSON.parse(response.data.message);
+                districts = "<select id='districtSelect' onchange='onChangeChargeCircos()'><option value='nope'>Choisissez un département...</option>";
+                for (i in donnees){
+                    districts += "<option value='" + i + "'>" + donnees[i] + "</option>";
+                }
+                districts += "</SELECT>";
+                document.getElementById('listDistricts').innerHTML = districts;
+            })
+        }
 
-    <a class="button button-dyna" href="{{ path('user_show') }}">Retour</a>
+        function onChangeChargeCircos(){
+            if (document.getElementById('districtSelect').value !== 'nope') {
+                let url = "select_circo/" + document.getElementById('districtSelect').value;
+                axios.get(url).then(function (response){
+                    let circos = "";
+                    donnees = JSON.parse(response.data.message);
+                    circos = "<select id='circoSelect' onchange='onChangeChargeSchools()'><option value='nope'>Choisissez une circonscription...</option>";
+                    for (i in donnees){
+                        circos += "<option value='" + i + "'>" + donnees[i] + "</option>";
+                    }
+                    circos += "</SELECT>";
+                    document.getElementById('listCircos').innerHTML = circos;
+                })
+            } else {
+                document.getElementById('listCircos').innerHTML = '<select><option value="nope">puis choisissez un département...</option></select>';
+                document.getElementById('validSchool').innerHTML = '';
+                document.getElementById('schoolSelect').innerHTML = '<select><option value="nope">puis votre école...</option></select>';
+            }
+        }
+
+        function onChangeChargeSchools(){
+            if (document.getElementById('circoSelect').value !== 'nope'){
+                let url = "select_school/" + document.getElementById('circoSelect').value;
+                axios.get(url).then(function (response){
+                    let schools = "";
+                    donnees = JSON.parse(response.data.message);
+                    schools = "<select id='schoolSelect' onchange='validateSchool()'><option value='nope'>Choisissez votre école...</option>";
+                    for (i in donnees){
+                        schools += "<option value='" + i + "'>" + donnees[i] + "</option>";
+                    }
+                    schools += "</SELECT>";
+                    document.getElementById('listSchools').innerHTML = schools;
+
+                    let text = '<span class="btn btn-primary mr-3 my-5" href="">VALIDER</span>';
+                    text += '<a class="btn btn-primary mr-3 my-5" href="../school/new/' + document.getElementById('circoSelect').value + '">Mon école n\'est pas dans la liste</a>';
+                    document.getElementById('validSchool').innerHTML = text;
+                })
+            } else {
+                document.getElementById('validSchool').innerHTML = '';
+                document.getElementById('schoolSelect').innerHTML = '<select><option value="nope">puis votre école...</option></select>';
+            }
+        }
+
+        function validateSchool(){
+            let text = '<a class="btn btn-primary mr-3 my-5" href="../user/select_school_save/' + document.getElementById('schoolSelect').value + '">VALIDER</a>';
+            text += '<a class="btn btn-primary mr-3 my-5" href="../school/new/' + document.getElementById('circoSelect').value + '">Mon école n\'est pas dans la liste</a>';
+            document.getElementById('validSchool').innerHTML = text;
+        }
+
+        document.querySelectorAll('a.academy-link').forEach(function(link){
+            link.addEventListener('click', onClickChargeDistricts);
+        })
+    </script>
 {% endblock %}

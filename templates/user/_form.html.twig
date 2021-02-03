@@ -1,4 +1,20 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="button button-primary">{{ button_label|default('Save') }}</button>
+<div class="col-3 mx-auto">
+    <div class="text-left mb-3">
+        {{ form_label(form.username) }}
+        {{ form_errors(form.username) }}<br>
+        {{ form_widget(form.username) }}
+    </div>
+    <div class="text-left mb-3">
+        {{ form_label(form.Firstname) }}
+        {{ form_errors(form.Firstname) }}<br>
+        {{ form_widget(form.Firstname) }}
+    </div>
+    <div class="text-left mb-3">
+        {{ form_label(form.Lastname) }}
+        {{ form_errors(form.Lastname) }}<br>
+        {{ form_widget(form.Lastname) }}
+    </div>
+</div>
+    <button class="button button-primary mb-5">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

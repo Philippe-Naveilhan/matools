@@ -1,4 +1,27 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+<div>
+    Nom de l'école<br>
+    {{ form_label(form.name) }}
+    {{ form_widget(form.name) }}<br>
+    {{ form_errors(form.name) }}<br>
+</div>
+<div>
+    Adresse<br>
+    {{ form_widget(form.adress) }}<br>
+    {{ form_errors(form.adress) }}<br>
+</div>
+<div>
+    Code postal<br>
+    {{ form_widget(form.zipcode) }}<br>
+    {{ form_errors(form.zipcode) }}<br>
+</div>
+<div>
+    Commune<br>
+    {{ form_widget(form.city) }}<br>
+    {{ form_errors(form.city) }}<br>
+</div>
+<div class="mb-5">
+    <button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+</div>
 {{ form_end(form) }}

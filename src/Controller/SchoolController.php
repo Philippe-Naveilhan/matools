@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Circo;
 use App\Entity\School;
 use App\Form\SchoolType;
 use App\Repository\SchoolRepository;
@@ -26,9 +27,9 @@ class SchoolController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="school_new", methods={"GET","POST"})
+     * @Route("/new/{id}", name="school_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Circo $circo): Response
     {
         $school = new School();
         $form = $this->createForm(SchoolType::class, $school);
@@ -36,14 +37,20 @@ class SchoolController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $school->setCirco($circo);
             $entityManager->persist($school);
             $entityManager->flush();
+            $user = $this->getUser();
+            $user->setSchool($school);
+            $entityManager->persist($user);
+            $entityManager->flush();
 
-            return $this->redirectToRoute('school_index');
+            return $this->redirectToRoute('user_show');
         }
 
         return $this->render('school/new.html.twig', [
             'school' => $school,
+            'circo' => $circo,
             'form' => $form->createView(),
         ]);
     }
