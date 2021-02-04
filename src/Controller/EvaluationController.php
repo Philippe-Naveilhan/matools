@@ -319,8 +319,22 @@ class EvaluationController extends AbstractController
             $otherCompetence->setPlaceorder($otherCompetence->getPlaceorder()+1);
         }
         $entityManager->flush();
+        $compByBloc = $evalcompetenceRepository->findBy(['bloc'=>$evalcompetence->getBloc()], ['placeorder'=>'ASC']);
+        $array = [];
+        foreach ($compByBloc as $competence){
+            $array[$competence->getPlaceorder()]['name'] = $competence->getName();
+            $array[$competence->getPlaceorder()]['id'] = $competence->getId();
+        }
+        $competences = json_encode($array);
+        $bloc = json_encode($evalcompetence->getBloc()->getId());
 
-        return $this->redirectToRoute('evaluation_showarbo', array('id'=>$evalcompetence->getEvaluation()->getId()));
+        return $this->json([
+            'code' => 200,
+            'competences' => $competences,
+            'bloc' => $bloc
+        ]);
+
+//        return $this->redirectToRoute('evaluation_showarbo', array('id'=>$evalcompetence->getEvaluation()->getId()));
     }
 
     /**

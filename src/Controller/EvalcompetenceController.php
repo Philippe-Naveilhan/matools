@@ -20,24 +20,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class EvalcompetenceController extends AbstractController
 {
     /**
-     * @Route("/new/{bloc}/{eval}/{placeorder}", name="evalcompetence_new", methods={"GET","POST"})
+     * @Route("/new/{bloc}", name="evalcompetence_new", methods={"GET","POST"})
      */
     public function new(Request $request,
                         Evalbloc $bloc,
-                        Evaluation $evaluation,
-                        $placeorder,
                         EvalstudentRepository $evalstudentRepository
     ): Response
     {
-        if ($this->getUser() != $evaluation->getClassroom()->getTeacher()) {
+        if ($this->getUser() != $bloc->getCategory()->getTheme()->getEvaluation()->getClassroom()->getTeacher()) {
             $this->addFlash('danger', 'Cette évaluation ne vous est pas rattachée.');
             return $this->redirectToRoute('board');
         }
+        $evaluation = $bloc->getCategory()->getTheme()->getEvaluation();
         $evalcompetence = new Evalcompetence();
         $form = $this->createForm(EvalcompetenceType::class, $evalcompetence);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $competences = $bloc->getEvalcompetences();
+            $placeorder = count($competences) + 1;
             $entityManager = $this->getDoctrine()->getManager();
             $evalcompetence->setBloc($bloc);
             $evalcompetence->setPlaceorder($placeorder);

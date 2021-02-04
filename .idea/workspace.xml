@@ -3,16 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3e7577e7-a47b-493d-a865-98969a256bad" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SchoolController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SchoolController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/SchoolType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/SchoolType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error500.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/bundles/TwigBundle/Exception/error500.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/school/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/school/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/school/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/school/new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/svg/_academy.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/svg/_academy.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/select_academy.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/select_academy.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EvalcompetenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvalcompetenceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/EvaluationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/EvaluationController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/show_arbo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/show_arbo.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/select_circo.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/select_district.html.twig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/user/select_school.html.twig" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +201,9 @@
       <workItem from="1612000296736" duration="1355000" />
       <workItem from="1612163629974" duration="14492000" />
       <workItem from="1612252771708" duration="22810000" />
-      <workItem from="1612341434994" duration="7247000" />
+      <workItem from="1612341434994" duration="8635000" />
+      <workItem from="1612415085263" duration="2611000" />
+      <workItem from="1612420557109" duration="15707000" />
     </task>
     <servers />
   </component>
