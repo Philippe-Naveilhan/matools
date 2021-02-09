@@ -25,10 +25,7 @@
                             </div>
                             <div>
                                 <a class="text-light" href="{{ path('evaltheme_edit', {'id': theme.id}) }}">
-                                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
-                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
-                                    </svg>
+                                    <img class="img-size-4" src="{{ asset('build/pictos/update-light.svg') }}">
                                 </a>
                             </div>
                         </div>
@@ -42,10 +39,7 @@
                                 </div>
                                 <span class="font-size-9 font-weight-bold">{{ category.name == 'unique' ? '- -' : category.name }}</span>
                                     <a class="text-primary-dark" href="{{ path('evalcategory_edit', {'id': category.id}) }}">
-                                        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
-                                            <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
-                                        </svg>
+                                        <img class="img-size-3" src="{{ asset('build/pictos/update-primary.svg') }}">
                                     </a>
                             </div>
                         </div>
@@ -59,48 +53,31 @@
                                         </div>
                                         <span class="font-weight-bold font-size-7">{{ bloc.name == 'unique' ? '- -' : bloc.name }}</span>
                                         <a class="ml-2 text-primary-dark" href="{{ path('evalbloc_edit', {'id': bloc.id}) }}">
-                                            <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
-                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
-                                            </svg>
+                                            <img class="img-size-2" src="{{ asset('build/pictos/update-primary.svg') }}">
                                         </a>
                                     </div>
                                     {% endif %}
                                 {% set placeorder = 0 %}
                                 <div id="bloc_{{ bloc.id }}" class="col-11 offset-1">
                                 {% for competence in bloc.evalcompetences %}
-                                        {% set placeorder = loop.length %}
-                                        <div class="row">
+                                        <div class="row align-baseline">
                                             <div class="mb-1 p-1 mr-2 text-light bg-primary font-size-2 br-2">
                                                 COMP.
                                             </div>
-                                            <div class="up_and_down">
-                                                {% if competence.placeorder != 1 %}
-                                                    <a class="order" href="{{ path('evaluation_updown', {'id':competence.id, 'direction':'down'}) }}">
-                                                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-                                                        </svg>
-                                                    </a>
-                                                {% else %}
-                                                    <svg class="text-light" width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
-                                                    </svg>
-                                                {% endif %}
-                                                {% if competence.placeorder != loop.length %}
-                                                    <a class="order" href="{{ path('evaluation_updown', {'id':competence.id, 'direction':'up'}) }}">
-                                                        <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
-                                                        </svg>
-                                                    </a>
-                                                {% endif %}
+                                            <div class="up_and_down d-flex align-items-center">
+                                                <a class="order{{ competence.placeorder == 1 ? ' d-none' : ' mr-auto' }}" href="{{ path('evaluation_updown', {'id':competence.id, 'direction':'down'}) }}">
+                                                    <img class="img-size-2" src="{{ asset('build/pictos/up.svg') }}">
+                                                </a>
+                                                <a class="order ml-1{{ competence.placeorder == loop.length ? ' d-none' : ' ml-auto' }}" href="{{ path('evaluation_updown', {'id':competence.id, 'direction':'up'}) }}">
+                                                    <img class="img-size-2" src="{{ asset('build/pictos/down.svg') }}">
+                                                </a>
                                             </div>
                                             <span class="font-size-5">{{ competence.name }}</span>
-                                            <a class="ml-3 text-primary-dark" href="{{ path('evalcompetence_edit', {'id': competence.id}) }}" title="Modifier ou supprimer l'intitulé de la compétence">
-                                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                                    <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-                                                </svg>
-                                            </a>
+                                            <div class="d-flex align-items-center">
+                                                <a class="ml-3" href="{{ path('evalcompetence_edit', {'id': competence.id}) }}" title="Modifier ou supprimer l'intitulé de la compétence">
+                                                    <img class="img-size-1" src="{{ asset('build/pictos/update-primary.svg') }}">
+                                                </a>
+                                            </div>
                                         </div>
                                     {% endfor %}
                                 <div class="ml-5 my-3 font-size-3">
@@ -207,45 +184,44 @@
                 let competences = JSON.parse(response.data.competences);
                 let bloc = JSON.parse(response.data.bloc);
                 codBloc = "";
-                for (i in competences){
-                    codBloc += '<div class="row">';
-                    codBloc += '<div class="mb-1 p-1 mr-2 text-light bg-primary font-size-2 br-2">';
-                    codBloc += 'COMP.';
-                    codBloc += '</div>';
-                    codBloc += '<div class="up_and_down">';
+                for (i in competences) {
+                    codBloc += '<div class="row align-baseline">' +
+                        '<div class="mb-1 p-1 mr-2 text-light bg-primary font-size-2 br-2">' +
+                        'COMP.' +
+                        '</div>' +
+                        '<div class="up_and_down d-flex align-items-center">' +
+                        '<a class="order';
                     if (i !== '1') {
-                        codBloc += '<a class="order" href="../updown/' + competences[i]['id'] + '/down">';
-                        codBloc += '<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">';
-                        codBloc += '<path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>';
-                        codBloc += '</svg>';
-                        codBloc += '</a>';
+                        codBloc += ' mr-auto';
                     } else {
-                        codBloc += '<svg class="text-light" width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-up-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">';
-                        codBloc += '<path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>';
-                        codBloc += '</svg>';
-                        }
-                    if (i !== String(Object.keys(competences).length)) {
-                        codBloc += '<a class="order" href="../updown/' + competences[i]['id'] + '/up">';
-                        codBloc += '<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-arrow-down-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">';
-                        codBloc += '<path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>';
-                        codBloc += '</svg>';
-                        codBloc += '</a>';
+                        codBloc += ' d-none';
                     }
-                    codBloc += '</div>';
-                    codBloc += '<span class="font-size-5">' + competences[i]['name'] + '</span>';
-                    codBloc += '<a class="ml-3 text-primary-dark" href="../../evalcompetence/' + competences[i]['id'] + '/edit" title="Modifier ou supprimer l\'intitulé de la compétence">';
-                    codBloc += '<svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">';
-                    codBloc += '<path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>';
-                    codBloc += '<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>';
-                    codBloc += '</svg>';
-                    codBloc += '</a>';
-                    codBloc += '</div>';
+                    codBloc += '" href="../updown/' + competences[i]['id'] + '/down">' +
+                        '<img class="img-size-2" src="/build/pictos/up.svg">' +
+                        '</a>' +
+                        '<a class="order';
+                    if (i !== String(Object.keys(competences).length)) {
+                        codBloc += ' ml-auto';
+                    } else {
+                        codBloc += ' d-none';
+                    }
+                    codBloc += '" href="../updown/' + competences[i]['id'] + '/up">' +
+                        '<img class="img-size-2" src="/build/pictos/down.svg">' +
+                        '</a>' +
+                        '</div>' +
+                        '<span class="font-size-5">' + competences[i]['name'] + '</span>' +
+                        '<div class="d-flex align-items-center">' +
+                        '<a class="ml-3 text-primary-dark" href="../../evalcompetence/' + competences[i]['id'] + '/edit" title="Modifier ou supprimer l\'intitulé de la compétence">' +
+                        '<img class="img-size-1" src="/build/pictos/update-primary.svg">' +
+                        '</a>' +
+                        '</div>' +
+                        '</div>';
                 }
-                codBloc += '<div class="ml-5 my-3 font-size-3">';
-                codBloc += '<a class="button button-primary" href="../../evalcompetence/new/' + bloc + '">';
-                codBloc += 'Ajouter une compétence';
-                codBloc += '</a>';
-                codBloc += '</div>';
+                codBloc += '<div class="ml-5 my-3 font-size-3">' +
+                    '<a class="button button-primary" href="../../evalcompetence/new/' + bloc + '">' +
+                    'Ajouter une compétence' +
+                    '</a>' +
+                    '</div>';
 
                 document.getElementById('bloc_' + bloc).innerHTML = codBloc;
                 document.querySelectorAll('a.order').forEach(function(link){

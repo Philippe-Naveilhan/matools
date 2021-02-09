@@ -183,3 +183,12 @@ $red: #bb1c19;
     border-radius: 2px*$i;
   }
 }
+@for $i from 1 through 5 {
+  .img-size-#{$i} {
+    height: 15px + (5px*$i);
+    width: 15px + (5px*$i);
+  }
+}
+.opacity-0{
+  opacity: 0;
+}

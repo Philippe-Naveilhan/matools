@@ -2,15 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e7577e7-a47b-493d-a865-98969a256bad" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/matools.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/matools.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/paper_pencil.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/papers_pencils.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/pictos/down.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/pictos/up.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/pictos/update-light.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/pictos/update-primary.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/styles/_home.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/user/select_academy.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/user/select_academy.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/image.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/_base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/_base.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/_navbar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/_navbar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/evaluation/show_arbo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/evaluation/show_arbo.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,15 +160,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Controller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/pictos" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/pictos" />
       <recent name="$PROJECT_DIR$/src/Controller" />
+      <recent name="$PROJECT_DIR$/assets/styles" />
+      <recent name="$PROJECT_DIR$/assets/images" />
       <recent name="$PROJECT_DIR$/templates" />
-      <recent name="$PROJECT_DIR$/templates/evaluation" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -209,7 +219,10 @@
       <workItem from="1612341434994" duration="8635000" />
       <workItem from="1612415085263" duration="2611000" />
       <workItem from="1612420557109" duration="24961000" />
-      <workItem from="1612513464986" duration="869000" />
+      <workItem from="1612513464986" duration="1637000" />
+      <workItem from="1612623183049" duration="8000" />
+      <workItem from="1612731107700" duration="2201000" />
+      <workItem from="1612858587224" duration="12877000" />
     </task>
     <servers />
   </component>
