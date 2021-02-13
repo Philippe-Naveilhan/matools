@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="3e7577e7-a47b-493d-a865-98969a256bad" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/assets/fonts/Cursive standard Bold.ttf" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/assets/fonts/Cursive standard.ttf" afterDir="false" />
@@ -17,6 +18,9 @@
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
     </list>
+=======
+    <list default="true" id="3e7577e7-a47b-493d-a865-98969a256bad" name="Default Changelist" comment="" />
+>>>>>>> 5ad8b3775198268c52abbfd257642313fd5d6ff7
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -231,11 +235,14 @@
       <workItem from="1612623183049" duration="8000" />
       <workItem from="1612731107700" duration="2201000" />
       <workItem from="1612858587224" duration="13738000" />
+<<<<<<< HEAD
       <workItem from="1613147255463" duration="625000" />
       <workItem from="1613148130825" duration="4393000" />
       <workItem from="1613165242068" duration="410000" />
       <workItem from="1613167303468" duration="1220000" />
       <workItem from="1613210764490" duration="2572000" />
+=======
+>>>>>>> 5ad8b3775198268c52abbfd257642313fd5d6ff7
     </task>
     <servers />
   </component>
