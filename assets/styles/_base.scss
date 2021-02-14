@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin&family=Righteous&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;700;900&display=swap');
+
 .font-title{
   font-family: 'Montserrat Alternates', sans-serif;
 }
@@ -8,6 +9,9 @@ h1{
 }
 h1, h2, .font-text {
   font-family: 'Montserrat Alternates', sans-serif;
+}
+.bestioles{
+  font-family: 'Bestioles', sans-serif;
 }
 $primary: #2e63a7;
 //$secondary: #7cbb00;
@@ -182,4 +186,13 @@ $red: #bb1c19;
   .br-#{$i} {
     border-radius: 2px*$i;
   }
+}
+@for $i from 1 through 5 {
+  .img-size-#{$i} {
+    height: 15px + (5px*$i);
+    width: 15px + (5px*$i);
+  }
+}
+.opacity-0{
+  opacity: 0;
 }
