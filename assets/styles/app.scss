@@ -16,3 +16,6 @@ body {
     background-color: lightgrey;
     color: $primary;
 }
+#corpus {
+    min-height: calc(100vh - 190px);
+}

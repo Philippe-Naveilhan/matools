@@ -137,7 +137,7 @@ class ResetPasswordController extends AbstractController
          * @var User
          */
         $user = $this->getDoctrine()->getRepository(User::class)->findOneBy([
-            'email' => $emailFormData,
+            'username' => $emailFormData,
         ]);
 
         // Marks that you are allowed to see the app_check_email page.
@@ -147,18 +147,17 @@ class ResetPasswordController extends AbstractController
         if (!$user) {
             return $this->redirectToRoute('app_check_email');
         }
-
         try {
             $resetToken = $this->resetPasswordHelper->generateResetToken($user);
         } catch (ResetPasswordExceptionInterface $e) {
-            // If you want to tell the user why a reset email was not sent, uncomment
-            // the lines below and change the redirect to 'app_forgot_password_request'.
-            // Caution: This may reveal if a user is registered or not.
-            //
-            // $this->addFlash('reset_password_error', sprintf(
-            //     'There was a problem handling your password reset request - %s',
-            //     $e->getReason()
-            // ));
+//             If you want to tell the user why a reset email was not sent, uncomment
+//             the lines below and change the redirect to 'app_forgot_password_request'.
+//             Caution: This may reveal if a user is registered or not.
+//
+             $this->addFlash('danger', sprintf(
+                 'There was a problem handling your password reset request - %s',
+                 $e->getReason()
+             ));
 
             return $this->redirectToRoute('app_check_email');
         }
@@ -166,7 +165,7 @@ class ResetPasswordController extends AbstractController
         /**
          * @var string
          */
-        $toEmail = $user->getEmail();
+        $toEmail = $user->getUsername();
         $email = (new TemplatedEmail())
             ->from(new Address('matools@naveilhan.com', 'Matools'))
             ->to($toEmail)
@@ -177,7 +176,6 @@ class ResetPasswordController extends AbstractController
                 'tokenLifetime' => $this->resetPasswordHelper->getTokenLifetime(),
             ])
         ;
-
         $mailer->send($email);
 
         return $this->redirectToRoute('app_check_email');
