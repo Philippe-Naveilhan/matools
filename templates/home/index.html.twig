@@ -5,35 +5,37 @@
 
 {% block body %}
 <div id="homepage">
-    <section id="bandeau1" class=" overflow-hidden">
-        <div class="w-100">
-            <img class="w-100" src="build/papers_pencils.webp" alt="pencils">
+    <div id="bandeau1" class="overflow-hidden">
+        <img src="{{ asset('build/images/papers_pencils.webp') }}" class="w-100" alt="classe"/>
+        <div class="sentence">
+            L'outil de gestion<br>
+            de votre classe maternelle !
         </div>
-    </section>
-    <section id="classroom" class="py-3">
-        <div class="row">
-            <div class="col-5 offset-1">
-                <div class="bestioles">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dignissimos, dolor labore
-                    necessitatibus odit perferendis placeat reprehenderit voluptas. Ad deserunt dignissimos eos error, illum
-                    maiores maxime perferendis quae sunt totam.
-                </div>
-                <div>Commodi cum nemo quo sed vel. Alias aperiam architecto beatae eaque et explicabo magnam magni molestias
-                    mollitia perferendis, perspiciatis possimus praesentium quisquam repellendus saepe, veniam voluptate.
-                    Accusantium eaque excepturi voluptas.
-                </div>
-                <div>Dignissimos dolor ducimus error fuga impedit voluptate! Assumenda at doloremque esse impedit in iure
-                    laboriosam nobis, nostrum omnis porro provident quae repudiandae, similique sit temporibus. Blanditiis
-                    et qui rem repellendus.
-                </div>
+    </div>
+{% set titles = [
+    {'text': "Créer sa classe...", 'picture':'classroom.png'},
+    {'text': "Enregistrer ses élèves...", 'picture':'students.png'},
+    {'text': "Editer listes, étiquettes...", 'picture':'etiquettes.png'},
+    {'text': "Gérer mes évaluations...", 'picture':'evaluations.png'}
+] %}
+    {% for title in titles %}
+    <div class="line">
+        <div class="blocTitle position-absolute">
+            <div class="text">
+                <div class="line1">{{ title.text|homeTitle|raw }}</div>
             </div>
-            <div class="col-5">
-            <img class="col-8 offset-2" src="build/paper_pencil.webp" alt="">
+            <div class="text-bg"></div>
+            <div class="little-cadre"></div>
+            <div class="line-img"></div>
         </div>
-        </div>
-    </section>
-    <section id="bandeau2"></section>
-    <section id="evaluation"></section>
-    <section id="bandeau3"></section>
-    <section id="Liste-etiquettes"></section>
+        <img src="{{ asset('build/images/'~title.picture) }}"/>
+    </div>
+    {% endfor %}
+<div class="w-100 text-center">
+    <a href="{{ path('app_login') }}">
+        <button class="btn btn-primary my-3">Se connecter / S'inscrire</button>
+    </a>
+</div>
+
 </div>
 {% endblock %}

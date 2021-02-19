@@ -1,32 +1,90 @@
 #homepage {
   #bandeau1{
-    height: 400px;
-    width: 100%;
-    filter: grayscale(0.7);
-  }
-  #classroom{
+    margin-bottom: 80px;
     color: $light;
-    width: 100%;
-    background-color: #2e63a7;
+    position: relative;
+    height: 400px;
+    img{
+      filter: drop-shadow(16px 16px 20px blue) invert(30%);
+      //filter: grayscale(0.9);
+    }
+    .sentence {
+      font-family: 'Righteous', cursive;
+      position: absolute;
+      top: 100px;
+      left: 0;
+      width: 100vw;
+      height: inherit;
+      z-index: 5;
+      font-size: 48pt;
+      text-align: center;
+    }
   }
-  #bandeau2 {
-    height: 200px;
-    width: 100%;
-    background-color: #a72e64;
+  .line{
+    text-align: right;
+    align-content: center;
+    position: relative;
+    margin: 0 auto 100px auto;
+    width: 1000px;
+    height: 300px;
+    border: solid 1px $primary;
+    .little-cadre{
+      position: absolute;
+      top: -10px;
+      left:-10px;
+      border: solid 1px $primary;
+      height: 150px;
+      width: 300px;
+    }
+    .text{
+      font-family: 'Righteous', cursive;
+      font-size: 32px;
+      z-index: 2;
+      color: $primary;
+      position: absolute;
+      top: -70px;
+      left: -40px;
+      .line1{
+        text-align: left;
+        font-family: 'Righteous', cursive;
+        span{
+          font-size: 48px;
+          font-family: 'Righteous', cursive;
+        }
+      }
+      .line2{
+        height: 40px;
+        font-family: 'Righteous', cursive;
+        margin-left: 40px;
+      }
+      .line3{
+        height: 40px;
+        font-family: 'Righteous', cursive;
+        margin-left: 80px;
+      }
+    }
+    .text-bg{
+      width: 300px;
+      height: 150px;
+      position: absolute;
+      top: -25px;
+      left: -25px;
+      background-color: #5eb5e0;
+    }
+    .line-img{
+    }
+    img{
+      margin:50px 50px 0 0;
+      height:200px;
+    }
   }
-  #evaluation {
-    height: 200px;
-    width: 100%;
-    background-color: #5eb5e0;
-  }
-  #bandeau3{
-    height: 200px;
-    width: 100%;
-    background-color: #2ea74c;
-  }
-  #Liste-etiquettes{
-    height: 200px;
-    width: 100%;
-    background-color: #3a587f;
+  .line:nth-child(odd) {
+    text-align: left;
+    .blocTitle{
+      left: 740px;
+    }
+    img{
+      margin: 50px 0 0 50px;
+    }
   }
 }
