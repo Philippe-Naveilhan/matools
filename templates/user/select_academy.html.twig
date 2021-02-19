@@ -57,6 +57,9 @@
                 }
                 districts += "</SELECT>";
                 document.getElementById('listDistricts').innerHTML = districts;
+                document.getElementById('listCircos').innerHTML = '<select><option value="nope">................</option></select>';
+                document.getElementById('listSchools').innerHTML = '<select><option value="nope">................</option></select>';
+                document.getElementById('validSchool').innerHTML = '';
             })
         }
 
@@ -75,9 +78,9 @@
                 })
             } else {
                 document.getElementById('listCircos').innerHTML = '<select><option value="nope">puis choisissez un département...</option></select>';
-                document.getElementById('validSchool').innerHTML = '';
-                document.getElementById('schoolSelect').innerHTML = '<select><option value="nope">puis votre école...</option></select>';
             }
+            document.getElementById('schoolSelect').innerHTML = '<select><option value="nope">puis votre école...</option></select>';
+            document.getElementById('validSchool').innerHTML = '';
         }
 
         function onChangeChargeSchools(){
