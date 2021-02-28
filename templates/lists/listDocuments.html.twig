@@ -1,0 +1,75 @@
+{% extends 'base_pdf.html.twig' %}
+
+    {% block title %}Liste des documents{% endblock %}
+
+{% block body %}
+<style>
+    @page{
+        margin: 1cm;
+    }
+    .center{
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    table{
+        border-spacing: 0;
+        border: solid 1px black;
+    }
+    td{
+        border-spacing: 0;
+        border: solid 1px black;
+    }
+    thead td{
+        border: solid 1px white;
+    }
+    tr{
+        height: 1.5cm;
+    }
+    thead td{
+        height: ;
+        background-color: black;
+        color: white;
+        text-align: center;
+    }
+    .student{
+        width: 5cm;
+    }
+    .document{
+        width: 3.5cm;
+    }
+</style>
+
+    <section class="evalByStudent">
+        <h1 class="center">Liste de documents</h1>
+        <h2 class="center">Classe de : {{ app.user.firstname }} {{ app.user.lastname }}</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <td class="student"></td>
+                <td class="document">Fiche de renseignement</td>
+                <td class="document">Assurances</td>
+                <td class="document">Coopérative</td>
+                <td class="document">Autorisation Photo</td>
+                <td class="document">Fiche personnes autorisée</td>
+                <td class="document">Présence réunion rentrée</td>
+            </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+            <tr>
+                <td class="student">{{ student.firstname ~ ' ' ~ student.lastname|upper }} ({{ student.level.name }})</td>
+                <td class="document"></td>
+                <td class="document"></td>
+                <td class="document"></td>
+                <td class="document"></td>
+                <td class="document"></td>
+                <td class="document"></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </section>
+
+{% endblock %}
