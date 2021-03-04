@@ -1,0 +1,103 @@
+{% extends 'base_pdf.html.twig' %}
+
+    {% block title %}Liste des documents{% endblock %}
+
+{% block body %}
+<style>
+    @page{
+        margin: 1cm;
+    }
+    .center{
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    #table_students{
+        margin-top: 1cm;
+        border-spacing: 0pt;
+        border-collapse: unset;
+    }
+    td{
+        border: solid 1px #2e63a7;
+        border-spacing: 0;
+        color: #173559;
+    }
+    tr{
+        background-color: white;
+        height: 2cm;
+    }
+    thead td:first-child {
+        border-top-left-radius: 10px;
+    }
+    thead td:last-child {
+        border-top-right-radius: 10px;
+    }
+    thead td{
+        color: #2e63a7;
+        text-align: center;
+    }
+    tbody>tr:nth-child(odd){
+        background-color: #5eb5e0;
+    }
+    .student{
+        width: 5cm;
+    }
+    .document{
+        width: 3.5cm;
+    }
+    #identite{
+        text-align: center;
+        width: 6cm;
+    }
+    #empty{
+        background-color: white;
+        text-align: center;
+        width: 15cm;
+    }
+    #document{
+        text-align: center;
+        width: 6cm;
+    }
+</style>
+
+    <section class="evalByStudent">
+        <table>
+            <tr>
+                <td id="identite">
+                    <img src="favicon.png">
+                </td>
+                <td id="empty">
+                    <p>{{ classroom.name }}</p>
+                    <p>{{ app.user.firstname }} {{ app.user.lastname }}</p></td>
+                <td id="document">Documents à fournir</td>
+            </tr>
+        </table>
+        <table id="table_students">
+            <thead>
+                <tr>
+                    <td class="student"></td>
+                    <td class="document">Fiche de renseignement</td>
+                    <td class="document">Assurances</td>
+                    <td class="document">Coopérative</td>
+                    <td class="document">Autorisation Photo</td>
+                    <td class="document">Fiche personnes autorisée</td>
+                    <td class="document">Présence réunion rentrée</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for student in students %}
+                <tr>
+                    <td class="student">{{ student.firstname ~ ' ' ~ student.lastname|upper }} ({{ student.level.name }})</td>
+                    <td class="document"></td>
+                    <td class="document"></td>
+                    <td class="document"></td>
+                    <td class="document"></td>
+                    <td class="document"></td>
+                    <td class="document"></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+{% endblock %}

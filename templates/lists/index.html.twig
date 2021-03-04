@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ListsController!{% endblock %}
+
+{% block body %}
+<div class="mt-5">
+    <a class="button button-primary my-3" href="{{ path('board') }}">Retour</a>
+    <h1 class="text-center my-5">Editions de listes d'élèves </h1>
+
+
+
+    <p></p>
+<table>
+    <tr>
+        <td class="col-7">Liste</td>
+        {% for level in levels %}
+            <td class="col-1">{{ level }}</td>
+        {% endfor %}
+        <td class="col-1">Toute la classe</td>
+    </tr>
+    <tr>
+        <td class="col-7">Liste 1</td>
+        {% for key, level in levels %}
+            <td class="col-1">
+                <a href="{{ path('listDocuments', {'id': classroom.id, 'level': key }) }}" target="_blank">
+                    Editer
+                </a>
+            </td>
+        {% endfor %}
+        <td class="col-1">
+            <a href="{{ path('listDocuments', {'id': classroom.id, 'level': 'all' }) }}" target="_blank">
+                Editer
+            </a>
+        </td>
+    </tr>
+</table>
+</div>
+{% endblock %}
