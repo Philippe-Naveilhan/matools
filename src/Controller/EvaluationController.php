@@ -88,29 +88,29 @@ class EvaluationController extends AbstractController
                     ]
                 ],
                 "Agir, s'exprimer, comprendre à travers l'activité physique" => [
-                    "unique" => [
+                    "empty" => [
                         "Collaborer, coopérer, s'opposer"
                     ]
                 ],
                 "Agir, s'exprimer, comprendre à travers les activités artistiques" => [
-                    "unique" => [
+                    "empty" => [
                         "Univers sonores",
                         "Les productions plastiques et visuelles"
                     ]
                 ],
                 "Construire les premiers outils pour structurer sa pensée" => [
-                    "unique" => [
+                    "empty" => [
                         "Les nombres et leurs utilisations",
                         "Formes, grandeurs et suites organisées"
                     ]
                 ],
                 "Explorer le monde" => [
-                    "unique" => [
-                        "Le vivant, la matière, les objets"
+                    "empty" => [
+                        "Le vivant, la matière, les objets",
                     ]
                 ],
                 "Apprendre ensemble et vivre ensemble" => [
-                    "unique" => [
+                    "empty" => [
                         "Comprendre la fonction de l'école, se construire comme une personne singulière au sein du groupe"
                     ]
                 ]

@@ -40,6 +40,11 @@ class ListsController extends AbstractController
         } else {
             $students = $classroom->getStudents();
         }
+
+//        return $this->render('lists/listDocuments.html.twig', [
+//            'students' => $students,
+//            'classroom' => $classroom,
+//        ]);
         // Configure Dompdf according to your needs
 
         // Instantiate Dompdf with our options
@@ -56,6 +61,7 @@ class ListsController extends AbstractController
         // Retrieve the HTML generated in our twig file
         $html = $this->renderView('lists/listDocuments.html.twig', [
             'students' => $students,
+            'classroom' => $classroom,
         ]);
 
         // Load HTML to Dompdf
