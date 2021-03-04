@@ -41,6 +41,8 @@ class EmailVerifier
     }
 
     /**
+     * @param Request $request
+     * @param UserInterface $user
      * @throws VerifyEmailExceptionInterface
      */
     public function handleEmailConfirmation(Request $request, UserInterface $user): void
