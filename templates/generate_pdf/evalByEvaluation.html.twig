@@ -179,16 +179,16 @@
                 <div class="student">{{ evalstudent['student'].firstname ~ ' ' ~ evalstudent['student'].lastname|upper }}</div>
                 <h3 class="mt"><u>Code d'appréciation</u></h3>
                 <p>
-                    <img src="build/star.png"/>
+                    <img src="build/images/star.png"/>
                     Compétence fragile, à travailler.</p>
                 <p>
-                    <img src="build/star.png"/>
-                    <img src="build/star.png"/>
+                    <img src="build/images/star.png"/>
+                    <img src="build/images/star.png"/>
                     Compétence en cours d'acquisition.</p>
                 <p>
-                    <img src="build/star.png"/>
-                    <img src="build/star.png"/>
-                    <img src="build/star.png"/>
+                    <img src="build/images/star.png"/>
+                    <img src="build/images/star.png"/>
+                    <img src="build/images/star.png"/>
                     Compétence acquise.</p>
             </div>
 
@@ -217,7 +217,7 @@
                                                         {% if competence.note %}
                                                             {% if competence.note < 4 %}
                                                                 {% for i in 1..competence.note %}
-                                                                    <img src="build/star.png"/>
+                                                                    <img src="build/images/star.png"/>
                                                                 {% endfor %}
                                                             {% elseif competence.note == 4%}
                                                                 <span class="font-size-1">Absent(e)</span>
