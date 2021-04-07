@@ -15,7 +15,6 @@ class Academy
 {
     const DOMAINS = [
         'matools.fr',
-        'naveilhan.com',
         'ac-orleans-tours.fr',
         'ac-rennes.fr',
         'ac-rouen.fr',

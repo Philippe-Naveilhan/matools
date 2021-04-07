@@ -38,5 +38,5 @@ security:
         ROLE_MEMBER: ROLE_USER
 
     access_control:
-         - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/app, roles: ROLE_MEMBER }
+        - { path: ^/admin, roles: ROLE_ADMIN, requires_channel: '%env(SECURE_SCHEME)%'  }
+        - { path: ^/app, roles: ROLE_MEMBER, requires_channel: '%env(SECURE_SCHEME)%'  }
