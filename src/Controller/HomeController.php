@@ -45,7 +45,6 @@ class HomeController extends AbstractController
                 }
             }
         };
-        $bg=array
         return $this->render('CV/index.html.twig', [
             'titles'=> $titles,
             'bg'=>$bg,
