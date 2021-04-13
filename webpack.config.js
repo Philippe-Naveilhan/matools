@@ -14,6 +14,7 @@ Encore
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
     .copyFiles({ from: './assets/images', to: '/images/[name].[ext]'})
+    .copyFiles({ from: './assets/otero', to: '/otero/[name].[ext]'})
     .copyFiles({ from: './assets/pictos', to: '/pictos/[name].[ext]'})
     .copyFiles({ from: './assets/js', to: '/js/[name].[ext]'})
 
