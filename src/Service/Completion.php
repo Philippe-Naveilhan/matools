@@ -9,7 +9,7 @@ class Completion extends CompetencestudentRepository
     public function completion($evalcompetence):string
     {
         $nbempty = count($this->findByEmpty($evalcompetence));
-        $nbTotal = count($this->findBy(['evalcompetence'=>$evalcompetence]));
+        $nbTotal = $this->countAll($evalcompetence);
 
         if ($nbempty == 0) {
             return 'full';

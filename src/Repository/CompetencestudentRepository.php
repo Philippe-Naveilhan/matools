@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Competencestudent;
+use App\Entity\Evalcompetence;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -26,25 +27,28 @@ class CompetencestudentRepository extends ServiceEntityRepository
     {
         $vide = "";
         return $this->createQueryBuilder('c')
-            ->Where('c.evalcompetence = :val')
+            ->Where('c.evalcompetence = :evalcompetence')
             ->andWhere('c.note IS NULL')
-            ->andWhere('c.comment = :vide')
-            ->setParameter('val', $evalcompetence)
-            ->setParameter('vide', $vide)
+            ->andWhere('c.comment = :empty')
+            ->setParameter('evalcompetence', $evalcompetence)
+            ->setParameter('empty', $vide)
             ->getQuery()
             ->getResult()
         ;
     }
 
-    /*
-    public function findOneBySomeField($value): ?Competencestudent
+    /**
+     * @return Competencestudent[] Returns an array of Competencestudent objects
+     */
+    public function countAll($evalcompetence)
     {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT count(id) FROM competencestudent AS c WHERE c.evalcompetence_id = :ec';
+        $stmt = $conn->prepare($sql);
+        $stmt->execute(['ec' => $evalcompetence]);
+
+        // returns number of tuples for this  evalcompetence
+        return $stmt->fetchOne();
     }
-    */
 }
