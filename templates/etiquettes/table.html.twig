@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Etiquettes Table!{% endblock %}
+
+{% block body %}
+
+<div>
+    <h1 class="mb-5 text-center">Etiquettes Table ✅</h1>
+    <a class="btn btn-primary impression-no mb-5 ml-5" href="{{ path('etiquettes') }}">Retour</a>
+    <div class="impression-no text-center text-secondary">Impression paysage</div>
+    {% set itemsbyline = 0 %}
+        {% for student in students %}
+
+            {% if select == 'ALL' or select == student.level %}
+        {% set itemsbyline = itemsbyline + 1 %}
+        {% if itemsbyline == 1 %}
+
+        <div class="mx-2 row">
+            {% endif %}
+        {{ include('etiquettes/_table.html.twig') }}
+            {% endif %}
+        {% if itemsbyline == 3 %}
+
+    </div>
+            {% set itemsbyline = 0 %}
+        {% endif %}
+
+        {% endfor %}
+    {{ itemsbyline == 0 ? '' : '</div>' }}
+
+</div>
+
+{% endblock %}

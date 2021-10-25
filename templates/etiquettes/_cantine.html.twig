@@ -1,0 +1,3 @@
+<div class="width-cell-3 border border-dark text-center script cantine">
+    {{ student.firstname|upper|replace({'!':' <span class="script">'~student.lastname|first~'</span>'})|raw }}
+</div>

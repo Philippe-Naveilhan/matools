@@ -1,0 +1,158 @@
+@font-face {
+    font-family: "Script-Cole";
+    src: url('scriptcole.ttf');
+}
+@font-face {
+    font-family: "Cursive";
+    src: url('Cursive standard.ttf');
+}
+@font-face {
+    font-family: "Bestioles";
+    src: url('Bestioles.ttf');
+}
+@font-face {
+    font-family: "CursiveBold";
+    src: url('Cursive standard Bold.ttf');
+}
+
+$primary: #00384f;
+$primary-transparent: rgba(0,56,79,0.9);
+$secondary: #85c041;
+$flashy: #00ffff;
+$secondary-transparent: rgba(133,192,65,0.4);
+$girls: #a80012;
+$boys: #000680;
+
+body {
+    background-color: lightgray;
+}
+.cantine{
+    font-size: 26pt;
+}
+.girls {
+    color: $girls;
+}
+.boys {
+    color: $boys;
+}
+.height-line{
+    height:1cm;
+}
+.width-cell {
+    width: 4.5cm;
+}
+.width-cell-2 {
+    width: 3.5cm;
+}
+.width-cell-3 {
+    width: 6cm;
+}
+.width-cell-4 {
+    width: 8cm;
+}
+.print{
+    display: none;
+}
+td{
+    font-size: 16px;
+}
+.arial{
+    font-family: Arial;
+}
+.script{
+    font-family: "Script-Cole";
+}
+.cursive{
+    font-family: "Cursive";
+}
+.bestioles{
+    font-family: "Bestioles";
+    font-size: 64pt;
+}
+.et-table{
+    width: 8.5cm;
+    margin: 0.3cm;
+    border-radius: 20px;
+    font-size: 32px;
+}
+.et-comportement{
+    width: 13cm;
+}
+.et-comportement .name{
+    top:2.3cm;
+    font-size: 32pt;
+}
+.et-casier{
+    margin: 0.2cm;
+    overflow: hidden;
+    width: 13cm;
+    height:5cm;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: black;
+}
+.et-casier .name{
+    z-index: 20;
+    top:1.7cm;
+    font-size: 32pt;
+}
+.et-casier .arabesque{
+    z-index: 10;
+    top:0;
+}
+.et-presences-GS{
+    margin: 2mm;
+    font-size: 28pt;
+    width: 6.5cm;
+    border-style: solid;
+    border-width: 3pt;
+    border-color: black;
+}
+.border-dashed{
+    border-style: dashed;
+    border-width: 2pt;
+    border-color: black;
+}
+.et-presences-PS{
+    margin: 2mm;
+    font-size: 28pt;
+    width: 6.5cm;
+    border-style: solid;
+    border-width: 3pt;
+    border-color: black;
+}
+.et-porte-manteau{
+    font-family: Arial;
+    margin: 2mm;
+    font-size: 28pt;
+    width: 5.8cm;
+    border-style: solid;
+    border-width: 3pt;
+    border-color: black;
+}
+.et-porte-manteau .border-solid{
+    border-style: solid;
+    border-width: 1pt;
+    border-color: black;
+}
+.et-porte-manteau .image{
+    height: 150px;
+}
+.et-porte-manteau .initiale{
+     font-size: 84px;
+ }
+.child-picture{
+    height: 130px;
+}
+tr{
+    height: 30px;
+}
+td{
+    border-color: black;
+    text-align: center;
+    height: 30px;
+}
+.splat{
+    height: 150px;
+}

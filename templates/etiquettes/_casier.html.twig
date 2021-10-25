@@ -1,0 +1,5 @@
+<div class="et-casier text-center position-relative {% if student.sex == 'fille' %}girls {% else %} boys{% endif %}">
+    <img class="h-100" src="/images/casiers/{{ count }}.jpg" alt="background">
+    <div class="arabesque w-100 position-absolute"><img class="w-100" src="/images/casiers/arabesque.png" alt="background"></div>
+    <div class="name w-100 text-center script position-absolute">{{ student.firstname|upper|replace({'!':' <span class="script">'~student.name|first~'</span>'})|raw }}</div>
+</div>

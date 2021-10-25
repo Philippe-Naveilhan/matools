@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Etiquettes Porte-Manteaux !{% endblock %}
+
+{% block body %}
+
+<div>
+    <h1 class="mb-5 text-center">Etiquettes Porte-Manteaux ✅</h1>
+    <a class=" btn btn-primary mb-5 ml-5 impression-no" href="{{ path('etiquettes') }}">Retour</a>
+    <div class="impression-no text-center text-secondary">Impression paysage</div>
+    {% set itemsbyline = 0 %}
+    {% set count = 1 %}
+    {% for student in students %}
+
+            {% if select == 'ALL' or select == student.level %}
+        {% set itemsbyline = itemsbyline + 1 %}
+        {% if itemsbyline == 1 %}
+
+        <div class="ml-3 row">
+            {% endif %}
+        {{ include('etiquettes/_porteManteau.html.twig') }}
+                {% if count == 12 %}
+                    {% set count = 1 %}
+                {% else %}
+                    {% set count = count + 1 %}
+                {% endif %}
+            {% endif %}
+        {% if itemsbyline == 4 %}
+
+    </div>
+            {% set itemsbyline = 0 %}
+        {% endif %}
+
+        {% endfor %}
+    {{ itemsbyline == 0 ? '' : '</div>' }}
+
+</div>
+
+{% endblock %}

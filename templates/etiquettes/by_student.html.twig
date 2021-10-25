@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Etiquettes Cantines!{% endblock %}
+
+{% block body %}
+
+<div class="mx-5 px-5">
+    <h1 class="mb-5 text-center impression-no">Etiquettes de {{ student.firstname|upper}} ✅</h1>
+    <a class="btn btn-primary impression-no mb-5 ml-5" href="{{ path('home') }}">Retour</a>
+    <div class="impression-no text-center text-secondary">Impression portrait</div>
+
+    {% include('etiquettes/_casier.html.twig') %}
+    {% include('etiquettes/_porteManteau.html.twig') %}
+    {% include('etiquettes/_table.html.twig') %}
+    {% include('etiquettes/_cantine.html.twig') %}
+    {% include('etiquettes/_comportement.html.twig') %}
+
+    {% if student.level == 'Grande Section' %}
+        {% include('etiquettes/_presenceGS.html.twig') %}
+    {% else %}
+        {% include('etiquettes/_presencePS.html.twig') %}
+    {% endif %}
+
+</div>
+
+{% endblock %}

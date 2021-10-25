@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace App\Controller;
 
@@ -20,7 +20,7 @@ class GeneratePDFController extends AbstractController
     /**
      * @Route("/eval_vierge/{id}", name="eval_vierge")
      */
-    public function eval_vierge(Evaluation $evaluation,
+    public function eval_vierge(Evaluation          $evaluation,
                                 EvalthemeRepository $evalthemeRepository
     ): Response
     {
@@ -32,8 +32,8 @@ class GeneratePDFController extends AbstractController
         //gestion des données
         $themes = $evalthemeRepository->findAll();
         $students = [];
-        foreach($evaluation->getEvalstudents() as $evalstudent){
-                $students[]=$evalstudent->getStudent();
+        foreach ($evaluation->getEvalstudents() as $evalstudent) {
+            $students[] = $evalstudent->getStudent();
         }
         // Configure Dompdf according to your needs
         $pdfOptions = new Options();
@@ -46,8 +46,9 @@ class GeneratePDFController extends AbstractController
         $dompdf->setPaper('A4', 'portrait');
 
         // Retrieve the HTML generated in our twig file
-        $html = $this->renderView('generate_pdf/evalViergeByClassroom.html.twig', [
-            'students' =>$students,
+//        $html = $this->renderView('generate_pdf/evalViergeByClassroom.html.twig', [
+        $html = $this->renderView('etiquettes/cantine.html.twig', [
+            'students' => $students,
             'themes' => $themes,
             'evaluation' => $evaluation,
         ]);
@@ -69,7 +70,7 @@ class GeneratePDFController extends AbstractController
     /**
      * @Route("/eval_complete/{id}", name="eval_complete")
      */
-    public function eval_complete(Evaluation $evaluation,
+    public function eval_complete(Evaluation          $evaluation,
                                   EvalthemeRepository $evalthemeRepository
     ): Response
     {
@@ -79,14 +80,14 @@ class GeneratePDFController extends AbstractController
         }
         //gestion des données
         $competences = [];
-        foreach($evaluation->getEvalcompetences() as $value){
-            $competences[$value->getBloc()->getCategory()->getTheme()->getName()][$value->getBloc()->getCategory()->getName()][]=$value;
+        foreach ($evaluation->getEvalcompetences() as $value) {
+            $competences[$value->getBloc()->getCategory()->getTheme()->getName()][$value->getBloc()->getCategory()->getName()][] = $value;
         }
         $themes = $evalthemeRepository->findAll();
         $students = [];
-        foreach($evaluation->getClassroom()->getStudents() as $student){
-            if($evaluation->getLevel()->getId() == $student->getLevel()->getId()){
-                $students[]=$student;
+        foreach ($evaluation->getClassroom()->getStudents() as $student) {
+            if ($evaluation->getLevel()->getId() == $student->getLevel()->getId()) {
+                $students[] = $student;
             }
         }
         // Configure Dompdf according to your needs
@@ -114,7 +115,7 @@ class GeneratePDFController extends AbstractController
         $dompdf->render();
 
         // the file's name
-        $name = 'test'.rand(0,10).'.pdf';
+        $name = 'test' . rand(0, 10) . '.pdf';
         // Output the generated PDF to Browser (inline view)
         $dompdf->stream($name, [
             "Attachment" => false
@@ -124,8 +125,8 @@ class GeneratePDFController extends AbstractController
     /**
      * @Route("/eval_by_studenteval/{id}", name="eval_by_studenteval")
      */
-    public function eval_by_studenteval(Evalstudent $evalstudent,
-                                  EvalthemeRepository $evalthemeRepository
+    public function eval_by_studenteval(Evalstudent         $evalstudent,
+                                        EvalthemeRepository $evalthemeRepository
     ): Response
     {
         if ($this->getUser() != $evalstudent->getEvaluation()->getClassroom()->getTeacher()) {
@@ -135,8 +136,8 @@ class GeneratePDFController extends AbstractController
 
         //gestion des données
         $competences = [];
-        foreach($evalstudent->getCompetencestudents() as $value){
-            $competences[$value->getEvalcompetence()->getBloc()->getCategory()->getTheme()->getName()][$value->getEvalcompetence()->getBloc()->getCategory()->getName()][$value->getEvalcompetence()->getBloc()->getName()][$value->getEvalcompetence()->getName()]=$value;
+        foreach ($evalstudent->getCompetencestudents() as $value) {
+            $competences[$value->getEvalcompetence()->getBloc()->getCategory()->getTheme()->getName()][$value->getEvalcompetence()->getBloc()->getCategory()->getName()][$value->getEvalcompetence()->getBloc()->getName()][$value->getEvalcompetence()->getName()] = $value;
         }
         $themes = $evalthemeRepository->findAll();
         // Configure Dompdf according to your needs
@@ -149,7 +150,7 @@ class GeneratePDFController extends AbstractController
         $options->setIsHtml5ParserEnabled(true);
         $dompdf = new Dompdf($options);
 
-        // (Optional) Setup the paper size and orientation 'portrait' or 'portrait'
+        // (Optional) Setup the paper size and orientation 'portrait' or 'landscape'
         $dompdf->setPaper('A4', 'portrait');
 
         // Retrieve the HTML generated in our twig file
@@ -178,7 +179,7 @@ class GeneratePDFController extends AbstractController
     /**
      * @Route("/eval_by_eval/{id}", name="eval_by_eval")
      */
-    public function eval_by_eval(Evaluation $evaluation,
+    public function eval_by_eval(Evaluation          $evaluation,
                                  EvalthemeRepository $evalthemeRepository
     ): Response
     {
@@ -187,11 +188,11 @@ class GeneratePDFController extends AbstractController
             return $this->redirectToRoute('board');
         }
         $evaluations = [];
-        foreach($evaluation->getEvalstudents() as $evalstudent){
-            foreach($evalstudent->getCompetencestudents() as $competenceStudent){
-                $evaluations[$evalstudent->getStudent()->getId()]['student']=$evalstudent->getStudent();
-                $evaluations[$evalstudent->getStudent()->getId()]['evalstudent']=$evalstudent;
-                $evaluations[$evalstudent->getStudent()->getId()]['competences'][$competenceStudent->getEvalcompetence()->getBloc()->getCategory()->getTheme()->getName()][$competenceStudent->getEvalcompetence()->getBloc()->getCategory()->getName()][$competenceStudent->getEvalcompetence()->getBloc()->getName()][$competenceStudent->getEvalcompetence()->getName()]=$competenceStudent;
+        foreach ($evaluation->getEvalstudents() as $evalstudent) {
+            foreach ($evalstudent->getCompetencestudents() as $competenceStudent) {
+                $evaluations[$evalstudent->getStudent()->getId()]['student'] = $evalstudent->getStudent();
+                $evaluations[$evalstudent->getStudent()->getId()]['evalstudent'] = $evalstudent;
+                $evaluations[$evalstudent->getStudent()->getId()]['competences'][$competenceStudent->getEvalcompetence()->getBloc()->getCategory()->getTheme()->getName()][$competenceStudent->getEvalcompetence()->getBloc()->getCategory()->getName()][$competenceStudent->getEvalcompetence()->getBloc()->getName()][$competenceStudent->getEvalcompetence()->getName()] = $competenceStudent;
             }
         }
 
@@ -214,7 +215,7 @@ class GeneratePDFController extends AbstractController
             'dompdf' => $dompdf->getOptions()->getDefaultFont(),
             'themes' => $themes,
 //            'evalsByStudent' => $evalsByStudent,
-            'evaluations'=>$evaluations,
+            'evaluations' => $evaluations,
             'evaluation' => $evaluation,
         ]);
 
@@ -230,4 +231,5 @@ class GeneratePDFController extends AbstractController
         $dompdf->stream($name, [
             "Attachment" => false
         ]);
-    }}
+    }
+}

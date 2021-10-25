@@ -1,0 +1,9 @@
+<div class="et-presences-GS text-center {% if student.sex == 'fille' %}girls {% else %} boys{% endif %}">
+    <div class="row mx-0 border-top-0 border-left-0 border-right-0 border-dashed w-100">
+        <div class="overflow-hidden text-center col-6 border-dashed border-top-0 border-bottom-0 border-left-0 px-0"><img class="w-100" src="/images/splat/{{ count }}.jpg" alt="background"></div>
+        <div class="text-center col-6 bestioles px-0">{{ student.firstname|first }}</div>
+    </div>
+    <div class="script border-top-0 border-left-0 border-right-0 border-dashed">{{ student.firstname|replace({'!':''})|upper }}</div>
+    <div class="text-center script border-top-0 border-left-0 border-right-0 border-dashed">{{ student.firstname|replace({'!':''})|capitalize }}</div>
+    <div class="text-center script">{{ student.firstname|first|upper }}<span class="cursive">{{ student.firstname[1:]|replace({'!':' <span class="script">'~student.name|first~'</span>'})|raw }}</span></div>
+</div>

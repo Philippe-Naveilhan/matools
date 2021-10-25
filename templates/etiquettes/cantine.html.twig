@@ -1,0 +1,29 @@
+<style>
+    @page {
+        margin: 0.5cm;
+    }
+    h1 {
+        text-align: center;
+    }
+    .test{
+        width: 15cm;
+        height: 20cm;
+        border: solid 1pt red;
+        padding: 0.5cm;
+        margin: 0 auto;
+    }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello word !</h1>
+    <div class="test">
+        {% for i in 0..3 %}
+            Bloc : <br>
+            <ul>
+            {% for i in 0..6 %}
+                <li>SS-Boc</li>
+            {% endfor %}
+            </ul>
+        {% endfor %}
+    </div>
+</div>

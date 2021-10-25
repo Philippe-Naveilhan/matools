@@ -1,0 +1,4 @@
+<div class="et-comportement text-center position-relative {% if student.sex == 'fille' %}girls {% else %} boys{% endif %}">
+    <img class="w-100" src="/images/comportement/{{ count }}.jpg" alt="background">
+    <div class="name w-100 text-center script position-absolute">{{ student.firstname|upper|replace({'!':' <span class="script">'~student.name|first~'</span>'})|raw }}</div>
+</div>
