@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class EvalthemeController extends AbstractController
 {
     /**
-     * @Route("/new/{eval}", name="evaltheme_new", methods={"GET","POST"})
+     * @Route("/new/{id}", name="evaltheme_new", methods={"GET","POST"})
      */
     public function new(Request $request, Evaluation $evaluation): Response
     {
